@@ -4,6 +4,21 @@ Date: Jan 4, 2024
 
 H2M is a python package for precise modeling of human vairants in mice.
 
+# Workflow  
+
+![workflow](images/workflow.png)
+
+![model_workflow](images/model_workflow.png)  
+
+- Original modeling with uncertain effects:  
+![original_uncertain](images/original_uncertain.png)  
+
+- Alternative modeling with uncertain effects:  
+![alternative](images/alternative.png)  
+
+- All possible status:  
+![status](images/status.png)
+
 # Installation
 
 
@@ -3037,13 +3052,9 @@ df_result
 *Online*
 ENSEMBL API
 
-## 2. Workflow
+## 2. Functions
 
-![workflow](images/workflow.png)
-
-## 3. Functions
-
-### 3.1 query(id, db,  ty, show)  
+### 2.1 query(id, db,  ty, show)  
 - Function  
     -  Query a human gene for the presence of mouse homologs.  
 - Parameters   
@@ -3097,7 +3108,7 @@ h2m.query('ENSG00000141510')
 
 
 
-### 3.2 get_tx(id, species, ver, ty, show)    
+### 2.2 get_tx(id, species, ver, ty, show)    
 - Function  
     - Query a human or mouse gene for coordinate and information of all its transcripts.  
 
@@ -4751,22 +4762,9 @@ h2m.get_tx_id('TP53','h',ver=37)
 
 
 
-### 3.3 model(records_h, index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h, tx_id_m, start_h, end_h, alt_seq_h, ty_h = None, ver = None, ref_seq_h = '', param = 'default', search_alternative = True, max_alternative = 5, nonstop_size = 300, flank_size = 2, batch = False, show_sequence = False, align_dict = None)  
+### 2.3 model(records_h, index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h, tx_id_m, start_h, end_h, alt_seq_h, ty_h = None, ver = None, ref_seq_h = '', param = 'default', search_alternative = True, max_alternative = 5, nonstop_size = 300, flank_size = 2, batch = False, show_sequence = False, align_dict = None)  
 - Function  
     - Model human variants in the mouse genome.  
-
-- Workflow  
-
-![model_workflow](images/model_workflow.png)  
-
-- Original modeling with uncertain effects:  
-![original_uncertain](images/original_uncertain.png)  
-
-- Alternative modeling with uncertain effects:  
-![alternative](images/alternative.png)  
-
-- All possible status:  
-![status](images/status.png)  
 
 - Parameters   
     - records_h, index_list_h, records_m, index_list_m: human and mouse reference genome.  
