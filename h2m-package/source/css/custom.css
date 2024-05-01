@@ -1,0 +1,5 @@
+/* custom.css */
+.scroll-table-container {
+    overflow-x: auto;
+    margin-bottom: 1em;
+}

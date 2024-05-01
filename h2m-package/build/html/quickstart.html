@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html :class="{'dark': darkMode === 'dark' || (darkMode === 'system' &amp;&amp; window.matchMedia('(prefers-color-scheme: dark)').matches)}" class="scroll-smooth" data-content_root="./" lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system'), activeSection: '' }" x-init="$watch('darkMode', val =&gt; localStorage.setItem('darkMode', val))">
+<head>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="utf-8"/>
+<meta content="white" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="black" metia="(prefers-color-scheme: dark)" name="theme-color"/>
+<meta content="Docutils 0.19: https://docutils.sourceforge.io/" name="generator"/>
+<title>Quick Start | H2M 0.1.0 documentation</title>
+<meta content="Quick Start | H2M 0.1.0 documentation" property="og:title"/>
+<meta content="Quick Start | H2M 0.1.0 documentation" name="twitter:title"/>
+<link href="_static/pygments.css?v=ef1dd98d" rel="stylesheet" type="text/css"/>
+<link href="_static/theme.css?v=cede9724" rel="stylesheet" type="text/css"/>
+<link href="_static/css/custom.css" rel="stylesheet" type="text/css"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="jupyter.html" rel="next" title="Jupyter Notebook Tutorial"/>
+<link href="index.html" rel="prev" title="H2M Documentation"/>
+<script>
+    <!-- Prevent Flash of wrong theme -->
+      const userPreference = localStorage.getItem('darkMode');
+      let mode;
+      if (userPreference === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        mode = 'dark';
+        document.documentElement.classList.add('dark');
+      } else {
+        mode = 'light';
+      }
+      if (!userPreference) {localStorage.setItem('darkMode', mode)}
+    </script>
+</head>
+<body :class="{ 'overflow-hidden': showSidebar }" class="min-h-screen font-sans antialiased bg-background text-foreground" x-data="{ showSidebar: false }">
+<div @click.self="showSidebar = false" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden" x-cloak="" x-show="showSidebar"></div><div class="relative flex flex-col min-h-screen" id="page"><a class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100" href="#content">
+      Skip to content
+    </a><header class="sticky top-0 z-40 w-full border-b shadow-sm border-border supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur"><div class="container flex items-center h-14">
+<div class="hidden mr-4 md:flex">
+<a class="flex items-center mr-6" href="index.html">
+<img alt="Logo" class="mr-2 hidden dark:block" height="24" src="_static/h2m-logo-final.png" width="24"/>
+<img alt="Logo" class="mr-2 dark:hidden" height="24" src="_static/h2m-logo-final.png" width="24"/><span class="hidden font-bold sm:inline-block text-clip whitespace-nowrap">H2M 0.1.0 documentation</span>
+</a></div><button @click="showSidebar = true" class="inline-flex items-center justify-center h-10 px-0 py-2 mr-2 text-base font-medium transition-colors rounded-md hover:text-accent-foreground hover:bg-transparent md:hidden" type="button">
+<svg aria-hidden="true" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M152.587 825.087q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440Zm0-203.587q-19.152 0-32.326-13.174T107.087 576q0-19.152 13.174-32.326t32.326-13.174h320q19.152 0 32.326 13.174T518.087 576q0 19.152-13.174 32.326T472.587 621.5h-320Zm0-203.587q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440ZM708.913 576l112.174 112.174q12.674 12.674 12.674 31.826t-12.674 31.826Q808.413 764.5 789.261 764.5t-31.826-12.674l-144-144Q600 594.391 600 576t13.435-31.826l144-144q12.674-12.674 31.826-12.674t31.826 12.674q12.674 12.674 12.674 31.826t-12.674 31.826L708.913 576Z"></path>
+</svg>
+<span class="sr-only">Toggle navigation menu</span>
+</button>
+<div class="flex items-center justify-between flex-1 space-x-2 sm:space-x-4 md:justify-end">
+<div class="flex-1 w-full md:w-auto md:flex-none"><form @keydown.k.window.meta="$refs.search.focus()" action="search.html" class="relative flex items-center group" id="searchbox" method="get">
+<input aria-label="Search the docs" class="inline-flex items-center font-medium transition-colors bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background border border-input hover:bg-accent focus:bg-accent hover:text-accent-foreground focus:text-accent-foreground hover:placeholder-accent-foreground py-2 px-4 relative h-9 w-full justify-start rounded-[0.5rem] text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64" id="search-input" name="q" placeholder="Search ..." type="search" x-ref="search"/>
+<kbd class="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none text-muted-foreground items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex group-hover:bg-accent group-hover:text-accent-foreground">
+<span class="text-xs">⌘</span>
+    K
+  </kbd>
+</form>
+</div>
+<nav class="flex items-center space-x-1">
+<button @click="darkMode = darkMode === 'light' ? 'dark' : 'light'" class="relative inline-flex items-center justify-center px-0 text-sm font-medium transition-colors rounded-md hover:bg-accent hover:text-accent-foreground h-9 w-9" type="button">
+<svg class="absolute transition-all scale-100 rotate-0 dark:-rotate-90 dark:scale-0" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M480 685q45.456 0 77.228-31.772Q589 621.456 589 576q0-45.456-31.772-77.228Q525.456 467 480 467q-45.456 0-77.228 31.772Q371 530.544 371 576q0 45.456 31.772 77.228Q434.544 685 480 685Zm0 91q-83 0-141.5-58.5T280 576q0-83 58.5-141.5T480 376q83 0 141.5 58.5T680 576q0 83-58.5 141.5T480 776ZM80 621.5q-19.152 0-32.326-13.174T34.5 576q0-19.152 13.174-32.326T80 530.5h80q19.152 0 32.326 13.174T205.5 576q0 19.152-13.174 32.326T160 621.5H80Zm720 0q-19.152 0-32.326-13.174T754.5 576q0-19.152 13.174-32.326T800 530.5h80q19.152 0 32.326 13.174T925.5 576q0 19.152-13.174 32.326T880 621.5h-80Zm-320-320q-19.152 0-32.326-13.174T434.5 256v-80q0-19.152 13.174-32.326T480 130.5q19.152 0 32.326 13.174T525.5 176v80q0 19.152-13.174 32.326T480 301.5Zm0 720q-19.152 0-32.326-13.17Q434.5 995.152 434.5 976v-80q0-19.152 13.174-32.326T480 850.5q19.152 0 32.326 13.174T525.5 896v80q0 19.152-13.174 32.33-13.174 13.17-32.326 13.17ZM222.174 382.065l-43-42Q165.5 327.391 166 308.239t13.174-33.065q13.435-13.674 32.587-13.674t32.065 13.674l42.239 43q12.674 13.435 12.555 31.706-.12 18.272-12.555 31.946-12.674 13.674-31.445 13.413-18.772-.261-32.446-13.174Zm494 494.761-42.239-43q-12.674-13.435-12.674-32.087t12.674-31.565Q686.609 756.5 705.38 757q18.772.5 32.446 13.174l43 41.761Q794.5 824.609 794 843.761t-13.174 33.065Q767.391 890.5 748.239 890.5t-32.065-13.674Zm-42-494.761Q660.5 369.391 661 350.62q.5-18.772 13.174-32.446l41.761-43Q728.609 261.5 747.761 262t33.065 13.174q13.674 13.435 13.674 32.587t-13.674 32.065l-43 42.239q-13.435 12.674-31.706 12.555-18.272-.12-31.946-12.555Zm-495 494.761Q165.5 863.391 165.5 844.239t13.674-32.065l43-42.239q13.435-12.674 32.087-12.674t31.565 12.674Q299.5 782.609 299 801.38q-.5 18.772-13.174 32.446l-41.761 43Q231.391 890.5 212.239 890t-33.065-13.174ZM480 576Z"></path>
+</svg>
+<svg class="absolute transition-all scale-0 rotate-90 dark:rotate-0 dark:scale-100" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M480 936q-151 0-255.5-104.5T120 576q0-138 90-239.5T440 218q25-3 39 18t-1 44q-17 26-25.5 55t-8.5 61q0 90 63 153t153 63q31 0 61.5-9t54.5-25q21-14 43-1.5t19 39.5q-14 138-117.5 229T480 936Zm0-80q88 0 158-48.5T740 681q-20 5-40 8t-40 3q-123 0-209.5-86.5T364 396q0-20 3-40t8-40q-78 32-126.5 102T200 576q0 116 82 198t198 82Zm-10-270Z"></path>
+</svg>
+</button>
+</nav>
+</div>
+</div>
+</header>
+<div class="flex-1"><div class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10"><aside :aria-hidden="!showSidebar" :class="{ 'translate-x-0': showSidebar }" class="fixed inset-y-0 left-0 md:top-14 z-50 md:z-30 bg-background md:bg-transparent transition-all duration-100 -translate-x-full md:translate-x-0 ml-0 p-6 md:p-0 md:-ml-2 md:h-[calc(100vh-3.5rem)] w-5/6 md:w-full shrink-0 overflow-y-auto border-r border-border md:sticky" id="left-sidebar">
+<a class="!justify-start text-sm md:!hidden bg-background" href="index.html">
+<img alt="Logo" class="mr-2 hidden dark:block" height="16" src="_static/h2m-logo-final.png" width="16"/>
+<img alt="Logo" class="mr-2 dark:hidden" height="16" src="_static/h2m-logo-final.png" width="16"/><span class="font-bold text-clip whitespace-nowrap">H2M 0.1.0 documentation</span>
+</a>
+<div class="relative overflow-hidden md:overflow-auto my-4 md:my-0 h-[calc(100vh-8rem)] md:h-auto">
+<div class="overflow-y-auto h-full w-full relative pr-6"><nav class="table w-full min-w-full my-6 lg:my-8">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyter.html">Jupyter Notebook Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Complete Function Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downstream.html">Downstream Genome Editing Librabry Design Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About H2M</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<button @click="showSidebar = false" class="absolute md:hidden right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100" type="button">
+<svg class="h-4 w-4" fill="currentColor" height="24" stroke="none" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M480 632 284 828q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536 576l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480 632Z"></path>
+</svg>
+</button>
+</aside>
+<main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+<div class="w-full min-w-0 mx-auto">
+<nav aria-label="breadcrumbs" class="flex items-center mb-4 space-x-1 text-sm text-muted-foreground">
+<a class="overflow-hidden text-ellipsis whitespace-nowrap hover:text-foreground" href="index.html">
+<span class="hidden md:inline">H2M 0.1.0 documentation</span>
+<svg aria-label="Home" class="md:hidden" fill="currentColor" height="18" stroke="none" viewbox="0 96 960 960" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M240 856h120V616h240v240h120V496L480 316 240 496v360Zm-80 80V456l320-240 320 240v480H520V696h-80v240H160Zm320-350Z"></path>
+</svg>
+</a>
+<div class="mr-1">/</div><span aria-current="page" class="font-medium text-foreground overflow-hidden text-ellipsis whitespace-nowrap">Quick Start</span>
+</nav>
+<div id="content" role="main">
+<section id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"><span>#</span></a></h1>
+<a class="reference internal image-reference" href="_images/h2m-logo-final.png"><img alt="_images/h2m-logo-final.png" class="align-left" src="_images/h2m-logo-final.png" style="width: 150px;"/></a>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#installation'"><span>#</span></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">h2m</span><span class="o">-</span><span class="mf">0.1.21</span><span class="o">-</span><span class="n">py3</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="nb">any</span><span class="o">.</span><span class="n">whl</span>
+</pre></div>
+</div>
+</section>
+<section id="importing-packages">
+<h2>Importing packages<a class="headerlink" href="#importing-packages" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#importing-packages'"><span>#</span></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">h2m</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</section>
+<section id="loading-data">
+<h2>Loading data<a class="headerlink" href="#loading-data" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#loading-data'"><span>#</span></a></h2>
+<p>We should upload reference genome and GENCODE annotation data for both human and mouse, which could be directly downloaded from a public
+<a href="https://www.dropbox.com/scl/fo/1wtrnc9w6s9gemweuw2fv/h?rlkey=hli1z6tv096cjwit5oi6bwggg&amp;dl=0" rel="noopener noreferrer" target="_blank">Dropbox link</a> (<strong>Gencode</strong> and <strong>Refgenome</strong> fold respectively).<br/>
+Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload the one that you are going to use.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># download from dropbox</span>
+<span class="n">path_h_ref</span><span class="p">,</span> <span class="n">path_m_ref</span> <span class="o">=</span> <span class="s1">'.../GCF_000001405.25_GRCh37.p13_genomic.fna.gz'</span><span class="p">,</span> <span class="s1">'.../GCF_000001635.27_GRCm39_genomic.fna.gz'</span>
+<span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">genome_loader</span><span class="p">(</span><span class="n">path_h_ref</span><span class="p">)</span>
+<span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span>  <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">genome_loader</span><span class="p">(</span><span class="n">path_m_ref</span><span class="p">)</span>
+
+<span class="n">path_h_anno</span><span class="p">,</span> <span class="n">path_m_anno</span> <span class="o">=</span> <span class="s1">'.../gencode_v19_GRCh37.db'</span><span class="p">,</span> <span class="s1">'.../gencode_vm33_GRCm39.db'</span>
+<span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">anno_loader</span><span class="p">(</span><span class="n">path_h_anno</span><span class="p">),</span> <span class="n">h2m</span><span class="o">.</span><span class="n">anno_loader</span><span class="p">(</span><span class="n">path_m_anno</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="query-mouse-orthologous-genes">
+<h2>Query mouse orthologous genes<a class="headerlink" href="#query-mouse-orthologous-genes" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#query-mouse-orthologous-genes'"><span>#</span></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'TP53'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Query human gene: TP53;
+Mouse ortholog(s): Trp53;
+Homology type: one2one;
+Sequence Simalarity(%):77.3537.
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'TPT1P6'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Class 7: The query human gene: TPT1P6 has no mouse ortholog.
+</pre></div>
+</div>
+<p>Except for gene names, both ENSEMBL gene id and transcript id are accepted to identify a human gene. You can use the <strong>ty</strong> parameter (‘tx_id’,’gene_id’ or ‘name’) to specify your input type, but this is totally optional.</p>
+<p>Using gene id:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'ENSG00000141510'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Query human gene: TP53;
+Mouse ortholog(s): Trp53;
+Homology type: one2one;
+Sequence Simalarity(%):77.3537.
+</pre></div>
+</div>
+<p>Using transcript id. Should include a db annotation file with the same ref genome version.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'ENST00000269305.4'</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="n">db_h</span><span class="p">,</span> <span class="n">ty</span><span class="o">=</span><span class="s1">'tx_id'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Query human gene: TP53;
+Mouse ortholog(s): Trp53;
+Homology type: one2one;
+Sequence Simalarity(%):77.3537.
+</pre></div>
+</div>
+<p>The query result of all human genes, as well as corresponding transcript IDs, is also available as <a href="https://www.dropbox.com/scl/fi/o6735wok25t5dstvpz9kd/Supp_Table_1_Homo_Genes.csv?rlkey=skvxlcfv4r8ksspiq5itxxjc9&amp;dl=0" rel="noopener noreferrer" target="_blank">a csv file</a>.</p>
+</section>
+<section id="get-transcript-id-internet-connection-needed">
+<h2>Get transcript ID (Internet connection needed)<a class="headerlink" href="#get-transcript-id-internet-connection-needed" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#get-transcript-id-internet-connection-needed'"><span>#</span></a></h2>
+<p>One gene may have different transcripts. For mutation modeling, it is important to specify one transcript. If you do not have this information in hand, you can use H2M to get it.</p>
+<p>Again, both gene IDs and gene names are accepted as identificaitons for human and mouse genes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">list_tx_id_h</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'TP53'</span><span class="p">,</span> <span class="s1">'h'</span><span class="p">,</span> <span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Genome assembly: GRCh37;
+The canonical transcript is: ENST00000269305.4;
+You can choose from the 17 transcripts below for further analysis:
+(1)ENST00000269305.4 (2)ENST00000413465.2 (3)ENST00000359597.4 (4)ENST00000504290.1 (5)ENST00000510385.1 (6)ENST00000504937.1 (7)ENST00000455263.2 (8)ENST00000420246.2 (9)ENST00000445888.2 (10)ENST00000576024.1 (11)ENST00000509690.1 (12)ENST00000514944.1 (13)ENST00000574684.1 (14)ENST00000505014.1 (15)ENST00000508793.1 (16)ENST00000604348.1 (17)ENST00000503591.1
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">list_tx_id_m</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'ENSMUSG00000059552'</span><span class="p">,</span> <span class="s1">'m'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Genome assembly: GRCm39;
+The canonical transcript is: ENSMUST00000108658.10;
+You can choose from the 6 transcripts below for further analysis:
+(1)ENSMUST00000108658.10 (2)ENSMUST00000171247.8 (3)ENSMUST00000005371.12 (4)ENSMUST00000147512.2 (5)ENSMUST00000108657.4 (6)ENSMUST00000130540.2
+</pre></div>
+</div>
+</section>
+<section id="modeling-human-variants-in-the-mouse-genome">
+<h2>Modeling human variants in the mouse genome<a class="headerlink" href="#modeling-human-variants-in-the-mouse-genome" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#modeling-human-variants-in-the-mouse-genome'"><span>#</span></a></h2>
+<section id="input">
+<h3>Input<a class="headerlink" href="#input" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#input'"><span>#</span></a></h3>
+<p>Now you can use H2M to model your human mutations of interest.<br/>
+You should have at least such information in hand:</p>
+<ol class="arabic simple">
+<li><p>transcript id of the human gene</p></li>
+<li><p>transcript id of the mouse gene</p></li>
+<li><p>start location of human variants <em>on the chromosome</em></p></li>
+<li><p>end location of human variants <em>on the chromosome</em></p></li>
+<li><p>the reference and alternative sequence <em>on the positive strand of the chromosome</em></p></li>
+<li><p>mutation type (str in [‘SNP’,’DNP’,’ONP’,’INS’,’DEL’])</p></li>
+<li><p>the version number of human ref genome</p></li>
+</ol>
+<p>Usually, such information has been pretty well organized in different databases and is easy to get.</p>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#usage'"><span>#</span></a></h3>
+<p>Taking <em>TP53</em> R273H (ENST00000269305.4:c.818G&gt;A) as an example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span> <span class="o">=</span> <span class="n">list_tx_id_h</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">list_tx_id_m</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="c1"># use the canonical transcript</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Flanked size is a parameter that controls how many amino acids (or neucleotides, for non-coding mutations) are included on both sides of the mutated region. You can change that by parameter <strong>flank_size</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7572932</span><span class="p">,</span> <span class="mi">7572932</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'A'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">flank_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With the flank size of 1 (which means 3 amino acids are taken into consideration in totall), this mutation can be originally modeled.</p>
+</section>
+<section id="alternative-modeling">
+<h3>Alternative modeling<a class="headerlink" href="#alternative-modeling" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#alternative-modeling'"><span>#</span></a></h3>
+<p>Sometimes the human mutation cannot be originally modeled in the mouse genome by using the same neucleotide alteration. Under this circumsatance, some alternative modeling strategies may be found by searching the codon list of the target amino acids. Taking TP53 R249_T253delinsS as an example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577523</span><span class="p">,</span> <span class="mi">7577534</span><span class="p">,</span> <span class="s1">'GTGAGGATGGGC'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'DEL'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The default maximum number of output alternatives is 5. You can definitly change that by the parameter <strong>max_alternative</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_result_long</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577523</span><span class="p">,</span> <span class="mi">7577534</span><span class="p">,</span> <span class="s1">'GTGAGGATGGGC'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'DEL'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">max_alternative</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">model_result</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">model_result_long</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(5, 6)
+</pre></div>
+</div>
+<p>If you do not want to alternatively model variants, you can set <strong>search_alternatve</strong> to False.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577523</span><span class="p">,</span> <span class="mi">7577534</span><span class="p">,</span> <span class="s1">'GTGAGGATGGGC'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'DEL'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">search_alternative</span><span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">model_result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'statement'</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>'Class 6: This mutation cannot be originally modeled and is awaiting alternative.'
+</pre></div>
+</div>
+</section>
+<section id="original-modeling-with-uncertain-effects">
+<h3>Original modeling with uncertain effects<a class="headerlink" href="#original-modeling-with-uncertain-effects" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#original-modeling-with-uncertain-effects'"><span>#</span></a></h3>
+<p>For frame-shifting mutations and mutations in the non-coding region, we cannot find such alternative modeling strategies with the same protein change effects. H2M will only offer the original modeling and its effect.</p>
+<ul class="simple">
+<li><p>Example: <em>TP53</em> C275Lfs*31</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577115</span><span class="p">,</span> <span class="mi">7577116</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span><span class="s1">'A'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'INS'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+<span class="n">p_h</span><span class="p">,</span> <span class="n">p_m</span> <span class="o">=</span> <span class="n">model_result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'HGVSp_h'</span><span class="p">],</span> <span class="n">model_result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'HGVSp_m'</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'HGVSp_h: </span><span class="si">{</span><span class="n">p_h</span><span class="si">}</span><span class="s1">, HGVSp_m: </span><span class="si">{</span><span class="n">p_m</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>HGVSp_h: C275Lfs*31, HGVSp_m: C272Lfs*24
+</pre></div>
+</div>
+</section>
+<section id="additional-function-1-modeling-for-base-editing">
+<h3>Additional function 1: modeling for base editing<a class="headerlink" href="#additional-function-1-modeling-for-base-editing" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#additional-function-1-modeling-for-base-editing'"><span>#</span></a></h3>
+<p>When you set <strong>param = ‘BE’</strong>, you will get modeling results that can be modeled by base editing (A-&gt;G, G-&gt;A, C-&gt;T, T-&gt;C, AA-&gt;GG, …etc.). If one mutation can be originally modeled in the mouse genome but not in a BE style, alternative BE modeling strategies will be returned too.</p>
+<p>Taking <em>KEAP1</em> F221L as an example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tx_id_h_2</span><span class="p">,</span> <span class="n">tx_id_m_2</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'KEAP1'</span><span class="p">,</span><span class="s1">'h'</span><span class="p">,</span><span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">3</span><span class="p">],</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'Keap1'</span><span class="p">,</span><span class="s1">'m'</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h_2</span><span class="p">,</span> <span class="n">tx_id_m_2</span><span class="p">,</span> <span class="mi">10602915</span><span class="p">,</span> <span class="mi">10602915</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="s1">'BE'</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="additional-function-2-modeling-by-amino-acid-change-input">
+<h3>Additional function 2: modeling by amino acid change input<a class="headerlink" href="#additional-function-2-modeling-by-amino-acid-change-input" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#additional-function-2-modeling-by-amino-acid-change-input'"><span>#</span></a></h3>
+<p>Set <strong>coor = ‘aa’</strong> and modeling human variants by amino acid change input. Use TP53 R175H as an example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="s1">'R'</span><span class="p">,</span> <span class="s1">'H'</span><span class="p">,</span> <span class="n">coor</span> <span class="o">=</span> <span class="s1">'aa'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="batch-processing">
+<h2>Batch Processing<a class="headerlink" href="#batch-processing" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#batch-processing'"><span>#</span></a></h2>
+<section id="input-format">
+<h3>Input format<a class="headerlink" href="#input-format" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#input-format'"><span>#</span></a></h3>
+<p>For input in a batch processing style, you need to build a pandas dataframe with columns as the following example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># download from dropbox</span>
+<span class="n">df_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'input/sample_data.csv'</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/sample_data.png"><img alt="_images/sample_data.png" class="align-center" src="_images/sample_data.png" style="width: 600px;"/></a>
+<p>This can be achieved simply by using h2m built-in functions. The sample data used in this section can be found <a href="https://www.dropbox.com/scl/fo/369r665lxot7y66cdsft4/h?rlkey=ofy8hlr1dqq0t0qwp5qhenrsf&amp;dl=0" rel="noopener noreferrer" target="_blank">here</a>.</p>
+<section id="read-from-cbioportal">
+<h4>Read from cBioPortal<a class="headerlink" href="#read-from-cbioportal" title="Link to this heading"><span>#</span></a></h4>
+<p>In this format, users simply provide a set of variants with their genome coordinates and reference and alternate alleles, as well as the variant type. This format is compatible with all of the datasets in the <a href="https://www.cbioportal.org" rel="noopener noreferrer" target="_blank">cBioPortal</a>, as well as <a href="https://www.synapse.org/#!Synapse:syn7844529" rel="noopener noreferrer" target="_blank">AACR-GENIE</a>. Download the txt mutation data file from such public dataset and then load it as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">path_aacr</span> <span class="o">=</span> <span class="s1">'/Users/gorkordkx/Desktop/Flab - Drylab/Database/AACR-GENIE/v13.1/data_mutations_extended.txt'</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">cbio_reader</span><span class="p">(</span><span class="n">path_aacr</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="read-from-clinvar">
+<h4>Read from ClinVar<a class="headerlink" href="#read-from-clinvar" title="Link to this heading"><span>#</span></a></h4>
+<p>download a ClinVar vcf.gz file, and choose your desired Variation IDs that you wish to model. These vcf.gz files are available in the Reference Files Dropbox Link (under the clinvar folder) or the more up to date files can be accessed <a href="ttps://ftp.ncbi.nlm.nih.gov/pub/clinvar/" rel="noopener noreferrer" target="_blank">here</a>.</p>
+<a class="reference internal image-reference" href="_images/clinvar.png"><img alt="_images/clinvar.png" class="align-center" src="_images/clinvar.png" style="width: 600px;"/></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filepath</span> <span class="o">=</span> <span class="s1">'/Users/gorkordkx/Desktop/GRCh37_clinvar_20240206.vcf.gz'</span>
+<span class="n">variation_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">925574</span><span class="p">,</span> <span class="mi">925434</span><span class="p">,</span> <span class="mi">926695</span><span class="p">,</span> <span class="mi">925707</span><span class="p">,</span> <span class="mi">325626</span><span class="p">,</span> <span class="mi">1191613</span><span class="p">,</span> <span class="mi">308061</span><span class="p">,</span> <span class="mi">361149</span><span class="p">,</span> <span class="mi">1205375</span><span class="p">,</span> <span class="mi">208043</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">clinvar_reader</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">variation_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="read-from-genomad">
+<h4>Read from GenomAD<a class="headerlink" href="#read-from-genomad" title="Link to this heading"><span>#</span></a></h4>
+<p>Search a specific gene in <a href="https://gnomad.broadinstitute.org" rel="noopener noreferrer" target="_blank">GenomAD browser</a>, and download the conluson csv.</p>
+<a class="reference internal image-reference" href="_images/genomad.png"><img alt="_images/genomad.png" class="align-center" src="_images/genomad.png" style="width: 600px;"/></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">genomad_reader</span><span class="p">(</span><span class="s1">'/Users/gorkordkx/Downloads/gnomAD_v4.0.0_ENSG00000141510_2024_02_07_11_36_03.csv'</span><span class="p">,</span><span class="s1">'TP53'</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="get-canonical-transcript-id-of-human-genes-if-needed-no-internet-connection-needed">
+<h3>Get canonical transcript ID of human genes if needed, no internet connection needed<a class="headerlink" href="#get-canonical-transcript-id-of-human-genes-if-needed-no-internet-connection-needed" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#get-canonical-transcript-id-of-human-genes-if-needed-no-internet-connection-needed'"><span>#</span></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">species</span><span class="o">=</span><span class="s1">'h'</span><span class="p">,</span><span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="get-canonical-transcript-id-of-mouse-genes-no-internet-connection-needed">
+<h3>Get canonical transcript ID of mouse genes, no internet connection needed<a class="headerlink" href="#get-canonical-transcript-id-of-mouse-genes-no-internet-connection-needed" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#get-canonical-transcript-id-of-mouse-genes-no-internet-connection-needed'"><span>#</span></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">species</span><span class="o">=</span><span class="s1">'m'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="batch-modeling">
+<h3>Batch modeling<a class="headerlink" href="#batch-modeling" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#batch-modeling'"><span>#</span></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="mi">37</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="result-visualization">
+<h3>Result visualization<a class="headerlink" href="#result-visualization" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#result-visualization'"><span>#</span></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">show_sequence</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">h2m</span><span class="o">.</span><span class="n">model_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="mi">37</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/output_1.png"><img alt="_images/output_1.png" class="align-center" src="_images/output_1.png" style="width: 800px;"/></a>
+</section>
+</section>
+</section>
+</div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
+<div class="sticky top-16 -mt-10 max-h-[calc(var(100vh)-5rem)] overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
+<ul>
+<li><a :data-current="activeSection === '#installation'" class="reference internal" href="#installation">Installation</a></li>
+<li><a :data-current="activeSection === '#importing-packages'" class="reference internal" href="#importing-packages">Importing packages</a></li>
+<li><a :data-current="activeSection === '#loading-data'" class="reference internal" href="#loading-data">Loading data</a></li>
+<li><a :data-current="activeSection === '#query-mouse-orthologous-genes'" class="reference internal" href="#query-mouse-orthologous-genes">Query mouse orthologous genes</a></li>
+<li><a :data-current="activeSection === '#get-transcript-id-internet-connection-needed'" class="reference internal" href="#get-transcript-id-internet-connection-needed">Get transcript ID (Internet connection needed)</a></li>
+<li><a :data-current="activeSection === '#modeling-human-variants-in-the-mouse-genome'" class="reference internal" href="#modeling-human-variants-in-the-mouse-genome">Modeling human variants in the mouse genome</a><ul>
+<li><a :data-current="activeSection === '#input'" class="reference internal" href="#input">Input</a></li>
+<li><a :data-current="activeSection === '#usage'" class="reference internal" href="#usage">Usage</a></li>
+<li><a :data-current="activeSection === '#alternative-modeling'" class="reference internal" href="#alternative-modeling">Alternative modeling</a></li>
+<li><a :data-current="activeSection === '#original-modeling-with-uncertain-effects'" class="reference internal" href="#original-modeling-with-uncertain-effects">Original modeling with uncertain effects</a></li>
+<li><a :data-current="activeSection === '#additional-function-1-modeling-for-base-editing'" class="reference internal" href="#additional-function-1-modeling-for-base-editing">Additional function 1: modeling for base editing</a></li>
+<li><a :data-current="activeSection === '#additional-function-2-modeling-by-amino-acid-change-input'" class="reference internal" href="#additional-function-2-modeling-by-amino-acid-change-input">Additional function 2: modeling by amino acid change input</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#batch-processing'" class="reference internal" href="#batch-processing">Batch Processing</a><ul>
+<li><a :data-current="activeSection === '#input-format'" class="reference internal" href="#input-format">Input format</a><ul>
+<li><a :data-current="activeSection === '#read-from-cbioportal'" class="reference internal" href="#read-from-cbioportal">Read from cBioPortal</a></li>
+<li><a :data-current="activeSection === '#read-from-clinvar'" class="reference internal" href="#read-from-clinvar">Read from ClinVar</a></li>
+<li><a :data-current="activeSection === '#read-from-genomad'" class="reference internal" href="#read-from-genomad">Read from GenomAD</a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#get-canonical-transcript-id-of-human-genes-if-needed-no-internet-connection-needed'" class="reference internal" href="#get-canonical-transcript-id-of-human-genes-if-needed-no-internet-connection-needed">Get canonical transcript ID of human genes if needed, no internet connection needed</a></li>
+<li><a :data-current="activeSection === '#get-canonical-transcript-id-of-mouse-genes-no-internet-connection-needed'" class="reference internal" href="#get-canonical-transcript-id-of-mouse-genes-no-internet-connection-needed">Get canonical transcript ID of mouse genes, no internet connection needed</a></li>
+<li><a :data-current="activeSection === '#batch-modeling'" class="reference internal" href="#batch-modeling">Batch modeling</a></li>
+<li><a :data-current="activeSection === '#result-visualization'" class="reference internal" href="#result-visualization">Result visualization</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</aside>
+</main>
+</div>
+</div><footer class="py-6 border-t border-border md:py-0">
+<div class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
+<div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
+<p class="text-sm leading-loose text-center text-muted-foreground md:text-left">© 2024, Kexin Dong Built with <a class="font-medium underline underline-offset-4" href="https://www.sphinx-doc.org" rel="noreferrer">Sphinx 7.2.6</a></p>
+</div>
+</div>
+</footer>
+</div>
+<script src="_static/documentation_options.js?v=01f34227"></script>
+<script src="_static/doctools.js?v=888ff710"></script>
+<script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+<script defer="defer" src="_static/theme.js?v=e8bd915e"></script>
+</body>
+</html>

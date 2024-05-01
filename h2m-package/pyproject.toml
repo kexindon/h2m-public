@@ -1,0 +1,99 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "h2m"
+version = '0.1.1'
+description = ''
+readme = "README.md"
+requires-python = ">=3.9"
+license = {file  = "LICENSE.txt"}
+keywords = []
+authors = [
+  { name = "Kexin Dong", email = "gorkordkx@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "requests >= 2.26.0",
+  "gffutils >= 0.12",
+  "pybiomart >= 0.2.0",
+  "biopython >= 1.81",
+  "pandas >= 1.5.3",
+  "matplotlib >= 3.7.0",
+  "pysam >= 0.22.1",
+  "numpy >= 1.24.2",
+]
+install_requires=[
+    'myst_parser>=0.15.2',
+]
+
+[project.optional-dependencies]
+doc = [
+  "sphinx~=4.2.0",
+  "sphinxawesome-theme",
+]
+
+[project.urls]
+Documentation = "https://github.com/kexindon/H2M-py#readme"
+Issues = "https://github.com/kexindon/H2M-py/issues"
+Source = "https://github.com/kexindon/H2M-py"
+
+[tool.hatch.version]
+path = "src/h2m/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "coverage[toml]>=6.5",
+  "pytest",
+]
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = [
+  "- coverage combine",
+  "coverage report",
+]
+cov = [
+  "test-cov",
+  "cov-report",
+]
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+[tool.hatch.envs.types]
+dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/h2m tests}"
+
+[tool.coverage.run]
+source_pkgs = ["h2m", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/h2m/__about__.py",
+]
+
+[tool.coverage.paths]
+h2m = ["src/h2m", "*/h2m/src/h2m"]
+tests = ["tests", "*/h2m/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
