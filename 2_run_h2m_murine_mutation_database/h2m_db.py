@@ -21,9 +21,9 @@ path_h_anno, path_m_anno = 'gencode_v19_GRCh37.db', 'gencode_vm33_GRCm39.db'
 db_h, db_m = h2m.anno_loader(path_h_anno), h2m.anno_loader(path_m_anno)
 
 result_list = []
-for f in [0,2,5,10]:
-    result = h2m.model_batch(df_run, records_h, index_list_h, records_m, index_list_m, db_h, db_m, 37, flank_size = f, memory_size=2000)
-    # save result
-    result[0].to_csv(f'{sample_name}_result_f{f}.csv', index=False)
-    # save failed samples
-    result[1].to_csv(f'{sample_name}_f{f}_left_over.csv',index=False)
+
+result = h2m.model_batch(df_run, records_h, index_list_h, records_m, index_list_m, db_h, db_m, 37, memory_size=2000)
+# save result
+result[0].to_csv(f'h2m_db_result_{sample_name}.csv', index=False)
+# save failed samples
+result[1].to_csv(f'h2m_db_left_over_{sample_name}.csv',index=False)
