@@ -75,7 +75,7 @@ df = df[['gene_name_h',	'start_h','end_h','ref_seq_h','alt_seq_h','type_h','form
 df = df.rename(columns={'ID':'index'})
 ```
 <div align="left">
-    <img src="readme_files/1.png"  style="width: 60%;">
+    <img src="readme_files/1.png"  style="width: 40%;">
 </div>
 
 ### Get canonical transcript IDs for the human genes  
@@ -105,7 +105,7 @@ df_queried, df_fail = h2m.query_batch(df, direction='h2m')
 df_queried, df_fail = h2m.get_tx_batch(df_queried, species='m')
 ```
 <div align="left">
-    <img src="readme_files/4.png"  style="width: 90%;">
+    <img src="readme_files/4.png"  style="width: 95%;">
 </div>
 ### Compute
 the muerine variant equivalents  
