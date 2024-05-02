@@ -223,7 +223,7 @@ def query(id, db = None , direction = 'h2m', ty = 'default',show = True):
         if ty != 'name':
             raise ValueError('Error 2: Please use gene name for m2h query.')
         else:
-            output = homo_dict[name]
+            output = homo_dict_mouse[id]
             homo_type = list(output[0].values())[1]
             if homo_type is not None:
                 homo_type = homo_type.split('_')[1]
@@ -231,8 +231,8 @@ def query(id, db = None , direction = 'h2m', ty = 'default',show = True):
                 name_h = ','.join([list(output[x].values())[0] for x in range(len(output))])
                 similarity = ', '.join([str(list(output[x].values())[2]) for x in range(len(output))])
             else:
-                name_h, similarity = list(output[0].values())[0], str(list(output[0].values())[3])
-            web_query = f'Query human gene: {name};\nMouse ortholog(s): {name_h};\nHomology type: {homo_type};\nSequence Simalarity(%):{similarity}.'
+                name_h, similarity = list(output[0].values())[0], str(list(output[0].values())[2])
+            web_query = f'Query human gene: {id};\nMouse ortholog(s): {name_h};\nHomology type: {homo_type};\nSequence Simalarity(%):{similarity}.'
         if show:
             print(web_query)
         return output
@@ -1039,7 +1039,7 @@ def type_snop(p_seq, new_p_seq, stop_loc_p, mut_p, mut_p_idx, cor_mut_p_idx, cor
         return pro_change
 
     if category == 3:
-        if ty in ['SNP','DNP','ONP']:
+        if ty in ['SNP','DNP','ONP','TNP']:
             if (len(cor_mut_p) == len(cor_new_mut_p) == 0):
                 classification = 'Silent'
                 pro_change = f'{get_pro_ref(mut_p, mut_p_idx)}delins{mut_p}'
@@ -2227,6 +2227,7 @@ def vcf_to_maf(df):
     new_column_order = priority_columns + remaining_columns
     df = df[new_column_order]
     df['format'] = 'MAF'    
+    return df
 
 def cbio_reader(path = None, df = None, keep = True):
     """
@@ -2289,7 +2290,9 @@ def get_variant_type(df, ref_col, alt_col, col_name = 'type_h'):
                 r = 'SNP'
             elif len(ref) == 2:
                 r = 'DNP'
-            elif len(ref) >=3:
+            elif len(ref) == 3:
+                r = 'TNP'
+            elif len(ref) >3:
                 r = 'ONP'
             else:
                 r = None
