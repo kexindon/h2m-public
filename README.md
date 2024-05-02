@@ -20,6 +20,10 @@ H2M's main functions are:
 
 See more in the [the GitHub repository](https://github.com/kexindon/h2m-public.git). 
 
+Documentation: https://h2m-public.readthedocs.io  
+
+H2M Database Online Portal:  Upcoming
+
 ## 🔧 Installation  
 
 ### 1. Via PyPI  
@@ -132,13 +136,5 @@ h2m.visualization(df_vs, flank_size=2, print_size=6)
 ## 🪪 License
 
 `h2m` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
-
-## 🔗 Useful Links 
-
-Read the docs:  
-
-H2M Database Online Portal:  
-
-BioRxiv: 
 
 ## Cite H2M:  
