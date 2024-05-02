@@ -2,8 +2,8 @@
 Author: Kexin Dong  
 Date: Jan 4, 2024  
 
-<div align="center">
-    <img src="readme_files/final.png"  style="width: 50%;">
+<div align="left">
+    <img src="readme_files/final.png"  style="width: 20%;">
 </div>
 
 -----
@@ -74,7 +74,9 @@ df = h2m.clinvar_to_maf(df)
 df = df[['gene_name_h',	'start_h','end_h','ref_seq_h','alt_seq_h','type_h','format','ID']]
 df = df.rename(columns={'ID':'index'})
 ```
-![png](readme_files/1.png) 
+<div align="left">
+    <img src="readme_files/1.png"  style="width: 60%;">
+</div>
 
 ### Get canonical transcript IDs for the human genes  
 
@@ -82,7 +84,9 @@ df = df.rename(columns={'ID':'index'})
 ```python
 df, df_fail = h2m.get_tx_batch(df, species='h', ver = 37)
 ```
-![png](readme_files/2.png)
+<div align="left">
+    <img src="readme_files/2.png"  style="width: 70%;">
+</div>
 
 ### Query the gene orthologs in mouse  
 
@@ -90,7 +94,9 @@ df, df_fail = h2m.get_tx_batch(df, species='h', ver = 37)
 ```python
 df_queried, df_fail = h2m.query_batch(df, direction='h2m')
 ```
-![png](readme_files/3.png)
+<div align="left">
+    <img src="readme_files/3.png"  style="width: 80%;">
+</div>
 
 ### Get canonical transcript IDs for the murine genes  
 
@@ -98,9 +104,11 @@ df_queried, df_fail = h2m.query_batch(df, direction='h2m')
 ```python
 df_queried, df_fail = h2m.get_tx_batch(df_queried, species='m')
 ```
-![png](readme_files/4.png)
-
-### Compute the muerine variant equivalents  
+<div align="left">
+    <img src="readme_files/4.png"  style="width: 90%;">
+</div>
+### Compute
+the muerine variant equivalents  
 
 
 ```python
