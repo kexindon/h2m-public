@@ -1,9 +1,7 @@
 # H2M (Human-To-Mouse) 
 Author: Kexin Dong  
-Date: Jan 4, 2024  
+Date: May 2, 2024  
 
-[![PyPI - Version](https://img.shields.io/pypi/v/h2m.svg)](https://pypi.org/project/h2m)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/h2m.svg)](https://pypi.org/project/h2m)
 -----
 
 H2M is a python package for the precision modeling of human vairants in mice and vice versa.    
@@ -72,7 +70,6 @@ df = h2m.clinvar_to_maf(df)
 df = df[['gene_name_h',	'start_h','end_h','ref_seq_h','alt_seq_h','type_h','format','ID']]
 df = df.rename(columns={'ID':'index'})
 ```
-![png](readme_files/1.png) 
 
 ### Get canonical transcript IDs for the human genes  
 
@@ -80,7 +77,6 @@ df = df.rename(columns={'ID':'index'})
 ```python
 df, df_fail = h2m.get_tx_batch(df, species='h', ver = 37)
 ```
-![png](readme_files/2.png)
 
 ### Query the gene orthologs in mouse  
 
@@ -88,7 +84,6 @@ df, df_fail = h2m.get_tx_batch(df, species='h', ver = 37)
 ```python
 df_queried, df_fail = h2m.query_batch(df, direction='h2m')
 ```
-![png](readme_files/3.png)
 
 ### Get canonical transcript IDs for the murine genes  
 
@@ -96,7 +91,6 @@ df_queried, df_fail = h2m.query_batch(df, direction='h2m')
 ```python
 df_queried, df_fail = h2m.get_tx_batch(df_queried, species='m')
 ```
-![png](readme_files/4.png)
 
 ### Compute the muerine variant equivalents  
 
@@ -104,8 +98,6 @@ df_queried, df_fail = h2m.get_tx_batch(df_queried, species='m')
 ```python
 df_result, df_fail = h2m.model_batch(df_queried, records_h, index_list_h, records_m, index_list_m, db_h, db_m, 37)
 ```
-
-![png](readme_files/5.png)
 
 ### Data visualization    
 
@@ -117,7 +109,6 @@ df_vs = h2m.model(records_h, index_list_h, records_m, index_list_m, db_h, db_m,
                   ver = 37, show_sequence=True)
 h2m.visualization(df_vs, flank_size=2, print_size=6)
 ```
-![png](readme_files/ctnnb1.png)
 
 ## License
 
