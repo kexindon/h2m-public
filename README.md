@@ -16,7 +16,7 @@ H2M's main functions are:
 
 See more in the [the GitHub repository](https://github.com/kexindon/h2m-public.git). 
 
-## Installation  
+## 🔧 Installation  
 
 ### 1. Via PyPI  
 
@@ -40,7 +40,7 @@ H2M has been tested in Python 3.9-3.12.
 
 Reference genome and genome annotation files for human and mouse are needed for this package. To download, visit [the Dropbox Folder](https://www.dropbox.com/scl/fo/1wtrnc9w6s9gemweuw2fv/h?rlkey=hli1z6tv096cjwit5oi6bwggg&dl=0). Some commonly used public data of human mutations are also available here.  
 
-## Quick Start     
+## 🚀 Quick Start     
 
 ### Load reference genome  
 
@@ -59,7 +59,7 @@ path_h_anno, path_m_anno = '.../gencode_v19_GRCh37.db', '.../gencode_vm33_GRCm39
 db_h, db_m = h2m.anno_loader(path_h_anno), h2m.anno_loader(path_m_anno)
 ```
 
-### Load human mutation data  
+### 📊 Load human mutation data  
 
 
 ```python
@@ -117,11 +117,11 @@ h2m.visualization(df_vs, flank_size=2, print_size=6)
 ```
 ![png](readme_files/ctnnb1.png)
 
-## License
+## 🪪 License
 
 `h2m` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
 
-## Useful Links 
+## 🔗 Useful Links 
 
 Read the docs:  
 
