@@ -2,7 +2,7 @@
 Author: Kexin Dong  
 Date: Jan 4, 2024  
 
-![png](readme_files/logo.png) 
+![png](readme_files/final.png) 
 
 -----
 
