@@ -18,8 +18,6 @@ H2M's main functions are:
 
 3. Generating murine equivalents for human genetic variant input or vice versa. 
 
-See more in the [the GitHub repository](https://github.com/kexindon/h2m-public.git). 
-
 Documentation: https://h2m-public.readthedocs.io  
 
 H2M Database Online Portal:  Upcoming
