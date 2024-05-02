@@ -2,7 +2,9 @@
 Author: Kexin Dong  
 Date: Jan 4, 2024  
 
-![png](readme_files/final.png =250x) 
+<div align="center">
+    <img src="readme_files/final.png"  style="width: 50%;">
+</div>
 
 -----
 
