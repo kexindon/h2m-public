@@ -2,6 +2,8 @@
 Author: Kexin Dong  
 Date: Jan 4, 2024  
 
+![png](readme_files/logo.png) 
+
 -----
 
 H2M is a python package for the precision modeling of human vairants in mice and vice versa.    
