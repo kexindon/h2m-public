@@ -2917,7 +2917,6 @@ def visualization(model_result, flank_size = 0, print_size = 6):
 
     else:
         # flank_size, print_size = flank_size, print_size
-        print(flank_size)
         if (model_result[0]['class'] == 1) or (len(model_result)>1): # alternative modeling
             tx_seq_h, tx_seq_m = model_result[0]['seq_h'], model_result[0]['seq_m']
             mut_seq_h, mut_seq_m = model_result[0]['new_seq_h'], model_result[0]['new_seq_m_ori']
@@ -3035,8 +3034,6 @@ def visualization(model_result, flank_size = 0, print_size = 6):
                 ax.add_patch(rect)
                 ax.text((i + 2.5), (height+.5)*cell_ratio, 'ORI',
                             horizontalalignment='center', verticalalignment='center', fontsize=30, fontname='arial')
-                
-            print(flank_size)
 
             h = -9/2 -1
 
