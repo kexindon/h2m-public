@@ -36,7 +36,7 @@ ATTENTION: H2M has `pysam` as a dependency. This is for a function that can read
 
 H2M has been tested in Python 3.9-3.12.  
 
-## Download dependency files  
+## ⏬ Download dependency files  
 
 Reference genome and genome annotation files for human and mouse are needed for this package. To download, visit [the Dropbox Folder](https://www.dropbox.com/scl/fo/1wtrnc9w6s9gemweuw2fv/h?rlkey=hli1z6tv096cjwit5oi6bwggg&dl=0). Some commonly used public data of human mutations are also available here.  
 
