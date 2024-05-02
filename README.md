@@ -2,6 +2,8 @@
 Author: Kexin Dong  
 Date: Jan 4, 2024  
 
+![png](readme_files/logo.png) 
+
 -----
 
 H2M is a python package for the precision modeling of human vairants in mice and vice versa.    
@@ -16,7 +18,7 @@ H2M's main functions are:
 
 See more in the [the GitHub repository](https://github.com/kexindon/h2m-public.git). 
 
-## Installation  
+## 🔧 Installation  
 
 ### 1. Via PyPI  
 
@@ -32,15 +34,15 @@ pip install h2m
 pip install h2m-1.0.0-py3-non-any.whl  
 ```
 
-ATTENTION: H2M has `pysam` as a dependency. This is for a function that can read .vcf files. If you are experiencing installation problems due to pysam, you can download and install the wheel file named as mini-h2m in [the GitHub repository](https://github.com/kexindon/h2m-public.git) without this function and the pysam dependency, which has been tested to solve most installation issues. The function rounded off in mini-h2m is also given in the repo. 
+ATTENTION: H2M has `pysam` as a dependency. This is for a function that can read .vcf files. If you are experiencing installation problems due to pysam, you can download and install the wheel file named as mini-h2m in [this GitHub repository](https://github.com/kexindon/h2m-public.git) without this function and the pysam dependency, which has been tested to solve most installation issues. The function rounded off in mini-h2m is also given in the repo. 
 
 H2M has been tested in Python 3.9-3.12.  
 
-## Download dependency files  
+## ⏬ Download dependency files  
 
 Reference genome and genome annotation files for human and mouse are needed for this package. To download, visit [the Dropbox Folder](https://www.dropbox.com/scl/fo/1wtrnc9w6s9gemweuw2fv/h?rlkey=hli1z6tv096cjwit5oi6bwggg&dl=0). Some commonly used public data of human mutations are also available here.  
 
-## Quick Start     
+## 🚀 Quick Start     
 
 ### Load reference genome  
 
@@ -59,7 +61,7 @@ path_h_anno, path_m_anno = '.../gencode_v19_GRCh37.db', '.../gencode_vm33_GRCm39
 db_h, db_m = h2m.anno_loader(path_h_anno), h2m.anno_loader(path_m_anno)
 ```
 
-### Load human mutation data  
+### 📊 Load human mutation data  
 
 
 ```python
@@ -117,11 +119,11 @@ h2m.visualization(df_vs, flank_size=2, print_size=6)
 ```
 ![png](readme_files/ctnnb1.png)
 
-## License
+## 🪪 License
 
 `h2m` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
 
-## Useful Links 
+## 🔗 Useful Links 
 
 Read the docs:  
 
