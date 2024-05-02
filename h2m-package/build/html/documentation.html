@@ -5,13 +5,13 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta charset="utf-8"/>
 <meta content="white" media="(prefers-color-scheme: light)" name="theme-color"/>
-<meta content="black" metia="(prefers-color-scheme: dark)" name="theme-color"/>
-<meta content="Docutils 0.19: https://docutils.sourceforge.io/" name="generator"/>
-<title>Complete Function Documentation | H2M 0.1.0 documentation</title>
-<meta content="Complete Function Documentation | H2M 0.1.0 documentation" property="og:title"/>
-<meta content="Complete Function Documentation | H2M 0.1.0 documentation" name="twitter:title"/>
-<link href="_static/pygments.css?v=ef1dd98d" rel="stylesheet" type="text/css"/>
-<link href="_static/theme.css?v=cede9724" rel="stylesheet" type="text/css"/>
+<meta content="black" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Complete Function Documentation | H2M 0.1.1 documentation</title>
+<meta content="Complete Function Documentation | H2M 0.1.1 documentation" property="og:title"/>
+<meta content="Complete Function Documentation | H2M 0.1.1 documentation" name="twitter:title"/>
+<link href="_static/pygments.css?v=8d216cef" rel="stylesheet" type="text/css"/>
+<link href="_static/theme.css?v=8958d2b4" rel="stylesheet" type="text/css"/>
 <link href="_static/css/custom.css" rel="stylesheet" type="text/css"/>
 <link href="search.html" rel="search" title="Search"/>
 <link href="genindex.html" rel="index" title="Index"/>
@@ -37,7 +37,7 @@
 <div class="hidden mr-4 md:flex">
 <a class="flex items-center mr-6" href="index.html">
 <img alt="Logo" class="mr-2 hidden dark:block" height="24" src="_static/h2m-logo-final.png" width="24"/>
-<img alt="Logo" class="mr-2 dark:hidden" height="24" src="_static/h2m-logo-final.png" width="24"/><span class="hidden font-bold sm:inline-block text-clip whitespace-nowrap">H2M 0.1.0 documentation</span>
+<img alt="Logo" class="mr-2 dark:hidden" height="24" src="_static/h2m-logo-final.png" width="24"/><span class="hidden font-bold sm:inline-block text-clip whitespace-nowrap">H2M 0.1.1 documentation</span>
 </a></div><button @click="showSidebar = true" class="inline-flex items-center justify-center h-10 px-0 py-2 mr-2 text-base font-medium transition-colors rounded-md hover:text-accent-foreground hover:bg-transparent md:hidden" type="button">
 <svg aria-hidden="true" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
 <path d="M152.587 825.087q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440Zm0-203.587q-19.152 0-32.326-13.174T107.087 576q0-19.152 13.174-32.326t32.326-13.174h320q19.152 0 32.326 13.174T518.087 576q0 19.152-13.174 32.326T472.587 621.5h-320Zm0-203.587q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440ZM708.913 576l112.174 112.174q12.674 12.674 12.674 31.826t-12.674 31.826Q808.413 764.5 789.261 764.5t-31.826-12.674l-144-144Q600 594.391 600 576t13.435-31.826l144-144q12.674-12.674 31.826-12.674t31.826 12.674q12.674 12.674 12.674 31.826t-12.674 31.826L708.913 576Z"></path>
@@ -54,7 +54,7 @@
 </form>
 </div>
 <nav class="flex items-center space-x-1">
-<button @click="darkMode = darkMode === 'light' ? 'dark' : 'light'" class="relative inline-flex items-center justify-center px-0 text-sm font-medium transition-colors rounded-md hover:bg-accent hover:text-accent-foreground h-9 w-9" type="button">
+<button @click="darkMode = darkMode === 'light' ? 'dark' : 'light'" aria-label="Color theme switcher" class="relative inline-flex items-center justify-center px-0 text-sm font-medium transition-colors rounded-md hover:bg-accent hover:text-accent-foreground h-9 w-9" type="button">
 <svg class="absolute transition-all scale-100 rotate-0 dark:-rotate-90 dark:scale-0" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
 <path d="M480 685q45.456 0 77.228-31.772Q589 621.456 589 576q0-45.456-31.772-77.228Q525.456 467 480 467q-45.456 0-77.228 31.772Q371 530.544 371 576q0 45.456 31.772 77.228Q434.544 685 480 685Zm0 91q-83 0-141.5-58.5T280 576q0-83 58.5-141.5T480 376q83 0 141.5 58.5T680 576q0 83-58.5 141.5T480 776ZM80 621.5q-19.152 0-32.326-13.174T34.5 576q0-19.152 13.174-32.326T80 530.5h80q19.152 0 32.326 13.174T205.5 576q0 19.152-13.174 32.326T160 621.5H80Zm720 0q-19.152 0-32.326-13.174T754.5 576q0-19.152 13.174-32.326T800 530.5h80q19.152 0 32.326 13.174T925.5 576q0 19.152-13.174 32.326T880 621.5h-80Zm-320-320q-19.152 0-32.326-13.174T434.5 256v-80q0-19.152 13.174-32.326T480 130.5q19.152 0 32.326 13.174T525.5 176v80q0 19.152-13.174 32.326T480 301.5Zm0 720q-19.152 0-32.326-13.17Q434.5 995.152 434.5 976v-80q0-19.152 13.174-32.326T480 850.5q19.152 0 32.326 13.174T525.5 896v80q0 19.152-13.174 32.33-13.174 13.17-32.326 13.17ZM222.174 382.065l-43-42Q165.5 327.391 166 308.239t13.174-33.065q13.435-13.674 32.587-13.674t32.065 13.674l42.239 43q12.674 13.435 12.555 31.706-.12 18.272-12.555 31.946-12.674 13.674-31.445 13.413-18.772-.261-32.446-13.174Zm494 494.761-42.239-43q-12.674-13.435-12.674-32.087t12.674-31.565Q686.609 756.5 705.38 757q18.772.5 32.446 13.174l43 41.761Q794.5 824.609 794 843.761t-13.174 33.065Q767.391 890.5 748.239 890.5t-32.065-13.674Zm-42-494.761Q660.5 369.391 661 350.62q.5-18.772 13.174-32.446l41.761-43Q728.609 261.5 747.761 262t33.065 13.174q13.674 13.435 13.674 32.587t-13.674 32.065l-43 42.239q-13.435 12.674-31.706 12.555-18.272-.12-31.946-12.555Zm-495 494.761Q165.5 863.391 165.5 844.239t13.674-32.065l43-42.239q13.435-12.674 32.087-12.674t31.565 12.674Q299.5 782.609 299 801.38q-.5 18.772-13.174 32.446l-41.761 43Q231.391 890.5 212.239 890t-33.065-13.174ZM480 576Z"></path>
 </svg>
@@ -69,7 +69,7 @@
 <div class="flex-1"><div class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10"><aside :aria-hidden="!showSidebar" :class="{ 'translate-x-0': showSidebar }" class="fixed inset-y-0 left-0 md:top-14 z-50 md:z-30 bg-background md:bg-transparent transition-all duration-100 -translate-x-full md:translate-x-0 ml-0 p-6 md:p-0 md:-ml-2 md:h-[calc(100vh-3.5rem)] w-5/6 md:w-full shrink-0 overflow-y-auto border-r border-border md:sticky" id="left-sidebar">
 <a class="!justify-start text-sm md:!hidden bg-background" href="index.html">
 <img alt="Logo" class="mr-2 hidden dark:block" height="16" src="_static/h2m-logo-final.png" width="16"/>
-<img alt="Logo" class="mr-2 dark:hidden" height="16" src="_static/h2m-logo-final.png" width="16"/><span class="font-bold text-clip whitespace-nowrap">H2M 0.1.0 documentation</span>
+<img alt="Logo" class="mr-2 dark:hidden" height="16" src="_static/h2m-logo-final.png" width="16"/><span class="font-bold text-clip whitespace-nowrap">H2M 0.1.1 documentation</span>
 </a>
 <div class="relative overflow-hidden md:overflow-auto my-4 md:my-0 h-[calc(100vh-8rem)] md:h-auto">
 <div class="overflow-y-auto h-full w-full relative pr-6"><nav class="table w-full min-w-full my-6 lg:my-8">
@@ -94,7 +94,7 @@
 <div class="w-full min-w-0 mx-auto">
 <nav aria-label="breadcrumbs" class="flex items-center mb-4 space-x-1 text-sm text-muted-foreground">
 <a class="overflow-hidden text-ellipsis whitespace-nowrap hover:text-foreground" href="index.html">
-<span class="hidden md:inline">H2M 0.1.0 documentation</span>
+<span class="hidden md:inline">H2M 0.1.1 documentation</span>
 <svg aria-label="Home" class="md:hidden" fill="currentColor" height="18" stroke="none" viewbox="0 96 960 960" width="18" xmlns="http://www.w3.org/2000/svg">
 <path d="M240 856h120V616h240v240h120V496L480 316 240 496v360Zm-80 80V456l320-240 320 240v480H520V696h-80v240H160Zm320-350Z"></path>
 </svg>
@@ -145,8 +145,8 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="h2m.cbio_reader">
-<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">cbio_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.cbio_reader" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.cbio_reader'"><span>#</span></a></dt>
-<dd><p>Generate h2m input from cbioportal data.</p>
+<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">cbio_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.cbio_reader" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.cbio_reader'"><span>#</span></a></dt>
+<dd><p>Generate MAF-sty h2m input from cbioportal data.</p>
 <dl>
 <dt>Parameter:</dt><dd><ul class="simple">
 <li><p>path (str): the path of mutation data in txt format.</p></li>
@@ -163,12 +163,12 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="h2m.clinvar_reader">
-<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">clinvar_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.clinvar_reader" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.clinvar_reader'"><span>#</span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">clinvar_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_of_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.clinvar_reader" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.clinvar_reader'"><span>#</span></a></dt>
 <dd><p>Generate h2m input from ClinVar data.</p>
 <dl>
 <dt>Parameter:</dt><dd><ul class="simple">
 <li><p>path (str): the path of clinvar renference vcf.gz data.</p></li>
-<li><p>list_of_ids (list): the list of variation ids.</p></li>
+<li><p>list_of_ids (list): the list of variation ids. If no value, the function would output all entries in the ClinVar data file.</p></li>
 <li><p>keep (bool): True: keep all the original columns in the dataframe/ False: keep the necesssary columns for h2m only. Default to False.</p></li>
 </ul>
 </dd>
@@ -176,28 +176,55 @@
 </dd>
 <dt>Example:   </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filepath</span> <span class="o">=</span> <span class="s1">'.../GrCh37_clinvar_20230923.vcf.gz'</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">variation_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">925574</span><span class="p">,</span> <span class="mi">925434</span><span class="p">,</span> <span class="mi">926695</span><span class="p">,</span> <span class="mi">925707</span><span class="p">,</span> <span class="mi">325626</span><span class="p">,</span> <span class="mi">1191613</span><span class="p">,</span> <span class="mi">308061</span><span class="p">,</span> <span class="mi">361149</span><span class="p">,</span> <span class="mi">1205375</span><span class="p">,</span> <span class="mi">208043</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">clinvar_reader</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">variation_ids</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">clinvar_reader</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">variation_ids</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt class="sig sig-object py" id="h2m.genomad_reader">
-<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">genomad_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gene_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.genomad_reader" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.genomad_reader'"><span>#</span></a></dt>
-<dd><p>Generate h2m input from GenomeAD data.</p>
+<dt class="sig sig-object py" id="h2m.clinvar_to_maf">
+<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">clinvar_to_maf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.clinvar_to_maf" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.clinvar_to_maf'"><span>#</span></a></dt>
+<dd><p>Convert clinvar-style input into maf-style input, while keeping other columns intact.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="h2m.vcf_reader">
+<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">vcf_reader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.vcf_reader" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.vcf_reader'"><span>#</span></a></dt>
+<dd><p>Generate MAF-style h2m input from VCF-format data, including genomAD data.</p>
 <dl>
 <dt>Parameter:</dt><dd><ul class="simple">
-<li><p>path (str): the path of GenomeAD csv data.</p></li>
-<li><p>gene_name (str): the gene name.</p></li>
+<li><p>path (str): the path of input csv data.</p></li>
 <li><p>keep (bool): True: keep all the original columns in the dataframe/ False: keep the necesssary columns for h2m only. Default to False.</p></li>
 </ul>
 </dd>
 <dt>Output: </dt><dd><p>An input dataframe for h2m modeling.</p>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filepath</span> <span class="o">=</span> <span class="s1">'.../GrCh37_clinvar_20230923.vcf.gz'</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">variation_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">925574</span><span class="p">,</span> <span class="mi">925434</span><span class="p">,</span> <span class="mi">926695</span><span class="p">,</span> <span class="mi">925707</span><span class="p">,</span> <span class="mi">325626</span><span class="p">,</span> <span class="mi">1191613</span><span class="p">,</span> <span class="mi">308061</span><span class="p">,</span> <span class="mi">361149</span><span class="p">,</span> <span class="mi">1205375</span><span class="p">,</span> <span class="mi">208043</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">clinvar_reader</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">variation_ids</span><span class="p">)</span>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filepath</span> <span class="o">=</span> <span class="s1">'.../gnomAD_v4.0.0_ENSG00000141510_2024_02_07_11_36_03.csv'</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">genomad_reader</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span><span class="s1">'TP53'</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="h2m.vcf_to_maf">
+<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">vcf_to_maf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.vcf_to_maf" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.vcf_to_maf'"><span>#</span></a></dt>
+<dd><p>Convert vcf-style input into maf-style input, while keeping other columns intact.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="h2m.get_variant_type">
+<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">get_variant_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alt_col</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'type_h'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.get_variant_type" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.get_variant_type'"><span>#</span></a></dt>
+<dd><p>Generate h2m/cbio-style neucleotide variant type annotations.</p>
+<dl>
+<dt>Parameter:</dt><dd><ul class="simple">
+<li><p>df (str): a dataframe of mutations including columns for both reference and alternate sequences</p></li>
+<li><p>ref_col (str): column name for reference sequences.</p></li>
+<li><p>alt_col (str): column name for alternate sequences.</p></li>
+</ul>
+</dd>
+<dt>Output: </dt><dd><p>The input dataframe but with a column of vairant type added.</p>
+</dd>
+<dt>Example:   </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">get_variant_type</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">'ref_seq_h'</span><span class="p">,</span><span class="s1">'alt_seq_h'</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd>
@@ -249,12 +276,13 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="h2m.query">
-<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.query" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.query'"><span>#</span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'h2m'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.query" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.query'"><span>#</span></a></dt>
 <dd><p>Query homologous mouse genes of human genes.</p>
 <dl>
 <dt>Parameters:</dt><dd><ul class="simple">
 <li><p>id (str): name/gene_id/tx_id of human.</p></li>
-<li><p>db (FeatureDB, optional): OPITONAL. The transcript annotation database of specific version.</p></li>
+<li><p>direction (str): OPTIONAL. query from human gene to the mouse gene (‘h2m’) or vise versa (‘m2h’).</p></li>
+<li><p>db (FeatureDB): OPITONAL. The transcript annotation database of specific version.</p></li>
 <li><p>ty (str): OPITONAL. Specify the id type. one of ‘gene_id’/’tx_id’/’name’.</p></li>
 </ul>
 </dd>
@@ -270,11 +298,12 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="h2m.query_batch">
-<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">query_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.query_batch" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.query_batch'"><span>#</span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">query_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'h2m'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.query_batch" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.query_batch'"><span>#</span></a></dt>
 <dd><p>Batch query of orthologous mouse gene of given human genes.</p>
 <dl>
 <dt>Parameters:  </dt><dd><ul class="simple">
 <li><p>df (Pandas DataFrame): Must include a column of gene names named ‘gene_name_h’. An index column is recommended.</p></li>
+<li><p>direction: OPTIONAL. query from human gene to the mouse gene (‘h2m’) or vise versa (‘m2h’).</p></li>
 </ul>
 </dd>
 <dt>Return:  </dt><dd><ul class="simple">
@@ -289,25 +318,25 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="h2m.model">
-<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">records_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_list_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">records_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_list_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_id_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_id_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_seq_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alt_seq_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ty_h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nonstop_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flank_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splicing_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_sequence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_protect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.model" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.model'"><span>#</span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">records_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_list_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">records_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_list_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_id_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tx_id_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_seq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alt_seq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ty_h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'h2m'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nonstop_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splicing_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_sequence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_protect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.model" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.model'"><span>#</span></a></dt>
 <dd><p>Model human variants in the mouse genome.</p>
 <dl>
 <dt>Parameters:</dt><dd><ul class="simple">
 <li><p>records_h, index_list_h, records_m, index_list_m: human and mouse reference genome.</p></li>
 <li><p>db_h, db_m: human and mouse GENCODE annotation.</p></li>
-<li><p>tx_id_h, tx_id_m: human and mouse transcript id (could get by <strong>h2m.get_tx_id()</strong>).</p></li>
+<li><p>tx_id_h, tx_id_m: human and mouse transcript id (could get by <strong>h2m.get_tx_id()</strong>). Transcript ids of input and output variants if use direction = ‘h2h’ or  direction = ‘m2m’.</p></li>
 <li><p>start_h, end_h: int, start and end location of the mutation on the chromosome.</p></li>
-<li><p>ref_seq_h: str, human mutation reference sequence.</p></li>
-<li><p>alt_seq_h: str, human mutation alternative sequence.</p></li>
-<li><p>ty_h: str, human variantion type. One of [‘SNP’, ‘DNP’, ‘ONP’, ‘INS’, ‘DEL’].</p></li>
+<li><p>ref_seq_h: str, human mutation reference sequence. Reference sequence of the input variant if use direction = ‘m2h’/’h2h’/’m2m’.</p></li>
+<li><p>alt_seq_h: str, human mutation alternate sequence. Alternate sequence of the input variant if use direction = ‘m2h’/’h2h’/’m2m’.</p></li>
+<li><p>ty_h: str, human variantion type in MAF format. One of [‘SNP’, ‘DNP’, ‘TNP’,’ONP’, ‘INS’, ‘DEL’].</p></li>
 <li><p>ver: int, human ref genome number. 37 or 38.</p></li>
+<li><p>direction (optional): str, set the modeling direction by ‘h2m’ (default) or ‘m2h’, ‘h2h’, ‘m2m’.</p></li>
 <li><p>param (optional): set param = ‘BE’ and will only output base editing modelable results.</p></li>
 <li><p>coor (optional): default = ‘nc’. set input = ‘aa’ and will be compatable with input of amino acid variants.</p></li>
 <li><p>search_alternative (optional): set search_alternative = False and will only output original modeling results.</p></li>
 <li><p>max_alternative (optional): the maximum number of output alternatives of one human variants.</p></li>
 <li><p>nonstop_size (optional): the length of neucleotides that are included after the stop codon for alignment and translation in case of the nonstop mutations or frame shifting mutations.</p></li>
-<li><p>flank_size (optional): the number of amino acids or neucleotides (for non-coding mutations) that are included on each side of the mutation site.</p></li>
-<li><p>splicing_size (optional):</p></li>
+<li><p>splicing_size (optional): the number of amino acids or neucleotides (for non-coding mutations) that are included after the top codon for the consideration of frame-shifting effect.</p></li>
 <li><p>batch (optional): set batch = True and will use input align_dict to save time in batch processing.</p></li>
 <li><p>show_sequence (optional): set batch = True and will output the whole sequences.</p></li>
 <li><p>align_dict (optional): input a prepared dictionary of alignment indexes to save time in batch processing.</p></li>
@@ -327,7 +356,7 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="h2m.model_batch">
-<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">model_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">records_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_list_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">records_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_list_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nonstop_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flank_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splicing_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_sequence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_protect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.model_batch" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.model_batch'"><span>#</span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">model_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">records_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_list_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">records_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_list_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db_m</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'h2m'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_alternative</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nonstop_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">splicing_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_sequence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_protect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.model_batch" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.model_batch'"><span>#</span></a></dt>
 <dd><p>Batch modeling of human variants in the mouse genome.</p>
 <dl>
 <dt>Parameters:  </dt><dd><ul class="simple">
@@ -336,17 +365,18 @@
 <li><p>db_h, db_m: genomic annotation files</p></li>
 <li><p>ver (int): specify the version of human, one of 37/38.</p></li>
 <li><p>param (optional): set param = ‘BE’ and will only output base editing modelable results.</p></li>
+<li><p>direction (optional): str, set the modeling direction by ‘h2m’ (default) or ‘m2h’.</p></li>
 <li><p>coor (optional): default = ‘nc’. set input = ‘aa’ and will be compatable with input of amino acid variants.</p></li>
 <li><p>search_alternative (optional): set search_alternative = False and will only output original modeling results.</p></li>
 <li><p>max_alternative (optional): the maximum number of output alternatives of one human variants.</p></li>
 <li><p>nonstop_size (optional): the length of neucleotides that are included after the stop codon for alignment and translation in case of the nonstop mutations or frame shifting mutations.</p></li>
-<li><p>flank_size (optional): the number of amino acids or neucleotides (for non-coding mutations) that are included on each side of the mutation site.</p></li>
 <li><p>splicing_size (optional):</p></li>
 <li><p>batch (optional): set batch = True and will use input align_dict to save time in batch processing.</p></li>
 <li><p>show_sequence (optional): set batch = True and will output the whole sequences.</p></li>
 <li><p>align_dict (optional): input a prepared dictionary of alignment indexes to save time in batch processing.</p></li>
 <li><p>memory_protect (optional): default True. Break long alignments that may lead to death of the kernel.</p></li>
 <li><p>memory_size (optional): maxlength of aligned sequence when memory_protect == True.</p></li>
+<li><p>bind (optional): to bind the output dataframe with the original input or not.</p></li>
 </ul>
 </dd>
 <dt>Return:  </dt><dd><ul class="simple">
@@ -361,11 +391,13 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="h2m.visualization">
-<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">visualization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.visualization" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.visualization'"><span>#</span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">h2m.</span></span><span class="sig-name descname"><span class="pre">visualization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flank_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#h2m.visualization" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#h2m.visualization'"><span>#</span></a></dt>
 <dd><p>Visualize h2m modeling results.</p>
 <dl>
 <dt>Parameter:</dt><dd><ul class="simple">
 <li><p>model_result (list): the output of <cite>h2m.model(show_sequence = True)</cite> function.</p></li>
+<li><p>flank_size (int).</p></li>
+<li><p>print_size (int): lenth of neucleotide/peptide included on both sides of the flank region.</p></li>
 </ul>
 </dd>
 <dt>Output: </dt><dd><p>A visualization plot.</p>
@@ -379,13 +411,16 @@
 </dd></dl>
 </section>
 </div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
-<div class="sticky top-16 -mt-10 max-h-[calc(var(100vh)-5rem)] overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
+<div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
 <ul>
 <li><a :data-current="activeSection === '#h2m.genome_loader'" class="reference internal" href="#h2m.genome_loader"><code class="docutils literal notranslate"><span class="pre">genome_loader()</span></code></a></li>
 <li><a :data-current="activeSection === '#h2m.anno_loader'" class="reference internal" href="#h2m.anno_loader"><code class="docutils literal notranslate"><span class="pre">anno_loader()</span></code></a></li>
 <li><a :data-current="activeSection === '#h2m.cbio_reader'" class="reference internal" href="#h2m.cbio_reader"><code class="docutils literal notranslate"><span class="pre">cbio_reader()</span></code></a></li>
 <li><a :data-current="activeSection === '#h2m.clinvar_reader'" class="reference internal" href="#h2m.clinvar_reader"><code class="docutils literal notranslate"><span class="pre">clinvar_reader()</span></code></a></li>
-<li><a :data-current="activeSection === '#h2m.genomad_reader'" class="reference internal" href="#h2m.genomad_reader"><code class="docutils literal notranslate"><span class="pre">genomad_reader()</span></code></a></li>
+<li><a :data-current="activeSection === '#h2m.clinvar_to_maf'" class="reference internal" href="#h2m.clinvar_to_maf"><code class="docutils literal notranslate"><span class="pre">clinvar_to_maf()</span></code></a></li>
+<li><a :data-current="activeSection === '#h2m.vcf_reader'" class="reference internal" href="#h2m.vcf_reader"><code class="docutils literal notranslate"><span class="pre">vcf_reader()</span></code></a></li>
+<li><a :data-current="activeSection === '#h2m.vcf_to_maf'" class="reference internal" href="#h2m.vcf_to_maf"><code class="docutils literal notranslate"><span class="pre">vcf_to_maf()</span></code></a></li>
+<li><a :data-current="activeSection === '#h2m.get_variant_type'" class="reference internal" href="#h2m.get_variant_type"><code class="docutils literal notranslate"><span class="pre">get_variant_type()</span></code></a></li>
 <li><a :data-current="activeSection === '#h2m.get_tx_id'" class="reference internal" href="#h2m.get_tx_id"><code class="docutils literal notranslate"><span class="pre">get_tx_id()</span></code></a></li>
 <li><a :data-current="activeSection === '#h2m.get_tx_batch'" class="reference internal" href="#h2m.get_tx_batch"><code class="docutils literal notranslate"><span class="pre">get_tx_batch()</span></code></a></li>
 <li><a :data-current="activeSection === '#h2m.query'" class="reference internal" href="#h2m.query"><code class="docutils literal notranslate"><span class="pre">query()</span></code></a></li>
@@ -406,9 +441,9 @@
 </div>
 </footer>
 </div>
-<script src="_static/documentation_options.js?v=01f34227"></script>
+<script src="_static/documentation_options.js?v=a58bc63e"></script>
 <script src="_static/doctools.js?v=888ff710"></script>
 <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-<script defer="defer" src="_static/theme.js?v=e8bd915e"></script>
+<script defer="defer" src="_static/theme.js?v=8dc3ddfe"></script>
 </body>
 </html>

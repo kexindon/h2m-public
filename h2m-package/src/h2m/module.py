@@ -2161,7 +2161,7 @@ def vcf_reader(path, keep = True):
 
     Example:
         >>> filepath = '.../gnomAD_v4.0.0_ENSG00000141510_2024_02_07_11_36_03.csv'
-        >>> df = h2m.genomad_reader('','TP53')
+        >>> df = h2m.vcf_reader('','TP53')
     """
     
     df = pd.read_csv(path)
@@ -2413,14 +2413,13 @@ def clinvar_to_maf(df):
     df['format'] = 'MAF'
     return df
 
-    # non-coding visualization 
-def visualization(model_result, flank_size = 2, print_size = 6):
+def visualization(model_result, flank_size = 0, print_size = 6):
     """
     Visualize h2m modeling results.  
 
     Parameter:
         - model_result (list): the output of `h2m.model(show_sequence = True)` function.
-        - flank_size (int).  
+        - flank_size (int) (de). 
         - print_size (int): lenth of neucleotide/peptide included on both sides of the flank region.  
 
     Output: 
@@ -2428,8 +2427,17 @@ def visualization(model_result, flank_size = 2, print_size = 6):
 
     Example:   
         >>> model_result = h2m.model(records_h,index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h, tx_id_m, 7577120, 7577120, 'C','T', ty_h = 'SNP', ver = 37, show_sequence=True)
-        >>> h2m.visualization(model_result)
+        >>> h2m.visualization(model_result, flank_size = 2, print_size = 4)
     """
+    def Translate(seq):
+        return Bio.Seq.Seq(seq).transcribe().translate()
+    
+    def p_to_tx_3(p):
+        list_of_condn = []
+        for i in p:
+            list_of_condn.extend([3*i, 3*i+1, 3*i+2])
+        return(list_of_condn)
+
     dict_color_row = {'WT':'#F4E285',
                     'MUT':'#B2D3A8',
                     'ORI':'#F5D3C8',
@@ -2672,61 +2680,63 @@ def visualization(model_result, flank_size = 2, print_size = 6):
         return(str(align_tx_seq_h),str(align_tx_seq_m))    
     
     list_of_keys = ['gene_name_h',
-    'gene_id_h',
-    'tx_id_h',
-    'chr_h',
-    'exon_num_h',
-    'strand_h',
-    'match',
-    'start_h',
-    'end_h',
-    'ref_seq_h',
-    'alt_seq_h',
-    'HGVSc_h',
-    'HGVSp_h',
-    'classification_h',
-    'exon_h',
-    'type_h',
-    'status',
-    'class',
-    'statement',
-    'gene_name_m',
-    'gene_id_m',
-    'tx_id_m',
-    'chr_m',
-    'exon_num_m',
-    'strand_m',
-    'type_m',
-    'classification_m',
-    'exon_m',
-    'start_m_ori',
-    'end_m_ori',
-    'ref_seq_m_ori',
-    'alt_seq_m_ori',
-    'HGVSc_m_ori',
-    'HGVSp_m_ori',
-    'start_m',
-    'end_m',
-    'ref_seq_m',
-    'alt_seq_m',
-    'HGVSc_m',
-    'HGVSp_m',
-    'seq_h',
-    'new_seq_h',
-    'human_tx_idx',
-    'human_p_idx',
-    'human_new_p_idx',
-    'dist_h',
-    'seq_m',
-    'new_seq_m_ori',
-    'mouse_tx_idx_ori',
-    'mouse_p_idx_ori',
-    'mouse_new_p_idx_ori',
-    'dist_m',
-    'new_seq_m',
-    'mouse_tx_idx',
-    'mouse_p_idx',
-    'mouse_new_p_idx']
+ 'gene_id_h',
+ 'tx_id_h',
+ 'chr_h',
+ 'exon_num_h',
+ 'strand_h',
+ 'match',
+ 'start_h',
+ 'end_h',
+ 'ref_seq_h',
+ 'alt_seq_h',
+ 'HGVSc_h',
+ 'HGVSp_h',
+ 'classification_h',
+ 'exon_h',
+ 'type_h',
+ 'status',
+ 'class',
+ 'statement',
+ 'flank_size_left',
+ 'flank_size_right',
+ 'gene_name_m',
+ 'gene_id_m',
+ 'tx_id_m',
+ 'chr_m',
+ 'exon_num_m',
+ 'strand_m',
+ 'type_m',
+ 'classification_m',
+ 'exon_m',
+ 'start_m_ori',
+ 'end_m_ori',
+ 'ref_seq_m_ori',
+ 'alt_seq_m_ori',
+ 'HGVSc_m_ori',
+ 'HGVSp_m_ori',
+ 'start_m',
+ 'end_m',
+ 'ref_seq_m',
+ 'alt_seq_m',
+ 'HGVSc_m',
+ 'HGVSp_m',
+ 'seq_h',
+ 'new_seq_h',
+ 'human_tx_idx',
+ 'human_p_idx',
+ 'human_new_p_idx',
+ 'dist_h',
+ 'seq_m',
+ 'new_seq_m_ori',
+ 'mouse_tx_idx_ori',
+ 'mouse_p_idx_ori',
+ 'mouse_new_p_idx_ori',
+ 'dist_m',
+ 'new_seq_m',
+ 'mouse_tx_idx',
+ 'mouse_p_idx',
+ 'mouse_new_p_idx']
 
     model_result[0] = dict(zip(list_of_keys,list(model_result[0].values())))
     
@@ -2906,7 +2916,8 @@ def visualization(model_result, flank_size = 2, print_size = 6):
         plt.show()
 
     else:
-        flank_size, print_size = flank_size, print_size
+        # flank_size, print_size = flank_size, print_size
+        print(flank_size)
         if (model_result[0]['class'] == 1) or (len(model_result)>1): # alternative modeling
             tx_seq_h, tx_seq_m = model_result[0]['seq_h'], model_result[0]['seq_m']
             mut_seq_h, mut_seq_m = model_result[0]['new_seq_h'], model_result[0]['new_seq_m_ori']
@@ -2947,6 +2958,7 @@ def visualization(model_result, flank_size = 2, print_size = 6):
             list_idx_h_mut, print_mut_seq_h_short, color_p_h_mut = get_print_elements_mut_pep(list_idx_h, print_ori_seq_h_short, color_p_h_ori, mut_p_seq_h ,p_idx_h_new, ty_h, class_h, flank_size, print_size)
             list_idx_m_mut, print_mut_seq_m_short, color_p_m_mut = get_print_elements_mut_pep(list_idx_m, print_ori_seq_m_short, color_p_m_ori, mut_p_seq_m, p_idx_m_new, ty_m, class_m, flank_size, print_size)
 
+            
             # print transcript seqs for peptides
             list_idx_h_tx_mut, print_mut_tx_h, color_tx_h_mut = print_tx_for_pep(list_idx_h_mut, mut_seq_h, change_to_mutated(tx_idx_h_ori, ty_h, alt_seq_h, ref_seq_h), '#C05252')
             list_idx_m_tx_mut, print_mut_tx_m, color_tx_m_mut = print_tx_for_pep(list_idx_m_mut, mut_seq_m, change_to_mutated(tx_idx_m_ori, ty_m, alt_seq_m, ref_seq_m), '#C05252')
@@ -3023,6 +3035,8 @@ def visualization(model_result, flank_size = 2, print_size = 6):
                 ax.add_patch(rect)
                 ax.text((i + 2.5), (height+.5)*cell_ratio, 'ORI',
                             horizontalalignment='center', verticalalignment='center', fontsize=30, fontname='arial')
+                
+            print(flank_size)
 
             h = -9/2 -1
 
@@ -3052,11 +3066,11 @@ def visualization(model_result, flank_size = 2, print_size = 6):
                 if class_h != 'Non_Stop':
                     list_idx_h, print_ori_seq_h_short, color_p_h_ori, list_idx_m, print_ori_seq_m_short, color_p_m_ori = get_print_elements_ori(p_seq_h, p_seq_m, mut_p_seq_h, mut_p_seq_m,
                                                                                                                                             p_idx_h_ori, p_idx_m_ori,
-                                                                                                                                            2,6)
+                                                                                                                                            flank_size,print_size)
                 else:
                     list_idx_h, print_ori_seq_h_short, color_p_h_ori, list_idx_m, print_ori_seq_m_short, color_p_m_ori = get_print_elements_ori_non_stop(p_seq_h, p_seq_m, mut_p_seq_h, mut_p_seq_m,
                                                                                                                                             p_idx_h_ori, p_idx_m_ori,
-                                                                                                                                            2,6)
+                                                                                                                                            flank_size,print_size)
                 # print transcript seqs for peptides
                 list_idx_h_tx, print_ori_tx_h, color_tx_h_ori = print_tx_for_pep(list_idx_h, tx_seq_h, tx_idx_h_ori, '#A3BEBC')
                 list_idx_m_tx, print_ori_tx_m, color_tx_m_ori = print_tx_for_pep(list_idx_m, tx_seq_m, tx_idx_m_ori, '#A3BEBC')
@@ -3150,6 +3164,7 @@ def visualization(model_result, flank_size = 2, print_size = 6):
             plt.show()
 
         else:
+
             tx_seq_h, tx_seq_m = model_result[0]['seq_h'], model_result[0]['seq_m']
             mut_seq_h, mut_seq_m = model_result[0]['new_seq_h'], model_result[0]['new_seq_m']
             class_h, class_m = model_result[0]['classification_h'], model_result[0]['classification_m']
@@ -3175,11 +3190,11 @@ def visualization(model_result, flank_size = 2, print_size = 6):
             if class_h != 'Non_Stop':
                 list_idx_h, print_ori_seq_h_short, color_p_h_ori, list_idx_m, print_ori_seq_m_short, color_p_m_ori = get_print_elements_ori(p_seq_h, p_seq_m, mut_p_seq_h, mut_p_seq_m,
                                                                                                                                         p_idx_h_ori, p_idx_m_ori,
-                                                                                                                                        2,6)
+                                                                                                                                        flank_size,print_size)
             else:
                 list_idx_h, print_ori_seq_h_short, color_p_h_ori, list_idx_m, print_ori_seq_m_short, color_p_m_ori = get_print_elements_ori_non_stop(p_seq_h, p_seq_m, mut_p_seq_h, mut_p_seq_m,
                                                                                                                                         p_idx_h_ori, p_idx_m_ori,
-                                                                                                                                        2,6)
+                                                                                                                                        flank_size,print_size)
             # print transcript seqs for peptides
             list_idx_h_tx, print_ori_tx_h, color_tx_h_ori = print_tx_for_pep(list_idx_h, tx_seq_h, tx_idx_h_ori, '#A3BEBC')
             list_idx_m_tx, print_ori_tx_m, color_tx_m_ori = print_tx_for_pep(list_idx_m, tx_seq_m, tx_idx_m_ori, '#A3BEBC')
@@ -3283,3 +3298,4 @@ def visualization(model_result, flank_size = 2, print_size = 6):
 
             plt.tight_layout()
             plt.show()
+                 

@@ -8,20 +8,27 @@
 :width: 150px
 :align: left
 ```
-H2M is a python package for precise modeling of human vairants in the mouse genome.   
+H2M is a Python package for high-throughput precision modeling of human vairants in the mouse genome and vice cersa.   
 
 H2M's main functions are:  
 
-1. Querying mouse orthologous genes with human genes input.  
+1. Reading and formatting mutation data from different pulic sources.  
 
-2. Generating homologous mouse mutations with a list of input human mutations. The input format is extremely flexible, allowing for users to input a list of genome coordinates or sequences with desired edits.   
+2. Querying orthologous genes between mouse and human.  
 
-## Package Installation
+3. Generating murine equivalents for human genetic variant input or vice versa. 
 
-H2M is available through the python package index. To install, use pip:  
-
+## Package Installation 
+H2M is available through the python package index (PyPI). To install, use pip:  
+ 
 ```python
-pip install h2m
+    pip install h2m
+```
+```{attention}
+Python **3.9-3.12** are recommended since H2M has been tested compatible in them. 
+```
+```{hint}
+Function vcf_reader() for reading .vcf files in H2M
 ```
 
 ```{toctree}

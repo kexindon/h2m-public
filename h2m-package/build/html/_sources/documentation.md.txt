@@ -10,7 +10,10 @@
 .. autofunction:: h2m.anno_loader
 .. autofunction:: h2m.cbio_reader
 .. autofunction:: h2m.clinvar_reader
-.. autofunction:: h2m.genomad_reader
+.. autofunction:: h2m.clinvar_to_maf
+.. autofunction:: h2m.vcf_reader
+.. autofunction:: h2m.vcf_to_maf
+.. autofunction:: h2m.get_variant_type
 .. autofunction:: h2m.get_tx_id
 .. autofunction:: h2m.get_tx_batch
 .. autofunction:: h2m.query
