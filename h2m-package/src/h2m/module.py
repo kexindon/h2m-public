@@ -3298,4 +3298,3 @@ def visualization(model_result, flank_size = 0, print_size = 6):
 
             plt.tight_layout()
             plt.show()
-                 
