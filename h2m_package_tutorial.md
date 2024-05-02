@@ -31,12 +31,11 @@ pip install h2m
 pip install h2m-1.0.0-py3-non-any.whl  
 ```
 
-ATTENTION: H2M has `pysam` as a dependency. This is for a function that can read .vcf files. If you are experiencing installation problems due to pysam, you can download and install the wheel file named as mini-h2m in [the GitHub repository](https://github.com/kexindon/h2m-public.git) without this function and the pysam dependency, which has been tested to solve most installation issues. The function rounded off in mini-h2m is also given in the repo. 
+ATTENTION: H2M has `pysam` as a dependency. This is for a function that can read .vcf files. If you are experiencing installation problems due to pysam, you can download and install the wheel file named as mini-h2m in [the GitHub repository](https://github.com/kexindon/h2m-public/tree/main/install-wheels) without this function and the pysam dependency, which has been tested to solve most installation issues. The function rounded off in mini-h2m is also given in the repo. 
 
 ### H2M has been tested in Python 3.9-3.12.  
 
 ## Importing packages
-
 
 ```python
 # pip install h2m
@@ -47,7 +46,6 @@ import pandas as pd
 ## Loading data  
 We should upload reference genome and GENCODE annotation data for both human and mouse, which could be directly downloaded from a public [dropbox](https://www.dropbox.com/scl/fo/1wtrnc9w6s9gemweuw2fv/h?rlkey=hli1z6tv096cjwit5oi6bwggg&dl=0).  
 Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload the one that you are going to use.  
-
 
 ```python
 path_h_ref, path_m_ref = '.../GCF_000001405.25_GRCh37.p13_genomic.fna.gz', '.../GCF_000001635.27_GRCm39_genomic.fna.gz'
@@ -1864,112 +1862,37 @@ query_result = h2m.query('ENST00000269305.4', db=db_h, ty='tx_id')
 
 The query result of all human genes, as well as corresponding transcript IDs, is also available as [a csv file]('https://www.dropbox.com/scl/fi/o6735wok25t5dstvpz9kd/Supp_Table_1_Homo_Genes.csv?rlkey=skvxlcfv4r8ksspiq5itxxjc9&dl=0').
 
-### Get transcript ID (Internet connection needed)
+### Get transcript ID
+
+```{hint}
+(Internet connection needed)
+```
 
 One gene may have different transcripts. For mutation modeling, it is important to specify one transcript. If you do not have this information in hand, you can use H2M to get it.
 
 Again, both gene IDs and gene names are accepted as identificaitons for human and mouse genes.
 
-
 ```python
-list_tx_id_h = h2m.get_tx_id('TP53', 'h', ver=37)
+    list_tx_id_h = h2m.get_tx_id('TP53', 'h', ver=37)
 ```
 
-    Genome assembly: GRCh37;
-    The canonical transcript is: ENST00000269305.4;
-    You can choose from the 17 transcripts below for further analysis:
-    (1)ENST00000269305.4 (2)ENST00000413465.2 (3)ENST00000359597.4 (4)ENST00000504290.1 (5)ENST00000510385.1 (6)ENST00000504937.1 (7)ENST00000455263.2 (8)ENST00000420246.2 (9)ENST00000445888.2 (10)ENST00000576024.1 (11)ENST00000509690.1 (12)ENST00000514944.1 (13)ENST00000574684.1 (14)ENST00000505014.1 (15)ENST00000508793.1 (16)ENST00000604348.1 (17)ENST00000503591.1
+      Genome assembly: GRCh37;
+      The canonical transcript is: ENST00000269305.4;
+      You can choose from the 17 transcripts below for further analysis:
+      (1)ENST00000269305.4 (2)ENST00000413465.2 (3)ENST00000359597.4 (4)ENST00000504290.1 (5)ENST00000510385.1 (6)ENST00000504937.1 (7)ENST00000455263.2 (8)ENST00000420246.2 (9)ENST00000445888.2 (10)ENST00000576024.1 (11)ENST00000509690.1 (12)ENST00000514944.1 (13)ENST00000574684.1 (14)ENST00000505014.1 (15)ENST00000508793.1 (16)ENST00000604348.1 (17)ENST00000503591.1
     
 
 
 
 ```python
-list_tx_id_m = h2m.get_tx_id('ENSMUSG00000059552', 'm')
+  list_tx_id_m = h2m.get_tx_id('ENSMUSG00000059552', 'm')
 ```
 
-    Genome assembly: GRCm39;
-    The canonical transcript is: ENSMUST00000108658.10;
-    You can choose from the 6 transcripts below for further analysis:
-    (1)ENSMUST00000108658.10 (2)ENSMUST00000171247.8 (3)ENSMUST00000005371.12 (4)ENSMUST00000147512.2 (5)ENSMUST00000108657.4 (6)ENSMUST00000130540.2
+      Genome assembly: GRCm39;
+      The canonical transcript is: ENSMUST00000108658.10;
+      You can choose from the 6 transcripts below for further analysis:
+      (1)ENSMUST00000108658.10 (2)ENSMUST00000171247.8 (3)ENSMUST00000005371.12 (4)ENSMUST00000147512.2 (5)ENSMUST00000108657.4 (6)ENSMUST00000130540.2
     
-
-
-More information is offered except for a complete list of all transcripts.
-
-- the chromosome
-
-
-```python
-list_tx_id_h[0]
-```
-
-
-
-
-    17
-
-
-
-- the start and end location of the gene on the chromosome
-
-
-```python
-list_tx_id_h[1:3]
-```
-
-
-
-
-    [7565097, 7590856]
-
-
-
-- the canonical transcript annotated by ENSEMBL database and used by major clinical datasets (e.g. AACR-GENIE)
-
-
-```python
-list_tx_id_h[3]
-```
-
-
-
-
-    'ENST00000269305.4'
-
-
-
-- the complete list of transcripts starting with the canonical one
-
-
-```python
-list_tx_id_h[4]
-```
-
-
-
-
-    ['ENST00000269305.4',
-     'ENST00000413465.2',
-     'ENST00000359597.4',
-     'ENST00000504290.1',
-     'ENST00000510385.1',
-     'ENST00000504937.1',
-     'ENST00000455263.2',
-     'ENST00000420246.2',
-     'ENST00000445888.2',
-     'ENST00000576024.1',
-     'ENST00000509690.1',
-     'ENST00000514944.1',
-     'ENST00000574684.1',
-     'ENST00000505014.1',
-     'ENST00000508793.1',
-     'ENST00000604348.1',
-     'ENST00000503591.1']
-
-
-
-The output is a list of information for all the mouse ortholog(s) (if have; sometimes more than one).  
-Each element is a dictionary of **mouse gene name**, **mouse gene id**, **homology type** (one to one/one to multiple), and **similarity of human and mouse gene in percentage**.
 
 
 ### Modeling human variants in the mouse genome
@@ -1995,18 +1918,10 @@ Taking *TP53* R273H (ENST00000269305.4:c.818G>A) as an example.
 
 
 ```python
-tx_id_h, tx_id_m = list_tx_id_h[3], list_tx_id_m[3]
-# use the canonical transcript
+  tx_id_h, tx_id_m = list_tx_id_h[3], list_tx_id_m[3]
+  model_result = h2m.model(records_h,index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h, tx_id_m, 7578291,7578291, 'C','T', ty_h = 'SNP', ver = 37)
+  pd.DataFrame(model_result).T
 ```
-
-Another non-coding example.
-
-
-```python
-model_result = h2m.model(records_h,index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h, tx_id_m, 7578291,7578291, 'C','T', ty_h = 'SNP', ver = 37)
-pd.DataFrame(model_result)
-```
-
 
 
 
@@ -2175,8 +2090,6 @@ Modeling results with `show_sequence = True` can be directly visulaized by `h2m.
 ```python
 h2m.visualization(model_result, flank_size=4, print_size=2)
 ```
-
-
     
 ![png](h2m_package_tutorial_files/h2m_package_tutorial_81_0.png)
     
@@ -2188,8 +2101,6 @@ The length of the identical sequences between human and mouse on teh left/right 
 ```python
 pd.DataFrame(model_result)[['flank_size_left','flank_size_right']]
 ```
-
-
 
 
 <div>
@@ -2226,7 +2137,7 @@ pd.DataFrame(model_result)[['flank_size_left','flank_size_right']]
 
 
 
-### Alternative modeling
+##### Alternative modeling
 
 Sometimes the human mutation cannot be originally modeled in the mouse genome by using the same neucleotide alteration. Under this circumsatance, some alternative modeling strategies may be found by searching the codon list of the target amino acids. 
 
@@ -2234,15 +2145,11 @@ Taking TP53 R306Q as an example.
 
 
 ```python
-model_result = h2m.model(records_h,index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h, tx_id_m, 7577021, 7577021, 'C','T', ty_h = 'SNP', ver = 37)
-pd.DataFrame(model_result)[['HGVSc_h','HGVSp_h',
-                            'HGVSc_m_ori','HGVSp_m_ori',
-                            'HGVSc_m','HGVSp_m']]
+    model_result = h2m.model(records_h,index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h, tx_id_m, 7577021, 7577021, 'C','T', ty_h = 'SNP', ver = 37)
+    pd.DataFrame(model_result)[['HGVSc_h','HGVSp_h',
+                                'HGVSc_m_ori','HGVSp_m_ori',
+                                'HGVSc_m','HGVSp_m']]
 ```
-
-
-
-
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2292,136 +2199,11 @@ pd.DataFrame(model_result)[['HGVSc_h','HGVSp_h',
 </table>
 </div>
 
-
-
-
-Taking TP53 R249_T253delinsS as an example.
-
-
-```python
-model_result = h2m.model(records_h,index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h, tx_id_m, 7577523, 7577534, 'GTGAGGATGGGC', '-', ty_h = 'DEL', ver = 37)
-pd.DataFrame(model_result)[['HGVSc_h','HGVSp_h',
-                            'HGVSc_m_ori','HGVSp_m_ori',
-                            'HGVSc_m','HGVSp_m']]
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>HGVSc_h</th>
-      <th>HGVSp_h</th>
-      <th>HGVSc_m_ori</th>
-      <th>HGVSp_m_ori</th>
-      <th>HGVSc_m</th>
-      <th>HGVSp_m</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>ENST00000269305.4:c.747_758GCCCATCCTCAC&gt;</td>
-      <td>R249_T253delinsS</td>
-      <td>ENSMUST00000108658.10:c.738_749ACCTATCCTTAC&gt;</td>
-      <td>P247_T250del</td>
-      <td>ENSMUST00000108658.10:c.736_748CGACCTATCCTTA&gt;T</td>
-      <td>R246_T250delinsS</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>ENST00000269305.4:c.747_758GCCCATCCTCAC&gt;</td>
-      <td>R249_T253delinsS</td>
-      <td>ENSMUST00000108658.10:c.738_749ACCTATCCTTAC&gt;</td>
-      <td>P247_T250del</td>
-      <td>ENSMUST00000108658.10:c.736_749CGACCTATCCTTAC&gt;AG</td>
-      <td>R246_T250delinsS</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>ENST00000269305.4:c.747_758GCCCATCCTCAC&gt;</td>
-      <td>R249_T253delinsS</td>
-      <td>ENSMUST00000108658.10:c.738_749ACCTATCCTTAC&gt;</td>
-      <td>P247_T250del</td>
-      <td>ENSMUST00000108658.10:c.736_750CGACCTATCCTTACC...</td>
-      <td>R246_T250delinsS</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ENST00000269305.4:c.747_758GCCCATCCTCAC&gt;</td>
-      <td>R249_T253delinsS</td>
-      <td>ENSMUST00000108658.10:c.738_749ACCTATCCTTAC&gt;</td>
-      <td>P247_T250del</td>
-      <td>ENSMUST00000108658.10:c.736_750CGACCTATCCTTACC...</td>
-      <td>R246_T250delinsS</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>ENST00000269305.4:c.747_758GCCCATCCTCAC&gt;</td>
-      <td>R249_T253delinsS</td>
-      <td>ENSMUST00000108658.10:c.738_749ACCTATCCTTAC&gt;</td>
-      <td>P247_T250del</td>
-      <td>ENSMUST00000108658.10:c.736_750CGACCTATCCTTACC...</td>
-      <td>R246_T250delinsS</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-The default maximum number of output alternatives is 5. You can definitly change that by the parameter **max_alternative**.
-
-
-```python
-model_result_long = h2m.model(records_h,index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h, tx_id_m, 7577523, 7577534, 'GTGAGGATGGGC', '-', ty_h = 'DEL', ver = 37, max_alternative=10)
-len(model_result), len(model_result_long)
-```
-
-
-
-
-    (5, 6)
-
-
-
-If you do not want to alternatively model variants, you can set **search_alternatve** to False.
-
-
-```python
-model_result = h2m.model(records_h,index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h, tx_id_m, 7577523, 7577534, 'GTGAGGATGGGC', '-', ty_h = 'DEL', ver = 37, search_alternative= False)
-model_result[0]['statement']
-```
-
-
-
-
-    'Class 6: This mutation cannot be originally modeled.'
-
-
-
-### Original modeling with uncertain effects
+##### Original modeling with uncertain effects
 
 For frame-shifting mutations and mutations in the non-coding region, we cannot find such alternative modeling strategies with the same protein change effects. H2M will only offer the original modeling and its effect.
 
 - Example 1: *TP53* C275Lfs*31
-
 
 ```python
 model_result = h2m.model(records_h,index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h, tx_id_m, 7577115, 7577116, '','A', ty_h = 'INS', ver = 37)
@@ -2429,9 +2211,6 @@ pd.DataFrame(model_result)[['HGVSc_h','HGVSp_h',
                             'HGVSc_m','HGVSp_m',
                             'statement']]
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -2472,7 +2251,6 @@ pd.DataFrame(model_result)[['HGVSc_h','HGVSp_h',
 </div>
 
 
-
 - Example 2: TP53 splice site mutation
 
 
@@ -2482,9 +2260,6 @@ pd.DataFrame(model_result)[['HGVSc_h','HGVSp_h',
                             'HGVSc_m','HGVSp_m',
                             'statement']]
 ```
-
-
-
 
 <div>
 <style scoped>
@@ -2525,7 +2300,6 @@ pd.DataFrame(model_result)[['HGVSc_h','HGVSp_h',
 </div>
 
 
-
 ## Additional Usage Hint   
 
 ### Additional function 1: modeling M2H
@@ -2534,14 +2308,10 @@ Replace human variant coordinates and sequences with murine ones, and set `direc
 
 #### H2M:  
 
-
 ```python
 model_result = h2m.model(records_h,index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h, tx_id_m, 7577120, 7577120, 'C','T', ty_h = 'SNP', ver = 37)
 pd.DataFrame(model_result)[['start_h','end_h','ref_seq_h','alt_seq_h','HGVSp_h','start_m','end_m','ref_seq_m','alt_seq_m','HGVSp_m']]
 ```
-
-
-
 
 <div>
 <style scoped>

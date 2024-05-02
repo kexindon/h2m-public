@@ -9,7 +9,7 @@
 project = 'H2M'
 copyright = '2024, Kexin Dong'
 author = 'Kexin Dong'
-release = '0.1.1'
+release = '1.0.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

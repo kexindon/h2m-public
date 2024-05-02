@@ -18,6 +18,8 @@ H2M's main functions are:
 
 3. Generating murine equivalents for human genetic variant input or vice versa. 
 
+See more in the [the GitHub repository](https://github.com/kexindon/h2m-public.git).   
+
 ## Package Installation 
 H2M is available through the python package index (PyPI). To install, use pip:  
  
@@ -28,15 +30,15 @@ H2M is available through the python package index (PyPI). To install, use pip:
 Python **3.9-3.12** are recommended since H2M has been tested compatible in them. 
 ```
 ```{hint}
-Function vcf_reader() for reading .vcf files in H2M
+H2M has `pysam` as a dependency. This is for a function that can read .vcf files. If you are experiencing installation problems due to pysam, you can download and install the wheel file named as mini-h2m in [the GitHub repository](https://github.com/kexindon/h2m-public/tree/main/install-wheels) without this function and the pysam dependency, which has been tested to solve most installation issues. The function rounded off in mini-h2m is also given in the repository.  
 ```
 
 ```{toctree}
 :caption: 'Contents:'
 :maxdepth: 6
 quickstart
-jupyter
 documentation.md
+jupyter
 downstream.md
 about.md
 ```
