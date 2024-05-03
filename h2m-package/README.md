@@ -4,7 +4,7 @@ Date: May 2, 2024
 
 -----
 
-H2M is a python package for the precision modeling of human vairants in mice and vice versa.    
+H2M is a python package for the precision modeling of human variants in mice and vice versa.    
 
 H2M's main functions are:  
 

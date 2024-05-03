@@ -8,7 +8,7 @@
 :width: 150px
 :align: left
 ```
-H2M is a Python package for high-throughput precision modeling of human vairants in the mouse genome and vice cersa.   
+H2M is a Python package for high-throughput precision modeling of human variants in the mouse genome and vice cersa.   
 
 H2M's main functions are:  
 
