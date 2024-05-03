@@ -24,13 +24,13 @@ See more in the [the GitHub repository](https://github.com/kexindon/h2m-public.g
 H2M is available through the python package index (PyPI). To install, use pip:  
  
 ```python
-    pip install h2m
+    pip install bioh2m
 ```
 ```{attention}
 Python **3.9-3.12** are recommended since H2M has been tested compatible in them. 
 ```
 ```{hint}
-H2M has `pysam` as a dependency. This is for a function that can read .vcf files. If you are experiencing installation problems due to pysam, you can download and install the wheel file named as mini-h2m in [the GitHub repository](https://github.com/kexindon/h2m-public/tree/main/install-wheels) without this function and the pysam dependency, which has been tested to solve most installation issues. The function rounded off in mini-h2m is also given in the repository.  
+H2M has `pysam` as a dependency. This is for a function that can read .vcf files. If you are experiencing installation problems due to pysam, you can download and install the wheel file in [the GitHub repository](https://github.com/kexindon/h2m-public/tree/main/install-wheels) without this function and the pysam dependency, which has been tested to solve most installation issues. The function rounded off in mini-h2m is also given in the repository.  
 ```
 
 ```{toctree}

@@ -4,7 +4,7 @@ Date: May 2, 2024
 
 -----
 
-H2M is a python package for the precision modeling of human variants in mice and vice versa.    
+H2M is a Python package for the precision modeling of human variants in mice and vice versa.    
 
 H2M's main functions are:  
 
@@ -12,27 +12,27 @@ H2M's main functions are:
 
 2. Querying orthologous genes between mouse and human.  
 
-3. Generating murine equivalents for human genetic variant input or vice versa. 
+3. Generating murine equivalents for human genetic variant input or vice versa.
 
-See more in the [the GitHub repository](https://github.com/kexindon/h2m-public.git). 
+See more in the [the GitHub repository](https://github.com/kexindon/h2m-public.git).
+
+Complete documentation at [H2M Readthedocs](https://h2m-public.readthedocs.io).
 
 ## Installation  
 
 ### 1. Via PyPI  
 
-
 ```python
-pip install h2m
+pip install bioh2m
 ```
 
-### 2. Download the **.whl** file from [the GitHub repository](https://github.com/kexindon/h2m-public.git) and:  
-
+### 2. Download the **.whl** file from [the GitHub repository](https://github.com/kexindon/h2m-public.git)
 
 ```python
-pip install h2m-1.0.0-py3-non-any.whl  
+pip install bioh2m-1.0.0-py3-non-any.whl  
 ```
 
-ATTENTION: H2M has `pysam` as a dependency. This is for a function that can read .vcf files. If you are experiencing installation problems due to pysam, you can download and install the wheel file named as mini-h2m in [the GitHub repository](https://github.com/kexindon/h2m-public.git) without this function and the pysam dependency, which has been tested to solve most installation issues. The function rounded off in mini-h2m is also given in the repo. 
+ATTENTION: H2M has `pysam` as a dependency. This is for a function that can read .vcf files. If you are experiencing installation problems due to pysam, you can download and install the wheel file in [the GitHub repository](https://github.com/kexindon/h2m-public.git) without this function and the pysam dependency, which has been tested to solve most installation issues. The function rounded off in mini-h2m is also given in the repo. 
 
 H2M has been tested in Python 3.9-3.12.  
 
@@ -46,7 +46,7 @@ Reference genome and genome annotation files for human and mouse are needed for 
 
 
 ```python
-import h2m
+import bioh2m as h2m
 import pandas as pd
 
 path_h_ref, path_m_ref = '.../GCF_000001405.25_GRCh37.p13_genomic.fna.gz', '.../GCF_000001635.27_GRCm39_genomic.fna.gz'

@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "h2m"
-version = '1.0.4'
-description = ''
+name = "bioh2m"
+version = '1.0.1'
+description = 'For precision modeling of human variants in the mouse genome.'
 readme = "README.md"
 requires-python = ">=3.9"
 license = {file  = "LICENSE.txt"}
@@ -45,12 +45,15 @@ doc = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/kexindon/H2M-py#readme"
-Issues = "https://github.com/kexindon/H2M-py/issues"
-Source = "https://github.com/kexindon/H2M-py"
+Documentation = "https://h2m-public.readthedocs.io"
+Issues = "https://github.com/kexindon/h2m-public/issues"
+Source = "https://github.com/kexindon/h2m-public"
 
 [tool.hatch.version]
-path = "src/h2m/__about__.py"
+path = "src/bioh2m/__about__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bioh2m"]
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -70,26 +73,26 @@ cov = [
 ]
 
 [[tool.hatch.envs.all.matrix]]
-python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+python = ["3.9", "3.10", "3.11", "3.12"]
 
 [tool.hatch.envs.types]
 dependencies = [
   "mypy>=1.0.0",
 ]
 [tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:src/h2m tests}"
+check = "mypy --install-types --non-interactive {args:src/bioh2m tests}"
 
 [tool.coverage.run]
-source_pkgs = ["h2m", "tests"]
+source_pkgs = ["bioh2m", "tests"]
 branch = true
 parallel = true
 omit = [
-  "src/h2m/__about__.py",
+  "src/bioh2m/__about__.py",
 ]
 
 [tool.coverage.paths]
-h2m = ["src/h2m", "*/h2m/src/h2m"]
-tests = ["tests", "*/h2m/tests"]
+bioh2m = ["src/bioh2m", "*/bioh2m/src/bioh2m"]
+tests = ["tests", "*/bioh2m/tests"]
 
 [tool.coverage.report]
 exclude_lines = [
