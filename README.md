@@ -136,3 +136,17 @@ h2m.visualization(df_vs, flank_size=2, print_size=6)
 `h2m` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
 
 ## Cite H2M:  
+
+## Release History  
+
+### 1.0.0, May 3, 2024
+
+First Release.
+
+### 1.0.1, May 3, 2024
+
+Updated the tutorial file.
+
+### 1.0.2, May 7, 2024
+
+Updated the class 5 input for reference and alternate sequences.  

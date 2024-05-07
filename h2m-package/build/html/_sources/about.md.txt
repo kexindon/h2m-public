@@ -13,4 +13,18 @@ Email: gorkordkx@gmail.com
 
 Massachusetts Institute of Technology Department of Biology
 
-Koch Institute for Integrative Cancer Research
+Koch Institute for Integrative Cancer Research   
+
+## Version History   
+
+### 1.0.0
+
+First Release.
+
+### 1.0.1 
+
+Updated the tutorial file.
+
+### 1.0.2 
+
+Updated the class 5 input for reference and alternate sequences.  
