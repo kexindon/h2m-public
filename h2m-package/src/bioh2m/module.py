@@ -1352,7 +1352,8 @@ def model(records_h, index_list_h, records_m, index_list_m, db_h, db_m, tx_id_h,
 
     def final_return(gene_name_h, gene_id_h, tx_id_h, chr_h, n_exon_h, strand_h, match_h, start_h, end_h, ref_seq_h, alt_seq_h, tx_change_h, pro_change_h, classification_h, exon_h, ty_h, gene_name_m, gene_id_m, tx_id_m, chr_m, n_exon_m, strand_m, ty_m, classification_m, exon_m, start_m_ori, end_m_ori, ref_seq_m_ori, alt_seq_m_ori, tx_change_m_ori, pro_change_m_ori, start_m, end_m, ref_seq_m, alt_seq_m, tx_change_m, pro_change_m, tx_seq_h, tx_seq_m, new_tx_seq_h, new_tx_seq_m_ori, new_tx_seq_m, mut_tx_idx_h, mut_tx_idx_m, mut_p_idx_h, mut_p_idx_m, new_mut_p_idx_h, new_mut_p_idx_m, flank_size_left, flank_size_right, dist_h_return = None, dist_m_return = None):
         # nonlocal start_m, end_m, alt_seq_m, ref_seq_m, alt_seq_h, ref_seq_h, alt_seq_m_ori, ref_seq_m_ori, mut_dna_idx_m_ori, alt_seq_m_ori, ref_seq_m_ori, start_m_ori, end_m_ori
-        alt_seq_h, ref_seq_h = GetAltH(strand_h, alt_seq_h, ref_seq_h)
+        if error != 5:
+            alt_seq_h, ref_seq_h = GetAltH(strand_h, alt_seq_h, ref_seq_h)
 
         if alt_seq_h == '':
             alt_seq_h = '-'
