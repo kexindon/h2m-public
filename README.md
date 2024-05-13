@@ -150,3 +150,8 @@ Updated the tutorial file.
 ### 1.0.2, May 7, 2024
 
 Updated the class 5 input for reference and alternate sequences.  
+
+
+### 1.0.3, May 13, 2024
+
+Manually checked and updated the human gene symbol in the catalog of the human-mouse gene orthologs. 

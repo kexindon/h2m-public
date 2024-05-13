@@ -1,0 +1,161 @@
+---
+title: "final visualization"
+author: "Kexin Dong"
+date: "`r Sys.Date()`"
+output: html_document
+---
+# Package Loading
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Automatic wraps of coding chunks
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=55),tidy=TRUE)
+
+# Automatic wraps of outputs
+new.printLongLine <- function(a)
+{
+  len <- nchar(a)
+  linelen <- 80
+  lineNumber <- ceiling(len / linelen)
+  index <- 0
+  repeat
+  {
+    if(index + 1 == lineNumber)
+    {
+      cat(substring(a, index * linelen + 1, len))
+      break
+    }
+    cat(substring(a, index * linelen + 1, index * linelen + linelen))
+    cat('\n')
+    index <- index + 1
+  }
+}
+```
+
+```{r,include = FALSE}
+# load packages
+# Package names
+packages <- c("jpeg","lars","glmnet","ggplot2", "dplyr", "cometExactTest", "stringr", "maditr", "reshape2", "data.table", "epitools", "corrplot", "plyr", "muhaz", "reshape", "survival", "survivalAnalysis", "survMisc", "survminer", "ggsci", "vegan", "ggrepel", "ggforce", "rstatix", "effsize", "psych", "maxstat", "RCurl", "ggpubr", "UpSetR", "cowplot", "readxl", "scales", "rlist", "ggplotify", "ggridges", "gridExtra", "BradleyTerry2","ggthemes","patchwork","pheatmap","UpSetR","knitr","kableExtra","VennDiagram","ComplexHeatmap","circlize","ggplot2", "dplyr", "cometExactTest", "stringr", "maditr", "reshape2", "data.table", "epitools", "corrplot", "plyr", "muhaz", "reshape", "survival", "survivalAnalysis", "survMisc", "survminer", "ggsci", "vegan", "ggrepel", "ggforce", "rstatix", "effsize", "psych", "devtools","RColorBrewer","raster")
+
+# Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# Packages loading
+invisible(lapply(packages, library, character.only = TRUE))
+```
+
+```{r}
+df_freq <- read.csv('/Users/kexindong/Documents/GitHub/Output/h2m_database/SIFT/SIFT_corr.csv')
+df_freq
+```
+
+
+```{r}
+model <- lm(SIFT_SCORE_h ~ SIFT_SCORE_m, data = df_freq)
+summary_model <- summary(model)
+slope <- summary_model$coefficients["SIFT_SCORE_m", "Estimate"]
+intercept <- summary_model$coefficients["(Intercept)", "Estimate"]
+title_text <- sprintf("y = %.2fx + %.2f", slope, intercept)
+
+pearson_cor <- cor(df_freq$SIFT_SCORE_h, df_freq$SIFT_SCORE_m, method = "pearson")
+title_text <- sprintf("Pearson Correlation: r = %.2f", pearson_cor)
+pearson_cor
+```
+
+
+```{r}
+df_freq_sub <- df_freq[df_freq$flank_size >= 11, ]
+model <- lm(SIFT_SCORE_h ~ SIFT_SCORE_m, data = df_freq_sub)
+summary_model <- summary(model)
+slope <- summary_model$coefficients["SIFT_SCORE_m", "Estimate"]
+intercept <- summary_model$coefficients["(Intercept)", "Estimate"]
+title_text <- sprintf("y = %.2fx + %.2f", slope, intercept)
+
+pearson_cor <- cor(df_freq_sub$SIFT_SCORE_h, df_freq_sub$SIFT_SCORE_m, method = "pearson")
+title_text <- sprintf("Pearson Correlation: r = %.2f", pearson_cor)
+pearson_cor
+```
+```{r}
+df_freq_sub
+```
+
+```{r}
+df_freq_sub <- df_freq[df_freq$flank_size >= 31, ]
+model <- lm(SIFT_SCORE_h ~ SIFT_SCORE_m, data = df_freq_sub)
+summary_model <- summary(model)
+slope <- summary_model$coefficients["SIFT_SCORE_m", "Estimate"]
+intercept <- summary_model$coefficients["(Intercept)", "Estimate"]
+title_text <- sprintf("y = %.2fx + %.2f", slope, intercept)
+
+pearson_cor <- cor(df_freq_sub$SIFT_SCORE_h, df_freq_sub$SIFT_SCORE_m, method = "pearson")
+title_text <- sprintf("Pearson Correlation: r = %.2f", pearson_cor)
+pearson_cor
+```
+
+```{r}
+df_freq_sub
+```
+
+
+
+
+
+```{r}
+# 加载必要的包
+library(ggplot2)
+library(patchwork)
+
+# 主图
+main_plot <- ggplot(df_freq, aes(x = SIFT_SCORE_h, y = SIFT_SCORE_m)) +
+  geom_point(aes(size = flank_size, color = flank_size), alpha = 0.4) +
+  scale_size_area(max_size = 15,breaks=c(1,10,50,120))+
+  theme_classic2() +
+  scale_color_viridis_c() +
+  geom_abline(slope = 1, intercept = 0, color = "blue", alpha = 0.5) +
+  theme(legend.position = "right", 
+     plot.title = element_text(size = 16),
+     axis.text.x = element_text(size = 16),
+      axis.title.x = element_text(size = 16),
+     axis.text.y = element_text(size = 16),
+      axis.title.y = element_text(size = 16))+
+  labs(title = "Flank Size > 0")+
+  xlim(-.05, 1) +
+  ylim(-.05, 1) +
+  annotate("rect", xmin = -.05, xmax = 0.05, ymin = -.05, ymax = 0.05, color = "red", linetype = "dashed", alpha = .5)
+
+# 放大区域的图
+inset_plot <- ggplot(data, aes(x = SIFT_SCORE_h, y = SIFT_SCORE_m)) +
+  geom_point(aes(size = flank_size, color = flank_size), alpha = 0.4) +
+  theme_classic2() +
+  scale_size_area(max_size = 15,breaks=c(1,10,50,120)) +
+  scale_color_viridis_c() +
+  geom_abline(slope = 1, intercept = 0, color = "blue", alpha = 0.5) +
+  theme(
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    legend.position = "none"
+  ) +
+  xlim(-.05, .05)
+
+# 合并图表
+combined_plot <- main_plot + inset_element(inset_plot, left = 0, bottom = -1.05, right = 0.5, top = -.1)
+
+# 显示图表
+print(combined_plot)
+
+```
+
+```{r}
+inset_plot
+```
+
+
+
+
+
+
+
+
