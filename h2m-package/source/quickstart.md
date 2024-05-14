@@ -151,6 +151,59 @@ There will be returning two dataframes for success and failures.
 :align: center
 ```
 
+```{hint}
+Note that sometimes the use of aliases for the human gene Symbol may result in the corresponding Transcript ID not being found.A few common examples are listed below. Please check manually.
+
+| AACR-GENIE Symbol | H2M-used Symbol |
+|----------------|------------------|
+| H3F3A          | H3-3A            |
+| H3F3B          | H3-3B            |
+| WHSC1          | NSD1             |
+| GPR124         | ADGRA2           |
+| MKL1           | MRTFA            |
+| PARK2          | PRKN             |
+| MRE11A         | MRE11            |
+| MLLT4          | AFDN             |
+| CASC5          | KNL1             |
+| MEF2BNB-MEF2B  | BORCS8-MEF2B     |
+| PAK7           | PAK5             |
+| HIST1H1C       | H1-2             |
+| HIST1H3B       | H3C1             |
+| HIST1H1E       | H1-4             |
+| HIST1H2BD      | H2BC5            |
+| HIST3H3        | H3-4             |
+| HIST1H3D       | H3C2             |
+| HIST1H3E       | H3C3             |
+| HIST1H3J       | H3C12            |
+| HIST1H2BK      | H2BC8            |
+| HIST1H3F       | H3C4             |
+| HIST1H1B       | H1-5             |
+| HIST1H1D       | H1-3             |
+| HIST1H2AC      | H2AC1            |
+| HIST1H2BJ      | H2BC13           |
+| HIST1H4E       | H4C5             |
+| FAM46C         | TENT5C           |
+| WHSC1L1        | NSD3             |
+| SETD8          | KMT5A            |
+| LPHN3          | ADGRL3           |
+| BAI3           | ADGRB3           |
+| SEPT9          | NAPB             |
+| BRE            | BABAM2           |
+| RFWD2          | COP1             |
+| TCEB1          | ELOC             |
+| GBA            | GBA1             |
+| PVRL4          | NECTIN4          |
+| ICK            | GCKR             |
+| GNB2L1         | RACK1            |
+| MGEA5          | OGA              |
+| DIRC2          | SLC49A4          |
+| LARGE          | LARGE1           |
+| TMEM173B       | STING1           |
+| SEPT5          | SEPTIN5          |
+
+
+```
+
 ### Query orthologous genes
 
 

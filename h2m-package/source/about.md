@@ -28,3 +28,7 @@ Updated the tutorial file.
 ### 1.0.2 
 
 Updated the class 5 input for reference and alternate sequences.  
+
+### 1.0.3 
+
+Manually added the transcript IDs for a small number of missing human genes in the 37 version of the reference genome assembly.  
