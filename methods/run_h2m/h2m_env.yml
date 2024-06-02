@@ -1,0 +1,8 @@
+name: new_h2m_env
+channels:
+  - defaults
+  - bioconda
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pandas

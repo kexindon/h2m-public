@@ -1,0 +1,12 @@
+name: stat_env
+channels:
+  - defaults
+  - bioconda
+  - conda-forge
+dependencies:
+  - python=3.8
+  - pandas
+  - seaborn
+  - matplotlib
+  - seaborn==0.9.0
+  - statannot
