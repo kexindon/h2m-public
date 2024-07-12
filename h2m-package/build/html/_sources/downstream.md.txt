@@ -1,17 +1,14 @@
-# COMING SOON - H2M Database Online Portal
+# H2M Database Online Portal
 
-We pre-computed 
+Online portal available at [https://human2mouse.com/](https://human2mouse.com/#/)
+
+We pre-computed:
 
 1. Murine equivalents of over 3,000,000 human variants derived from **ClinVar**, **COSMIC**, and **AACR-GENIE**;
 
-2. Base editing guide RNAs for over 3,000,000 human-mouse variant pairs;
+2. Database of base editing gRNAs for engineering human and orthologous mouse variants–24,680 gRNAs targeting 2,720 human mutations and 1,892 mouse mutations.
 
-3. Prime eiditing guide RNAs for a 5,000 subset of hotspot human mutations and their murine equivalents.
-
-We are going to make it available as an online resource.  
+3. Database of pegRNAs for engineering human and orthologous mouse variants–48,255 pegRNAs targeting 4,944 human mutations and 4,707 mouse mutations. 
 
 ## PEGG: Prime Editing Guide Generator  
-[PEGG](https://pegg.readthedocs.io/en/latest/index.html) is a python package that designs prime editing guide RNAs (pegRNAs) and base editing guide RNAs (gRNAs) for use in precision genome editing.  
-
-## PATTERN
-[Pattern](https://pattern.broadinstitute.org/#/) is a recharge center that provides support to the greater Broad community. We specialize in design and development projects that create greater scientific understanding and impact.
+[PEGG](https://pegg.readthedocs.io/en/latest/index.html) is a python package that designs prime editing guide RNAs (pegRNAs) and base editing guide RNAs (gRNAs) for use in precision genome editing. This package is compatible with the output of H2M for generating gRNAs and pegRNAs to engineer mutations of interest.

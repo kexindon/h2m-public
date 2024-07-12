@@ -78,7 +78,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="documentation.html">Complete Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jupyter.html">Jupyter Notebook Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="downstream.html">COMING SOON - H2M Database Online Portal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downstream.html">H2M Database Online Portal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About H2M</a></li>
 </ul>
 </nav>
@@ -104,7 +104,8 @@
 <div id="content" role="main">
 <section id="quick-start">
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"><span>#</span></a></h1>
-<a class="reference internal image-reference" href="_images/h2m-logo-final.png"><img alt="_images/h2m-logo-final.png" class="align-left" src="_images/h2m-logo-final.png" style="width: 150px;"/></a>
+<a class="reference internal image-reference" href="_images/h2m-logo-final.png"><img alt="_images/h2m-logo-final.png" class="align-left" src="_images/h2m-logo-final.png" style="width: 150px;"/>
+</a>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Data used in this tutorial can be downloaded from <a href="https://www.dropbox.com/scl/fo/1wtrnc9w6s9gemweuw2fv/h?rlkey=hli1z6tv096cjwit5oi6bwggg&amp;dl=0" rel="noopener noreferrer" target="_blank">this Dropbox folder</a>.</p>
@@ -151,10 +152,12 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
 <section id="input-format">
 <h3>Input format<a class="headerlink" href="#input-format" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#input-format'"><span>#</span></a></h3>
 <p>Common mutation data formats include <strong>MAF</strong> (Mutation Annotation Format, used by cBioPortal), <strong>VCF</strong> (Variant Call Format, used by genomAD), and <strong>ClinVar</strong> (a modified VCF format, used by ClinVar). Mutation coordinates, reference and alternative sequences are recorded in slightly different ways between the three.</p>
-<a class="reference internal image-reference" href="_images/format.png"><img alt="_images/format.png" class="align-center" src="_images/format.png" style="width: 600px;"/></a>
+<a class="reference internal image-reference" href="_images/format.png"><img alt="_images/format.png" class="align-center" src="_images/format.png" style="width: 600px;"/>
+</a>
 <p>In batch processing, <strong>H2M accepts MAF input</strong>. More information about MAF format can be found at <a href="https://docs.gdc.cancer.gov/Data/File_Formats/MAF_Format/#:~:text=Mutation" rel="noopener noreferrer" target="_blank">GDC Documentation</a>.</p>
 <p>For MAF files, you need to build a pandas dataframe with columns as the following example:</p>
-<a class="reference internal image-reference" href="_images/1.png"><img alt="_images/1.png" class="align-center" src="_images/1.png" style="width: 600px;"/></a>
+<a class="reference internal image-reference" href="_images/1.png"><img alt="_images/1.png" class="align-center" src="_images/1.png" style="width: 600px;"/>
+</a>
 <p>For VCF and ClinVar files, you will need to convert the mutation coordinates and sequence information to MAF format after this.</p>
 <p>This can be achieved simply by using H2M built-in functions.</p>
 <section id="read-from-cbioportal-maf">
@@ -165,30 +168,35 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
     <span class="n">df</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/cbio_reader.png"><img alt="_images/cbio_reader.png" class="align-center" src="_images/cbio_reader.png" style="width: 600px;"/></a>
+<a class="reference internal image-reference" href="_images/cbio_reader.png"><img alt="_images/cbio_reader.png" class="align-center" src="_images/cbio_reader.png" style="width: 600px;"/>
+</a>
 </section>
 <section id="read-from-genomad-vcf">
 <h4>Read from GenomAD  - VCF<a class="headerlink" href="#read-from-genomad-vcf" title="Link to this heading"><span>#</span></a></h4>
-<p>Search a specific gene in <a href="https://gnomad.broadinstitute.org" rel="noopener noreferrer" target="_blank">GenomAD browser</a>, and download the conluson csv.</p>
-<a class="reference internal image-reference" href="_images/genomad.png"><img alt="_images/genomad.png" class="align-center" src="_images/genomad.png" style="width: 600px;"/></a>
+<p>Search a specific gene in <a href="https://gnomad.broadinstitute.org" rel="noopener noreferrer" target="_blank">GenomAD browser</a>, and download the resulting csv file.</p>
+<a class="reference internal image-reference" href="_images/genomad.png"><img alt="_images/genomad.png" class="align-center" src="_images/genomad.png" style="width: 600px;"/>
+</a>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># downloaded TP53 variants from genomAD</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">vcf_reader</span><span class="p">(</span><span class="s1">'.../gnomAD_v4.1.0_ENSG00000141510.csv'</span><span class="p">,</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">'gene_name_h'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'TP53'</span>
     <span class="n">df</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/vcf_reader.png"><img alt="_images/vcf_reader.png" class="align-center" src="_images/vcf_reader.png" style="width: 600px;"/></a>
+<a class="reference internal image-reference" href="_images/vcf_reader.png"><img alt="_images/vcf_reader.png" class="align-center" src="_images/vcf_reader.png" style="width: 600px;"/>
+</a>
 <p>Then convert it to <strong>MAF</strong> format.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">vcf_to_maf</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
     <span class="n">df</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/vcf_to_maf.png"><img alt="_images/vcf_to_maf.png" class="align-center" src="_images/vcf_to_maf.png" style="width: 600px;"/></a>
+<a class="reference internal image-reference" href="_images/vcf_to_maf.png"><img alt="_images/vcf_to_maf.png" class="align-center" src="_images/vcf_to_maf.png" style="width: 600px;"/>
+</a>
 </section>
 <section id="read-from-clinvar">
 <h4>Read from ClinVar<a class="headerlink" href="#read-from-clinvar" title="Link to this heading"><span>#</span></a></h4>
 <p>download a <a href="https://www.ncbi.nlm.nih.gov/clinvar/" rel="noopener noreferrer" target="_blank">ClinVar</a> vcf.gz file, and choose your desired Variation IDs that you wish to model. These vcf.gz files are available in <a href="https://www.dropbox.com/scl/fo/1wtrnc9w6s9gemweuw2fv/h?rlkey=hli1z6tv096cjwit5oi6bwggg&amp;dl=0" rel="noopener noreferrer" target="_blank">this Dropbox folder</a>.</p>
-<a class="reference internal image-reference" href="_images/clinvar.png"><img alt="_images/clinvar.png" class="align-center" src="_images/clinvar.png" style="width: 600px;"/></a>
+<a class="reference internal image-reference" href="_images/clinvar.png"><img alt="_images/clinvar.png" class="align-center" src="_images/clinvar.png" style="width: 600px;"/>
+</a>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">filepath</span> <span class="o">=</span> <span class="s1">'/Users/kexindong/Documents/GitHub/Database/PublicDatabase/ClinVar/GRCh37_clinvar_20240206.vcf.gz'</span>
     <span class="n">variation_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">32798013</span><span class="p">,</span> <span class="mi">375926</span><span class="p">,</span> <span class="mi">325626</span><span class="p">,</span> <span class="mi">140953</span><span class="p">,</span> <span class="mi">233866</span><span class="p">,</span> <span class="mi">1796995</span><span class="p">,</span> <span class="mi">17578</span><span class="p">,</span> <span class="mi">573320</span><span class="p">]</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">clinvar_reader</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">variation_ids</span><span class="p">)</span>
@@ -198,17 +206,19 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
     <span class="n">df</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/clinvar_result.png"><img alt="_images/clinvar_result.png" class="align-center" src="_images/clinvar_result.png" style="width: 600px;"/></a>
+<a class="reference internal image-reference" href="_images/clinvar_result.png"><img alt="_images/clinvar_result.png" class="align-center" src="_images/clinvar_result.png" style="width: 600px;"/>
+</a>
 </section>
 </section>
 <section id="get-canonical-transcript-ids-for-human">
 <h3>Get canonical transcript IDs for human<a class="headerlink" href="#get-canonical-transcript-ids-for-human" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#get-canonical-transcript-ids-for-human'"><span>#</span></a></h3>
-<p>There will be returning two dataframes for success and failures.</p>
+<p>H2M will return two dataframes: one for transcripts identified successfully (df) and one for failures (df_fail).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">df</span><span class="p">,</span> <span class="n">df_fail</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">species</span><span class="o">=</span><span class="s1">'h'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
     <span class="n">df</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/2.png"><img alt="_images/2.png" class="align-center" src="_images/2.png" style="width: 600px;"/></a>
+<a class="reference internal image-reference" href="_images/2.png"><img alt="_images/2.png" class="align-center" src="_images/2.png" style="width: 600px;"/>
+</a>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Note that sometimes the use of aliases for the human gene Symbol may result in the corresponding Transcript ID not being found.A few common examples are listed below. Please check manually.</p>
@@ -361,7 +371,8 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
     <span class="n">df_queried</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/3.png"><img alt="_images/3.png" class="align-center" src="_images/3.png" style="width: 700px;"/></a>
+<a class="reference internal image-reference" href="_images/3.png"><img alt="_images/3.png" class="align-center" src="_images/3.png" style="width: 700px;"/>
+</a>
 </section>
 <section id="get-canonical-transcript-ids-for-mouse">
 <h3>Get canonical transcript IDs for mouse<a class="headerlink" href="#get-canonical-transcript-ids-for-mouse" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#get-canonical-transcript-ids-for-mouse'"><span>#</span></a></h3>
@@ -369,10 +380,11 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
     <span class="n">df_queried</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/4.png"><img alt="_images/4.png" class="align-center" src="_images/4.png" style="width: 700px;"/></a>
+<a class="reference internal image-reference" href="_images/4.png"><img alt="_images/4.png" class="align-center" src="_images/4.png" style="width: 700px;"/>
+</a>
 </section>
-<section id="compute-the-muerine-variant-equivalents">
-<h3>Compute the muerine variant equivalents<a class="headerlink" href="#compute-the-muerine-variant-equivalents" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#compute-the-muerine-variant-equivalents'"><span>#</span></a></h3>
+<section id="compute-the-murine-variant-equivalents">
+<h3>Compute the murine variant equivalents<a class="headerlink" href="#compute-the-murine-variant-equivalents" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#compute-the-murine-variant-equivalents'"><span>#</span></a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">df_result</span><span class="p">,</span> <span class="n">df_fail</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model_batch</span><span class="p">(</span><span class="n">df_queried</span><span class="p">,</span> <span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="mi">37</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -382,7 +394,7 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
 <h2>Single variant input<a class="headerlink" href="#single-variant-input" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#single-variant-input'"><span>#</span></a></h2>
 <section id="id1">
 <h3>Query orthologous genes<a class="headerlink" href="#id1" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#id1'"><span>#</span></a></h3>
-<p>First of all, you can use H2M to query a human gene for the presence of mouse homologs and vice versa.</p>
+<p>You can use H2M to query a human gene for the presence of mouse homologs and vice versa.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">query_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'TP53'</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -401,7 +413,7 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
     Sequence Simalarity(%):77.3537.
 </pre></div>
 </div>
-<p>The output is a list of information for all the mouse ortholog(s) (if have; sometimes more than one).<br/>
+<p>The output is a list of information for all the mouse ortholog(s) (if these exist; sometimes there is more than one).<br/>
 Each element is a dictionary of <strong>mouse gene name</strong>, <strong>mouse gene id</strong>, <strong>homology type</strong> (one to one/one to multiple/many to many), and <strong>similarity of human and mouse gene in percentage</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'U1'</span><span class="p">)</span>
 </pre></div>
@@ -629,7 +641,7 @@ You should have at least such information in hand:</p>
 </tr>
 </tbody>
 </table>
-<p>We can see that this human mutaton can be originally modeled by introducing the same neucleotide alteration.</p>
+<p>We can see that this human mutaton can be originally modeled by introducing the same nucleotide alteration.</p>
 <section id="flank-size">
 <h5>Flank Size<a class="headerlink" href="#flank-size" title="Link to this heading"><span>#</span></a></h5>
 <p>The length of the identical sequences between human and mouse on teh left/right side of the mutation is provided in order to give you a sense of the local homology and how confident you should be in the fidelity of this modeling.</p>
@@ -657,12 +669,13 @@ You should have at least such information in hand:</p>
     <span class="n">h2m</span><span class="o">.</span><span class="n">visualization</span><span class="p">(</span><span class="n">model_result</span><span class="p">,</span> <span class="n">flank_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">print_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/h2m_visual.png"><img alt="_images/h2m_visual.png" class="align-center" src="_images/h2m_visual.png" style="width: 800px;"/></a>
+<a class="reference internal image-reference" href="_images/h2m_visual.png"><img alt="_images/h2m_visual.png" class="align-center" src="_images/h2m_visual.png" style="width: 800px;"/>
+</a>
 </section>
 </section>
 <section id="alternative-modeling">
 <h4>Alternative modeling<a class="headerlink" href="#alternative-modeling" title="Link to this heading"><span>#</span></a></h4>
-<p>Sometimes the human mutation cannot be originally modeled in the mouse genome by using the same neucleotide alteration. Under this circumsatance, some alternative modeling strategies may be found by searching the codon list of the target amino acids.</p>
+<p>Sometimes the human mutation cannot be originally modeled in the mouse genome by using the same nucleotide alteration. Under this circumsatance, some alternative modeling strategies may be found by searching the codon list of the target amino acids.</p>
 <ul class="simple">
 <li><p>Example 1: TP53 R306Q.</p></li>
 </ul>
@@ -715,7 +728,8 @@ You should have at least such information in hand:</p>
                                 <span class="s1">'HGVSc_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/delins.png"><img alt="_images/delins.png" class="align-center" src="_images/delins.png" style="width: 800px;"/></a>
+<a class="reference internal image-reference" href="_images/delins.png"><img alt="_images/delins.png" class="align-center" src="_images/delins.png" style="width: 800px;"/>
+</a>
 <p>The default maximum number of output alternatives is 5. You can definitly change that by the parameter <strong>max_alternative</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_result_long</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577523</span><span class="p">,</span> <span class="mi">7577534</span><span class="p">,</span> <span class="s1">'GTGAGGATGGGC'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'DEL'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">max_alternative</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">model_result</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">model_result_long</span><span class="p">)</span>
@@ -1133,7 +1147,7 @@ You can choose from the 20 transcripts below for further analysis:
 <li><a :data-current="activeSection === '#get-canonical-transcript-ids-for-human'" class="reference internal" href="#get-canonical-transcript-ids-for-human">Get canonical transcript IDs for human</a></li>
 <li><a :data-current="activeSection === '#query-orthologous-genes'" class="reference internal" href="#query-orthologous-genes">Query orthologous genes</a></li>
 <li><a :data-current="activeSection === '#get-canonical-transcript-ids-for-mouse'" class="reference internal" href="#get-canonical-transcript-ids-for-mouse">Get canonical transcript IDs for mouse</a></li>
-<li><a :data-current="activeSection === '#compute-the-muerine-variant-equivalents'" class="reference internal" href="#compute-the-muerine-variant-equivalents">Compute the muerine variant equivalents</a></li>
+<li><a :data-current="activeSection === '#compute-the-murine-variant-equivalents'" class="reference internal" href="#compute-the-murine-variant-equivalents">Compute the murine variant equivalents</a></li>
 </ul>
 </li>
 <li><a :data-current="activeSection === '#single-variant-input'" class="reference internal" href="#single-variant-input">Single variant input</a><ul>
@@ -1166,13 +1180,13 @@ You can choose from the 20 transcripts below for further analysis:
 </div><footer class="py-6 border-t border-border md:py-0">
 <div class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
 <div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
-<p class="text-sm leading-loose text-center text-muted-foreground md:text-left">© 2024, Kexin Dong Built with <a class="font-medium underline underline-offset-4" href="https://www.sphinx-doc.org" rel="noreferrer">Sphinx 7.2.6</a></p>
+<p class="text-sm leading-loose text-center text-muted-foreground md:text-left">© 2024, Kexin Dong Built with <a class="font-medium underline underline-offset-4" href="https://www.sphinx-doc.org" rel="noreferrer">Sphinx 7.3.7</a></p>
 </div>
 </div>
 </footer>
 </div>
 <script src="_static/documentation_options.js?v=8d563738"></script>
-<script src="_static/doctools.js?v=888ff710"></script>
+<script src="_static/doctools.js?v=9a2dae69"></script>
 <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
 <script defer="defer" src="_static/theme.js?v=8dc3ddfe"></script>
 </body>

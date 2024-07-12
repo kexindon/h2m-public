@@ -84,7 +84,7 @@ This format is compatible with all of the datasets in the <a href='https://www.c
 
 
 #### Read from GenomAD  - VCF 
-Search a specific gene in <a href='https://gnomad.broadinstitute.org' target="_blank" rel="noopener noreferrer">GenomAD browser</a>, and download the conluson csv.  
+Search a specific gene in <a href='https://gnomad.broadinstitute.org' target="_blank" rel="noopener noreferrer">GenomAD browser</a>, and download the resulting csv file.  
 
 ```{image} figures/genomad.png
 :width: 600px
@@ -139,7 +139,7 @@ download a <a href='https://www.ncbi.nlm.nih.gov/clinvar/' target="_blank" rel="
 
 ### Get canonical transcript IDs for human 
 
-There will be returning two dataframes for success and failures.
+H2M will return two dataframes: one for transcripts identified successfully (df) and one for failures (df_fail).
 
 
 ```python
@@ -230,7 +230,7 @@ Note that sometimes the use of aliases for the human gene Symbol may result in t
 ```
 
 
-### Compute the muerine variant equivalents  
+### Compute the murine variant equivalents  
 
 ```python
     df_result, df_fail = h2m.model_batch(df_queried, records_h, index_list_h, records_m, index_list_m, db_h, db_m, 37)
@@ -240,7 +240,7 @@ Note that sometimes the use of aliases for the human gene Symbol may result in t
 ## Single variant input  
 
 ### Query orthologous genes
-First of all, you can use H2M to query a human gene for the presence of mouse homologs and vice versa.  
+You can use H2M to query a human gene for the presence of mouse homologs and vice versa.  
 
 
 ```python
@@ -264,7 +264,7 @@ First of all, you can use H2M to query a human gene for the presence of mouse ho
         Sequence Simalarity(%):77.3537.
 
 
-The output is a list of information for all the mouse ortholog(s) (if have; sometimes more than one).  
+The output is a list of information for all the mouse ortholog(s) (if these exist; sometimes there is more than one).  
 Each element is a dictionary of **mouse gene name**, **mouse gene id**, **homology type** (one to one/one to multiple/many to many), and **similarity of human and mouse gene in percentage**.
 
 
@@ -421,7 +421,7 @@ Taking *TP53* R273H (ENST00000269305.4:c.818G>A) as an example.
 | HGVSp_m               | R270H                          |
 
 
-We can see that this human mutaton can be originally modeled by introducing the same neucleotide alteration.
+We can see that this human mutaton can be originally modeled by introducing the same nucleotide alteration.
 
 ##### Flank Size    
 The length of the identical sequences between human and mouse on teh left/right side of the mutation is provided in order to give you a sense of the local homology and how confident you should be in the fidelity of this modeling.  
@@ -452,7 +452,7 @@ By setting `show_sequence = True`, we can output the sequences of the wild-type 
 
 #### Alternative modeling
 
-Sometimes the human mutation cannot be originally modeled in the mouse genome by using the same neucleotide alteration. Under this circumsatance, some alternative modeling strategies may be found by searching the codon list of the target amino acids. 
+Sometimes the human mutation cannot be originally modeled in the mouse genome by using the same nucleotide alteration. Under this circumsatance, some alternative modeling strategies may be found by searching the codon list of the target amino acids. 
 
 - Example 1: TP53 R306Q. 
 
