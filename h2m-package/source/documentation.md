@@ -260,19 +260,19 @@
 
 ## Functions
 ```{eval-rst}
-.. autofunction:: h2m.genome_loader
-.. autofunction:: h2m.anno_loader
-.. autofunction:: h2m.cbio_reader
-.. autofunction:: h2m.clinvar_reader
-.. autofunction:: h2m.clinvar_to_maf
-.. autofunction:: h2m.vcf_reader
-.. autofunction:: h2m.vcf_to_maf
-.. autofunction:: h2m.get_variant_type
-.. autofunction:: h2m.get_tx_id
-.. autofunction:: h2m.get_tx_batch
-.. autofunction:: h2m.query
-.. autofunction:: h2m.query_batch
-.. autofunction:: h2m.model
-.. autofunction:: h2m.model_batch
-.. autofunction:: h2m.visualization
+.. autofunction:: bioh2m.genome_loader
+.. autofunction:: bioh2m.anno_loader
+.. autofunction:: bioh2m.cbio_reader
+.. autofunction:: bioh2m.clinvar_reader
+.. autofunction:: bioh2m.clinvar_to_maf
+.. autofunction:: bioh2m.vcf_reader
+.. autofunction:: bioh2m.vcf_to_maf
+.. autofunction:: bioh2m.get_variant_type
+.. autofunction:: bioh2m.get_tx_id
+.. autofunction:: bioh2m.get_tx_batch
+.. autofunction:: bioh2m.query
+.. autofunction:: bioh2m.query_batch
+.. autofunction:: bioh2m.model
+.. autofunction:: bioh2m.model_batch
+.. autofunction:: bioh2m.visualization
 ```
