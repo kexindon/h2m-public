@@ -11,7 +11,7 @@
 <meta content="Quick Start | H2M 1.0.0 documentation" property="og:title"/>
 <meta content="Quick Start | H2M 1.0.0 documentation" name="twitter:title"/>
 <link href="_static/pygments.css?v=8d216cef" rel="stylesheet" type="text/css"/>
-<link href="_static/theme.css?v=8958d2b4" rel="stylesheet" type="text/css"/>
+<link href="_static/theme.css?v=42baaae4" rel="stylesheet" type="text/css"/>
 <link href="_static/css/custom.css" rel="stylesheet" type="text/css"/>
 <link href="search.html" rel="search" title="Search"/>
 <link href="genindex.html" rel="index" title="Index"/>
@@ -30,7 +30,7 @@
       if (!userPreference) {localStorage.setItem('darkMode', mode)}
     </script>
 </head>
-<body :class="{ 'overflow-hidden': showSidebar }" class="min-h-screen font-sans antialiased bg-background text-foreground" x-data="{ showSidebar: false }">
+<body :class="{ 'overflow-hidden': showSidebar }" class="min-h-screen font-sans antialiased bg-background text-foreground" x-data="{ showSidebar: false, showScrollTop: false }">
 <div @click.self="showSidebar = false" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden" x-cloak="" x-show="showSidebar"></div><div class="relative flex flex-col min-h-screen" id="page"><a class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100" href="#content">
       Skip to content
     </a><header class="sticky top-0 z-40 w-full border-b shadow-sm border-border supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur"><div class="container flex items-center h-14">
@@ -113,8 +113,8 @@
 <section id="package-installation">
 <h2>Package Installation<a class="headerlink" href="#package-installation" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#package-installation'"><span>#</span></a></h2>
 <p>H2M is available through the python package index (PyPI). To install, use pip:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">pip</span> <span class="n">install</span> <span class="n">bioh2m</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">pip</span> <span class="n">install</span> <span class="n">bioh2m</span>
+</span></code></pre></div>
 </div>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
@@ -127,24 +127,24 @@
 </section>
 <section id="importing-packages">
 <h2>Importing packages<a class="headerlink" href="#importing-packages" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#importing-packages'"><span>#</span></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">bioh2m</span> <span class="k">as</span> <span class="nn">h2m</span>
-    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="kn">import</span> <span class="nn">bioh2m</span> <span class="k">as</span> <span class="nn">h2m</span>
+</span><span id="line-2">    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></code></pre></div>
 </div>
 </section>
 <section id="loading-data">
 <h2>Loading data<a class="headerlink" href="#loading-data" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#loading-data'"><span>#</span></a></h2>
 <p>We should upload reference genome and GENCODE annotation data for both human and mouse, which could be directly downloaded from <a href="https://www.dropbox.com/scl/fo/1wtrnc9w6s9gemweuw2fv/h?rlkey=hli1z6tv096cjwit5oi6bwggg&amp;dl=0" rel="noopener noreferrer" target="_blank">this Dropbox folder</a>.<br/>
 Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload the one that you are going to use.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">path_h_ref</span><span class="p">,</span> <span class="n">path_m_ref</span> <span class="o">=</span> <span class="s1">'.../GCF_000001405.25_GRCh37.p13_genomic.fna.gz'</span><span class="p">,</span> <span class="s1">'.../GCF_000001635.27_GRCm39_genomic.fna.gz'</span>
-    <span class="c1"># remember to replace the paths with yours; for human, GRCh38 reference genome assembly is also provided  </span>
-    <span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">genome_loader</span><span class="p">(</span><span class="n">path_h_ref</span><span class="p">)</span>
-    <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span>  <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">genome_loader</span><span class="p">(</span><span class="n">path_m_ref</span><span class="p">)</span>
-
-    <span class="n">path_h_anno</span><span class="p">,</span> <span class="n">path_m_anno</span> <span class="o">=</span> <span class="s1">'.../gencode_v19_GRCh37.db'</span><span class="p">,</span> <span class="s1">'.../gencode_vm33_GRCm39.db'</span>
-    <span class="c1"># remember to replace the paths with yours</span>
-    <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">anno_loader</span><span class="p">(</span><span class="n">path_h_anno</span><span class="p">),</span> <span class="n">h2m</span><span class="o">.</span><span class="n">anno_loader</span><span class="p">(</span><span class="n">path_m_anno</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">path_h_ref</span><span class="p">,</span> <span class="n">path_m_ref</span> <span class="o">=</span> <span class="s1">'.../GCF_000001405.25_GRCh37.p13_genomic.fna.gz'</span><span class="p">,</span> <span class="s1">'.../GCF_000001635.27_GRCm39_genomic.fna.gz'</span>
+</span><span id="line-2">    <span class="c1"># remember to replace the paths with yours; for human, GRCh38 reference genome assembly is also provided  </span>
+</span><span id="line-3">    <span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">genome_loader</span><span class="p">(</span><span class="n">path_h_ref</span><span class="p">)</span>
+</span><span id="line-4">    <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span>  <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">genome_loader</span><span class="p">(</span><span class="n">path_m_ref</span><span class="p">)</span>
+</span><span id="line-5">
+</span><span id="line-6">    <span class="n">path_h_anno</span><span class="p">,</span> <span class="n">path_m_anno</span> <span class="o">=</span> <span class="s1">'.../gencode_v19_GRCh37.db'</span><span class="p">,</span> <span class="s1">'.../gencode_vm33_GRCm39.db'</span>
+</span><span id="line-7">    <span class="c1"># remember to replace the paths with yours</span>
+</span><span id="line-8">    <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">anno_loader</span><span class="p">(</span><span class="n">path_h_anno</span><span class="p">),</span> <span class="n">h2m</span><span class="o">.</span><span class="n">anno_loader</span><span class="p">(</span><span class="n">path_m_anno</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </section>
 <section id="batch-processing">
@@ -163,10 +163,10 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
 <section id="read-from-cbioportal-maf">
 <h4>Read from cBioPortal - MAF<a class="headerlink" href="#read-from-cbioportal-maf" title="Link to this heading"><span>#</span></a></h4>
 <p>This format is compatible with all of the datasets in the <a href="https://www.cbioportal.org" rel="noopener noreferrer" target="_blank">cBioPortal</a>, as well as <a href="https://www.cancer.gov/ccg/research/genome-sequencing/tcga" rel="noopener noreferrer" target="_blank">TCGA</a> and <a href="https://www.synapse.org/#!Synapse:syn7222066/wiki/405659" rel="noopener noreferrer" target="_blank">AACR-GENIE</a>. Download the txt mutation data file from such public dataset and then load it as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">path_aacr</span> <span class="o">=</span> <span class="s1">'.../data_mutations_extended.txt'</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">cbio_reader</span><span class="p">(</span><span class="n">path_aacr</span><span class="p">)</span>
-    <span class="n">df</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">path_aacr</span> <span class="o">=</span> <span class="s1">'.../data_mutations_extended.txt'</span>
+</span><span id="line-2">    <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">cbio_reader</span><span class="p">(</span><span class="n">path_aacr</span><span class="p">)</span>
+</span><span id="line-3">    <span class="n">df</span>
+</span></code></pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/cbio_reader.png"><img alt="_images/cbio_reader.png" class="align-center" src="_images/cbio_reader.png" style="width: 600px;"/>
 </a>
@@ -176,18 +176,18 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
 <p>Search a specific gene in <a href="https://gnomad.broadinstitute.org" rel="noopener noreferrer" target="_blank">GenomAD browser</a>, and download the resulting csv file.</p>
 <a class="reference internal image-reference" href="_images/genomad.png"><img alt="_images/genomad.png" class="align-center" src="_images/genomad.png" style="width: 600px;"/>
 </a>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># downloaded TP53 variants from genomAD</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">vcf_reader</span><span class="p">(</span><span class="s1">'.../gnomAD_v4.1.0_ENSG00000141510.csv'</span><span class="p">,</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">'gene_name_h'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'TP53'</span>
-    <span class="n">df</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="c1"># downloaded TP53 variants from genomAD</span>
+</span><span id="line-2">    <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">vcf_reader</span><span class="p">(</span><span class="s1">'.../gnomAD_v4.1.0_ENSG00000141510.csv'</span><span class="p">,</span><span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="line-3">    <span class="n">df</span><span class="p">[</span><span class="s1">'gene_name_h'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'TP53'</span>
+</span><span id="line-4">    <span class="n">df</span>
+</span></code></pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/vcf_reader.png"><img alt="_images/vcf_reader.png" class="align-center" src="_images/vcf_reader.png" style="width: 600px;"/>
 </a>
 <p>Then convert it to <strong>MAF</strong> format.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">vcf_to_maf</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-    <span class="n">df</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">vcf_to_maf</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span><span id="line-2">    <span class="n">df</span>
+</span></code></pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/vcf_to_maf.png"><img alt="_images/vcf_to_maf.png" class="align-center" src="_images/vcf_to_maf.png" style="width: 600px;"/>
 </a>
@@ -197,14 +197,14 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
 <p>download a <a href="https://www.ncbi.nlm.nih.gov/clinvar/" rel="noopener noreferrer" target="_blank">ClinVar</a> vcf.gz file, and choose your desired Variation IDs that you wish to model. These vcf.gz files are available in <a href="https://www.dropbox.com/scl/fo/1wtrnc9w6s9gemweuw2fv/h?rlkey=hli1z6tv096cjwit5oi6bwggg&amp;dl=0" rel="noopener noreferrer" target="_blank">this Dropbox folder</a>.</p>
 <a class="reference internal image-reference" href="_images/clinvar.png"><img alt="_images/clinvar.png" class="align-center" src="_images/clinvar.png" style="width: 600px;"/>
 </a>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">filepath</span> <span class="o">=</span> <span class="s1">'/Users/kexindong/Documents/GitHub/Database/PublicDatabase/ClinVar/GRCh37_clinvar_20240206.vcf.gz'</span>
-    <span class="n">variation_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">32798013</span><span class="p">,</span> <span class="mi">375926</span><span class="p">,</span> <span class="mi">325626</span><span class="p">,</span> <span class="mi">140953</span><span class="p">,</span> <span class="mi">233866</span><span class="p">,</span> <span class="mi">1796995</span><span class="p">,</span> <span class="mi">17578</span><span class="p">,</span> <span class="mi">573320</span><span class="p">]</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">clinvar_reader</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">variation_ids</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">clinvar_to_maf</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">'gene_name_h'</span><span class="p">,</span>	<span class="s1">'start_h'</span><span class="p">,</span><span class="s1">'end_h'</span><span class="p">,</span><span class="s1">'ref_seq_h'</span><span class="p">,</span><span class="s1">'alt_seq_h'</span><span class="p">,</span><span class="s1">'type_h'</span><span class="p">,</span><span class="s1">'format'</span><span class="p">,</span><span class="s1">'ID'</span><span class="p">]]</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'ID'</span><span class="p">:</span><span class="s1">'index'</span><span class="p">})</span>
-    <span class="n">df</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">filepath</span> <span class="o">=</span> <span class="s1">'/Users/kexindong/Documents/GitHub/Database/PublicDatabase/ClinVar/GRCh37_clinvar_20240206.vcf.gz'</span>
+</span><span id="line-2">    <span class="n">variation_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">32798013</span><span class="p">,</span> <span class="mi">375926</span><span class="p">,</span> <span class="mi">325626</span><span class="p">,</span> <span class="mi">140953</span><span class="p">,</span> <span class="mi">233866</span><span class="p">,</span> <span class="mi">1796995</span><span class="p">,</span> <span class="mi">17578</span><span class="p">,</span> <span class="mi">573320</span><span class="p">]</span>
+</span><span id="line-3">    <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">clinvar_reader</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">variation_ids</span><span class="p">)</span>
+</span><span id="line-4">    <span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">clinvar_to_maf</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span><span id="line-5">    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">'gene_name_h'</span><span class="p">,</span>	<span class="s1">'start_h'</span><span class="p">,</span><span class="s1">'end_h'</span><span class="p">,</span><span class="s1">'ref_seq_h'</span><span class="p">,</span><span class="s1">'alt_seq_h'</span><span class="p">,</span><span class="s1">'type_h'</span><span class="p">,</span><span class="s1">'format'</span><span class="p">,</span><span class="s1">'ID'</span><span class="p">]]</span>
+</span><span id="line-6">    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'ID'</span><span class="p">:</span><span class="s1">'index'</span><span class="p">})</span>
+</span><span id="line-7">    <span class="n">df</span>
+</span></code></pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/clinvar_result.png"><img alt="_images/clinvar_result.png" class="align-center" src="_images/clinvar_result.png" style="width: 600px;"/>
 </a>
@@ -213,9 +213,9 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
 <section id="get-canonical-transcript-ids-for-human">
 <h3>Get canonical transcript IDs for human<a class="headerlink" href="#get-canonical-transcript-ids-for-human" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#get-canonical-transcript-ids-for-human'"><span>#</span></a></h3>
 <p>H2M will return two dataframes: one for transcripts identified successfully (df) and one for failures (df_fail).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">df</span><span class="p">,</span> <span class="n">df_fail</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">species</span><span class="o">=</span><span class="s1">'h'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
-    <span class="n">df</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">df</span><span class="p">,</span> <span class="n">df_fail</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">species</span><span class="o">=</span><span class="s1">'h'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+</span><span id="line-2">    <span class="n">df</span>
+</span></code></pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/2.png"><img alt="_images/2.png" class="align-center" src="_images/2.png" style="width: 600px;"/>
 </a>
@@ -367,26 +367,26 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
 </section>
 <section id="query-orthologous-genes">
 <h3>Query orthologous genes<a class="headerlink" href="#query-orthologous-genes" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#query-orthologous-genes'"><span>#</span></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">df_queried</span><span class="p">,</span> <span class="n">df_fail</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">'h2m'</span><span class="p">)</span>
-    <span class="n">df_queried</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">df_queried</span><span class="p">,</span> <span class="n">df_fail</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">'h2m'</span><span class="p">)</span>
+</span><span id="line-2">    <span class="n">df_queried</span>
+</span></code></pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/3.png"><img alt="_images/3.png" class="align-center" src="_images/3.png" style="width: 700px;"/>
 </a>
 </section>
 <section id="get-canonical-transcript-ids-for-mouse">
 <h3>Get canonical transcript IDs for mouse<a class="headerlink" href="#get-canonical-transcript-ids-for-mouse" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#get-canonical-transcript-ids-for-mouse'"><span>#</span></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">df_queried</span><span class="p">,</span> <span class="n">df_fail</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_batch</span><span class="p">(</span><span class="n">df_queried</span><span class="p">,</span> <span class="n">species</span><span class="o">=</span><span class="s1">'m'</span><span class="p">)</span>
-    <span class="n">df_queried</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">df_queried</span><span class="p">,</span> <span class="n">df_fail</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_batch</span><span class="p">(</span><span class="n">df_queried</span><span class="p">,</span> <span class="n">species</span><span class="o">=</span><span class="s1">'m'</span><span class="p">)</span>
+</span><span id="line-2">    <span class="n">df_queried</span>
+</span></code></pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/4.png"><img alt="_images/4.png" class="align-center" src="_images/4.png" style="width: 700px;"/>
 </a>
 </section>
 <section id="compute-the-murine-variant-equivalents">
 <h3>Compute the murine variant equivalents<a class="headerlink" href="#compute-the-murine-variant-equivalents" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#compute-the-murine-variant-equivalents'"><span>#</span></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">df_result</span><span class="p">,</span> <span class="n">df_fail</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model_batch</span><span class="p">(</span><span class="n">df_queried</span><span class="p">,</span> <span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="mi">37</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">df_result</span><span class="p">,</span> <span class="n">df_fail</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model_batch</span><span class="p">(</span><span class="n">df_queried</span><span class="p">,</span> <span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="mi">37</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </section>
 </section>
@@ -395,61 +395,61 @@ Both GRCh37 and GRCh38 human reference genome assemblys are available. Upload th
 <section id="id1">
 <h3>Query orthologous genes<a class="headerlink" href="#id1" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#id1'"><span>#</span></a></h3>
 <p>You can use H2M to query a human gene for the presence of mouse homologs and vice versa.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">query_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'TP53'</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">query_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'TP53'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Query human gene: TP53;
-    Mouse ortholog(s): Trp53;
-    Homology type: one2one;
-    Sequence Simalarity(%):77.3537.
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    Query human gene: TP53;
+</span><span id="line-2">    Mouse ortholog(s): Trp53;
+</span><span id="line-3">    Homology type: one2one;
+</span><span id="line-4">    Sequence Simalarity(%):77.3537.
+</span></code></pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">query_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'Trp53'</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">'m2h'</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">query_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'Trp53'</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">'m2h'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Query human gene: Trp53;
-    Mouse ortholog(s): TP53;
-    Homology type: one2one;
-    Sequence Simalarity(%):77.3537.
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    Query human gene: Trp53;
+</span><span id="line-2">    Mouse ortholog(s): TP53;
+</span><span id="line-3">    Homology type: one2one;
+</span><span id="line-4">    Sequence Simalarity(%):77.3537.
+</span></code></pre></div>
 </div>
 <p>The output is a list of information for all the mouse ortholog(s) (if these exist; sometimes there is more than one).<br/>
 Each element is a dictionary of <strong>mouse gene name</strong>, <strong>mouse gene id</strong>, <strong>homology type</strong> (one to one/one to multiple/many to many), and <strong>similarity of human and mouse gene in percentage</strong>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'U1'</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'U1'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Query human gene: U1;
-    Mouse ortholog(s): Gm22866,Gm25938;
-    Homology type: one2many;
-    Sequence Simalarity(%):68.75, 62.3457.
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    Query human gene: U1;
+</span><span id="line-2">    Mouse ortholog(s): Gm22866,Gm25938;
+</span><span id="line-3">    Homology type: one2many;
+</span><span id="line-4">    Sequence Simalarity(%):68.75, 62.3457.
+</span></code></pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'TPT1P6'</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'TPT1P6'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    The query human gene: TPT1P6 has no mouse ortholog or this gene id is not included in the database. Please check the input format.
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    The query human gene: TPT1P6 has no mouse ortholog or this gene id is not included in the database. Please check the input format.
+</span></code></pre></div>
 </div>
 <p>Except for gene names, both ENSEMBL gene id and transcript id are accepted to identify a human gene. You can use the <strong>ty</strong> parameter (‘tx_id’,’gene_id’ or ‘name’) to specify your input type, but this is totally optional.</p>
 <p>Using gene id:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">query_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'ENSG00000141510'</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">query_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'ENSG00000141510'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Query human gene: TP53;
-    Mouse ortholog(s): Trp53;
-    Homology type: one2one;
-    Sequence Simalarity(%):77.3537.
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    Query human gene: TP53;
+</span><span id="line-2">    Mouse ortholog(s): Trp53;
+</span><span id="line-3">    Homology type: one2one;
+</span><span id="line-4">    Sequence Simalarity(%):77.3537.
+</span></code></pre></div>
 </div>
 <p>Using transcript id. Should include a db annotation file with the same ref genome version.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">query_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'ENST00000269305.4'</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="n">db_h</span><span class="p">,</span> <span class="n">ty</span><span class="o">=</span><span class="s1">'tx_id'</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">query_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'ENST00000269305.4'</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="n">db_h</span><span class="p">,</span> <span class="n">ty</span><span class="o">=</span><span class="s1">'tx_id'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Query human gene: TP53;
-    Mouse ortholog(s): Trp53;
-    Homology type: one2one;
-    Sequence Simalarity(%):77.3537.
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    Query human gene: TP53;
+</span><span id="line-2">    Mouse ortholog(s): Trp53;
+</span><span id="line-3">    Homology type: one2one;
+</span><span id="line-4">    Sequence Simalarity(%):77.3537.
+</span></code></pre></div>
 </div>
 <p>The query result of all human genes, as well as corresponding transcript IDs, is also available as a csv file in the <a href="https://www.dropbox.com/scl/fo/1wtrnc9w6s9gemweuw2fv/h?rlkey=hli1z6tv096cjwit5oi6bwggg&amp;dl=0" rel="noopener noreferrer" target="_blank">this Dropbox folder</a>.</p>
 </section>
@@ -461,23 +461,23 @@ Each element is a dictionary of <strong>mouse gene name</strong>, <strong>mouse 
 </div>
 <p>One gene may have different transcripts. For mutation modeling, it is important to specify one transcript. If you do not have this information in hand, you can use H2M to get it.</p>
 <p>Again, both gene IDs and gene names are accepted as identificaitons for human and mouse genes.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">list_tx_id_h</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'TP53'</span><span class="p">,</span> <span class="s1">'h'</span><span class="p">,</span> <span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">list_tx_id_h</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'TP53'</span><span class="p">,</span> <span class="s1">'h'</span><span class="p">,</span> <span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  Genome assembly: GRCh37;
-  The canonical transcript is: ENST00000269305.4;
-  You can choose from the 17 transcripts below for further analysis:
-  (1)ENST00000269305.4 (2)ENST00000413465.2 (3)ENST00000359597.4 (4)ENST00000504290.1 (5)ENST00000510385.1 (6)ENST00000504937.1 (7)ENST00000455263.2 (8)ENST00000420246.2 (9)ENST00000445888.2 (10)ENST00000576024.1 (11)ENST00000509690.1 (12)ENST00000514944.1 (13)ENST00000574684.1 (14)ENST00000505014.1 (15)ENST00000508793.1 (16)ENST00000604348.1 (17)ENST00000503591.1
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">  Genome assembly: GRCh37;
+</span><span id="line-2">  The canonical transcript is: ENST00000269305.4;
+</span><span id="line-3">  You can choose from the 17 transcripts below for further analysis:
+</span><span id="line-4">  (1)ENST00000269305.4 (2)ENST00000413465.2 (3)ENST00000359597.4 (4)ENST00000504290.1 (5)ENST00000510385.1 (6)ENST00000504937.1 (7)ENST00000455263.2 (8)ENST00000420246.2 (9)ENST00000445888.2 (10)ENST00000576024.1 (11)ENST00000509690.1 (12)ENST00000514944.1 (13)ENST00000574684.1 (14)ENST00000505014.1 (15)ENST00000508793.1 (16)ENST00000604348.1 (17)ENST00000503591.1
+</span></code></pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">list_tx_id_m</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'ENSMUSG00000059552'</span><span class="p">,</span> <span class="s1">'m'</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">list_tx_id_m</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'ENSMUSG00000059552'</span><span class="p">,</span> <span class="s1">'m'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  Genome assembly: GRCm39;
-  The canonical transcript is: ENSMUST00000108658.10;
-  You can choose from the 6 transcripts below for further analysis:
-  (1)ENSMUST00000108658.10 (2)ENSMUST00000171247.8 (3)ENSMUST00000005371.12 (4)ENSMUST00000147512.2 (5)ENSMUST00000108657.4 (6)ENSMUST00000130540.2
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">  Genome assembly: GRCm39;
+</span><span id="line-2">  The canonical transcript is: ENSMUST00000108658.10;
+</span><span id="line-3">  You can choose from the 6 transcripts below for further analysis:
+</span><span id="line-4">  (1)ENSMUST00000108658.10 (2)ENSMUST00000171247.8 (3)ENSMUST00000005371.12 (4)ENSMUST00000147512.2 (5)ENSMUST00000108657.4 (6)ENSMUST00000130540.2
+</span></code></pre></div>
 </div>
 <p>Now you can use H2M to model your human mutations of interest.<br/>
 You should have at least such information in hand:</p>
@@ -500,11 +500,11 @@ You should have at least such information in hand:</p>
 <section id="basic-usage">
 <h4>Basic usage<a class="headerlink" href="#basic-usage" title="Link to this heading"><span>#</span></a></h4>
 <p>Taking <em>TP53</em> R273H (ENST00000269305.4:c.818G&gt;A) as an example.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span> <span class="o">=</span> <span class="n">list_tx_id_h</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">list_tx_id_m</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-    <span class="c1"># use the canonical transcript</span>
-    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
-    <span class="n">model_result</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span> <span class="o">=</span> <span class="n">list_tx_id_h</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">list_tx_id_m</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</span><span id="line-2">    <span class="c1"># use the canonical transcript</span>
+</span><span id="line-3">    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+</span><span id="line-4">    <span class="n">model_result</span>
+</span></code></pre></div>
 </div>
 <table class="docutils align-default">
 <thead>
@@ -645,8 +645,8 @@ You should have at least such information in hand:</p>
 <section id="flank-size">
 <h5>Flank Size<a class="headerlink" href="#flank-size" title="Link to this heading"><span>#</span></a></h5>
 <p>The length of the identical sequences between human and mouse on teh left/right side of the mutation is provided in order to give you a sense of the local homology and how confident you should be in the fidelity of this modeling.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'flank_size_left'</span><span class="p">,</span><span class="s1">'flank_size_right'</span><span class="p">]]</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'flank_size_left'</span><span class="p">,</span><span class="s1">'flank_size_right'</span><span class="p">]]</span>
+</span></code></pre></div>
 </div>
 <table class="docutils align-default">
 <thead>
@@ -664,10 +664,10 @@ You should have at least such information in hand:</p>
 <section id="result-visualization">
 <h5>Result visualization<a class="headerlink" href="#result-visualization" title="Link to this heading"><span>#</span></a></h5>
 <p>By setting <code class="docutils literal notranslate"><span class="pre">show_sequence</span> <span class="pre">=</span> <span class="pre">True</span></code>, we can output the sequences of the wild-type and mutated human gene, wild-type, originally-modeled, and alternatively-modeled (if exsist) mouse gene. Modeling results with <code class="docutils literal notranslate"><span class="pre">show_sequence</span> <span class="pre">=</span> <span class="pre">True</span></code> can be directly visulaized by <code class="docutils literal notranslate"><span class="pre">h2m.visulization</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">show_sequence</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)</span>
-    <span class="n">h2m</span><span class="o">.</span><span class="n">visualization</span><span class="p">(</span><span class="n">model_result</span><span class="p">,</span> <span class="n">flank_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">print_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">show_sequence</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="line-2">    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)</span>
+</span><span id="line-3">    <span class="n">h2m</span><span class="o">.</span><span class="n">visualization</span><span class="p">(</span><span class="n">model_result</span><span class="p">,</span> <span class="n">flank_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">print_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/h2m_visual.png"><img alt="_images/h2m_visual.png" class="align-center" src="_images/h2m_visual.png" style="width: 800px;"/>
 </a>
@@ -679,11 +679,11 @@ You should have at least such information in hand:</p>
 <ul class="simple">
 <li><p>Example 1: TP53 R306Q.</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577021</span><span class="p">,</span> <span class="mi">7577021</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
-    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'HGVSc_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span>
-                                <span class="s1">'HGVSc_m_ori'</span><span class="p">,</span><span class="s1">'HGVSp_m_ori'</span><span class="p">,</span>
-                                <span class="s1">'HGVSc_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577021</span><span class="p">,</span> <span class="mi">7577021</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+</span><span id="line-2">    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'HGVSc_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span>
+</span><span id="line-3">                                <span class="s1">'HGVSc_m_ori'</span><span class="p">,</span><span class="s1">'HGVSp_m_ori'</span><span class="p">,</span>
+</span><span id="line-4">                                <span class="s1">'HGVSc_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
+</span></code></pre></div>
 </div>
 <table class="docutils align-default">
 <thead>
@@ -722,29 +722,29 @@ You should have at least such information in hand:</p>
 <ul class="simple">
 <li><p>Example 2: TP53 R249_T253delinsS.</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577523</span><span class="p">,</span> <span class="mi">7577534</span><span class="p">,</span> <span class="s1">'GTGAGGATGGGC'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'DEL'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
-    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'HGVSc_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span>
-                                <span class="s1">'HGVSc_m_ori'</span><span class="p">,</span><span class="s1">'HGVSp_m_ori'</span><span class="p">,</span>
-                                <span class="s1">'HGVSc_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577523</span><span class="p">,</span> <span class="mi">7577534</span><span class="p">,</span> <span class="s1">'GTGAGGATGGGC'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'DEL'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+</span><span id="line-2">    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'HGVSc_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span>
+</span><span id="line-3">                                <span class="s1">'HGVSc_m_ori'</span><span class="p">,</span><span class="s1">'HGVSp_m_ori'</span><span class="p">,</span>
+</span><span id="line-4">                                <span class="s1">'HGVSc_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
+</span></code></pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/delins.png"><img alt="_images/delins.png" class="align-center" src="_images/delins.png" style="width: 800px;"/>
 </a>
 <p>The default maximum number of output alternatives is 5. You can definitly change that by the parameter <strong>max_alternative</strong>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_result_long</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577523</span><span class="p">,</span> <span class="mi">7577534</span><span class="p">,</span> <span class="s1">'GTGAGGATGGGC'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'DEL'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">max_alternative</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">model_result</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">model_result_long</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="n">model_result_long</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577523</span><span class="p">,</span> <span class="mi">7577534</span><span class="p">,</span> <span class="s1">'GTGAGGATGGGC'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'DEL'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">max_alternative</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span id="line-2"><span class="nb">len</span><span class="p">(</span><span class="n">model_result</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">model_result_long</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(5, 6)
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">(5, 6)
+</span></code></pre></div>
 </div>
 <p>If you do not want to alternatively model variants, you can set <strong>search_alternatve</strong> to False.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577523</span><span class="p">,</span> <span class="mi">7577534</span><span class="p">,</span> <span class="s1">'GTGAGGATGGGC'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'DEL'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">search_alternative</span><span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-    <span class="n">model_result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'statement'</span><span class="p">]</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577523</span><span class="p">,</span> <span class="mi">7577534</span><span class="p">,</span> <span class="s1">'GTGAGGATGGGC'</span><span class="p">,</span> <span class="s1">'-'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'DEL'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">search_alternative</span><span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</span><span id="line-2">    <span class="n">model_result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">'statement'</span><span class="p">]</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>'Class 6: This mutation cannot be originally modeled.'
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">'Class 6: This mutation cannot be originally modeled.'
+</span></code></pre></div>
 </div>
 </section>
 <section id="original-modeling-with-uncertain-effects">
@@ -753,12 +753,12 @@ You should have at least such information in hand:</p>
 <ul class="simple">
 <li><p>Example 1: <em>TP53</em> C275Lfs*31</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> 
-                                <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> 
-                                <span class="mi">7577115</span><span class="p">,</span> <span class="mi">7577116</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span><span class="s1">'A'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'INS'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
-    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'HGVSc_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span>
-                                <span class="s1">'HGVSc_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> 
+</span><span id="line-2">                                <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> 
+</span><span id="line-3">                                <span class="mi">7577115</span><span class="p">,</span> <span class="mi">7577116</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span><span class="s1">'A'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'INS'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+</span><span id="line-4">    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'HGVSc_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span>
+</span><span id="line-5">                                <span class="s1">'HGVSc_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
+</span></code></pre></div>
 </div>
 <table class="docutils align-default">
 <thead>
@@ -784,12 +784,12 @@ You should have at least such information in hand:</p>
 <ul class="simple">
 <li><p>Example 2: TP53 splice site mutation</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> 
-                            <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7578555</span><span class="p">,</span> <span class="mi">7578555</span><span class="p">,</span> 
-                            <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
-    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'HGVSc_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span>
-                            <span class="s1">'HGVSc_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> 
+</span><span id="line-2">                            <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7578555</span><span class="p">,</span> <span class="mi">7578555</span><span class="p">,</span> 
+</span><span id="line-3">                            <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+</span><span id="line-4">    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'HGVSc_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span>
+</span><span id="line-5">                            <span class="s1">'HGVSc_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
+</span></code></pre></div>
 </div>
 <table class="docutils align-default">
 <thead>
@@ -821,9 +821,9 @@ You should have at least such information in hand:</p>
 <h3>Additional function 1: modeling M2H<a class="headerlink" href="#additional-function-1-modeling-m2h" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#additional-function-1-modeling-m2h'"><span>#</span></a></h3>
 <p>Replace human variant coordinates and sequences with murine ones, and set <code class="docutils literal notranslate"><span class="pre">direction</span> <span class="pre">=</span> <span class="pre">'m2h'</span></code>.  Use TP53 R273H as an example.</p>
 <p>H2M:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
-    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'start_h'</span><span class="p">,</span><span class="s1">'end_h'</span><span class="p">,</span><span class="s1">'ref_seq_h'</span><span class="p">,</span><span class="s1">'alt_seq_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span><span class="s1">'start_m'</span><span class="p">,</span><span class="s1">'end_m'</span><span class="p">,</span><span class="s1">'ref_seq_m'</span><span class="p">,</span><span class="s1">'alt_seq_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+</span><span id="line-2">    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'start_h'</span><span class="p">,</span><span class="s1">'end_h'</span><span class="p">,</span><span class="s1">'ref_seq_h'</span><span class="p">,</span><span class="s1">'alt_seq_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span><span class="s1">'start_m'</span><span class="p">,</span><span class="s1">'end_m'</span><span class="p">,</span><span class="s1">'ref_seq_m'</span><span class="p">,</span><span class="s1">'alt_seq_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
+</span></code></pre></div>
 </div>
 <table class="docutils align-default">
 <thead>
@@ -865,11 +865,11 @@ You should have at least such information in hand:</p>
 </tbody>
 </table>
 <p>M2H:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> 
-                            <span class="mi">69480434</span><span class="p">,</span> <span class="mi">69480434</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> 
-                            <span class="n">direction</span><span class="o">=</span><span class="s1">'m2h'</span><span class="p">)</span>
-    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'start_h'</span><span class="p">,</span><span class="s1">'end_h'</span><span class="p">,</span><span class="s1">'ref_seq_h'</span><span class="p">,</span><span class="s1">'alt_seq_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span><span class="s1">'start_m'</span><span class="p">,</span><span class="s1">'end_m'</span><span class="p">,</span><span class="s1">'ref_seq_m'</span><span class="p">,</span><span class="s1">'alt_seq_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> 
+</span><span id="line-2">                            <span class="mi">69480434</span><span class="p">,</span> <span class="mi">69480434</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> 
+</span><span id="line-3">                            <span class="n">direction</span><span class="o">=</span><span class="s1">'m2h'</span><span class="p">)</span>
+</span><span id="line-4">    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'start_h'</span><span class="p">,</span><span class="s1">'end_h'</span><span class="p">,</span><span class="s1">'ref_seq_h'</span><span class="p">,</span><span class="s1">'alt_seq_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span><span class="s1">'start_m'</span><span class="p">,</span><span class="s1">'end_m'</span><span class="p">,</span><span class="s1">'ref_seq_m'</span><span class="p">,</span><span class="s1">'alt_seq_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
+</span></code></pre></div>
 </div>
 <table class="docutils align-default">
 <thead>
@@ -914,28 +914,28 @@ You should have at least such information in hand:</p>
 <section id="additional-function-2-modeling-h2h-m2m-paralogs">
 <h3>Additional function 2: modeling H2H/M2M paralogs<a class="headerlink" href="#additional-function-2-modeling-h2h-m2m-paralogs" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#additional-function-2-modeling-h2h-m2m-paralogs'"><span>#</span></a></h3>
 <p>Replace the reference genome and gencode annotation database input parameter to do so.  Take human IDH1 R172G as an example.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'class'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'class'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tx_id_1_h</span><span class="p">,</span> <span class="n">tx_id_2_h</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'SMARCA2'</span><span class="p">,</span><span class="s1">'h'</span><span class="p">,</span><span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">)[</span><span class="mi">3</span><span class="p">],</span><span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'SMARCA4'</span><span class="p">,</span><span class="s1">'h'</span><span class="p">,</span><span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="n">tx_id_1_h</span><span class="p">,</span> <span class="n">tx_id_2_h</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'SMARCA2'</span><span class="p">,</span><span class="s1">'h'</span><span class="p">,</span><span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">)[</span><span class="mi">3</span><span class="p">],</span><span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'SMARCA4'</span><span class="p">,</span><span class="s1">'h'</span><span class="p">,</span><span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Genome assembly: GRCh37;
-The canonical transcript is: ENST00000382203.1;
-You can choose from the 17 transcripts below for further analysis:
-(1)ENST00000382203.1 (2)ENST00000450198.1 (3)ENST00000457226.1 (4)ENST00000439732.1 (5)ENST00000382194.1 (6)ENST00000491574.1 (7)ENST00000452193.1 (8)ENST00000302401.3 (9)ENST00000423555.1 (10)ENST00000382186.1 (11)ENST00000417599.1 (12)ENST00000382185.1 (13)ENST00000382183.1 (14)ENST00000416751.1 (15)ENST00000349721.2 (16)ENST00000357248.2 (17)ENST00000324954.5
-
-Genome assembly: GRCh37;
-The canonical transcript is: ENST00000429416.3;
-You can choose from the 20 transcripts below for further analysis:
-(1)ENST00000429416.3 (2)ENST00000344626.4 (3)ENST00000541122.2 (4)ENST00000589677.1 (5)ENST00000444061.3 (6)ENST00000590574.1 (7)ENST00000591545.1 (8)ENST00000592604.1 (9)ENST00000586122.1 (10)ENST00000587988.1 (11)ENST00000591595.1 (12)ENST00000585799.1 (13)ENST00000592158.1 (14)ENST00000586892.1 (15)ENST00000538456.3 (16)ENST00000586985.1 (17)ENST00000586921.1 (18)ENST00000358026.2 (19)ENST00000413806.3 (20)ENST00000450717.3
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">Genome assembly: GRCh37;
+</span><span id="line-2">The canonical transcript is: ENST00000382203.1;
+</span><span id="line-3">You can choose from the 17 transcripts below for further analysis:
+</span><span id="line-4">(1)ENST00000382203.1 (2)ENST00000450198.1 (3)ENST00000457226.1 (4)ENST00000439732.1 (5)ENST00000382194.1 (6)ENST00000491574.1 (7)ENST00000452193.1 (8)ENST00000302401.3 (9)ENST00000423555.1 (10)ENST00000382186.1 (11)ENST00000417599.1 (12)ENST00000382185.1 (13)ENST00000382183.1 (14)ENST00000416751.1 (15)ENST00000349721.2 (16)ENST00000357248.2 (17)ENST00000324954.5
+</span><span id="line-5">
+</span><span id="line-6">Genome assembly: GRCh37;
+</span><span id="line-7">The canonical transcript is: ENST00000429416.3;
+</span><span id="line-8">You can choose from the 20 transcripts below for further analysis:
+</span><span id="line-9">(1)ENST00000429416.3 (2)ENST00000344626.4 (3)ENST00000541122.2 (4)ENST00000589677.1 (5)ENST00000444061.3 (6)ENST00000590574.1 (7)ENST00000591545.1 (8)ENST00000592604.1 (9)ENST00000586122.1 (10)ENST00000587988.1 (11)ENST00000591595.1 (12)ENST00000585799.1 (13)ENST00000592158.1 (14)ENST00000586892.1 (15)ENST00000538456.3 (16)ENST00000586985.1 (17)ENST00000586921.1 (18)ENST00000358026.2 (19)ENST00000413806.3 (20)ENST00000450717.3
+</span></code></pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">tx_id_1_h</span><span class="p">,</span> <span class="n">tx_id_2_h</span><span class="p">,</span> 
-                        <span class="mi">2115855</span><span class="p">,</span> <span class="mi">2115855</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span>
-                        <span class="n">direction</span><span class="o">=</span><span class="s1">'h2h'</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'gene_name_h_1'</span><span class="p">,</span><span class="s1">'start_h_1'</span><span class="p">,</span><span class="s1">'end_h_1'</span><span class="p">,</span><span class="s1">'ref_seq_h_1'</span><span class="p">,</span><span class="s1">'alt_seq_h_1'</span><span class="p">,</span><span class="s1">'HGVSp_h_1'</span><span class="p">,</span><span class="s1">'gene_name_h_2'</span><span class="p">,</span><span class="s1">'start_h_2'</span><span class="p">,</span><span class="s1">'end_h_2'</span><span class="p">,</span><span class="s1">'ref_seq_h_2'</span><span class="p">,</span><span class="s1">'alt_seq_h_2'</span><span class="p">,</span><span class="s1">'HGVSp_h_2'</span><span class="p">]]</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">tx_id_1_h</span><span class="p">,</span> <span class="n">tx_id_2_h</span><span class="p">,</span> 
+</span><span id="line-2">                        <span class="mi">2115855</span><span class="p">,</span> <span class="mi">2115855</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">,</span> <span class="s1">'A'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span>
+</span><span id="line-3">                        <span class="n">direction</span><span class="o">=</span><span class="s1">'h2h'</span><span class="p">)</span>
+</span><span id="line-4"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'gene_name_h_1'</span><span class="p">,</span><span class="s1">'start_h_1'</span><span class="p">,</span><span class="s1">'end_h_1'</span><span class="p">,</span><span class="s1">'ref_seq_h_1'</span><span class="p">,</span><span class="s1">'alt_seq_h_1'</span><span class="p">,</span><span class="s1">'HGVSp_h_1'</span><span class="p">,</span><span class="s1">'gene_name_h_2'</span><span class="p">,</span><span class="s1">'start_h_2'</span><span class="p">,</span><span class="s1">'end_h_2'</span><span class="p">,</span><span class="s1">'ref_seq_h_2'</span><span class="p">,</span><span class="s1">'alt_seq_h_2'</span><span class="p">,</span><span class="s1">'HGVSp_h_2'</span><span class="p">]]</span>
+</span></code></pre></div>
 </div>
 <table class="docutils align-default">
 <thead>
@@ -987,21 +987,21 @@ You can choose from the 20 transcripts below for further analysis:
 <h3>Additional function 3: modeling for base editing<a class="headerlink" href="#additional-function-3-modeling-for-base-editing" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#additional-function-3-modeling-for-base-editing'"><span>#</span></a></h3>
 <p>When you set <strong>param = ‘BE’</strong>, you will get modeling results that can be modeled by base editing (A-&gt;G, G-&gt;A, C-&gt;T, T-&gt;C, AA-&gt;GG, …etc.). If one mutation can be originally modeled in the mouse genome but not in a BE style, alternative BE modeling strategies will be returned too.</p>
 <p>Taking <em>KEAP1</em> F221L as an example.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'KEAP1'</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'KEAP1'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Query human gene: KEAP1;
-    Mouse ortholog(s): Keap1;
-    Homology type: one2one;
-    Sequence Simalarity(%):94.0705.
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    Query human gene: KEAP1;
+</span><span id="line-2">    Mouse ortholog(s): Keap1;
+</span><span id="line-3">    Homology type: one2one;
+</span><span id="line-4">    Sequence Simalarity(%):94.0705.
+</span></code></pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">tx_id_h_2</span><span class="p">,</span> <span class="n">tx_id_m_2</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'KEAP1'</span><span class="p">,</span><span class="s1">'h'</span><span class="p">,</span><span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">3</span><span class="p">],</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'Keap1'</span><span class="p">,</span><span class="s1">'m'</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
-    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h_2</span><span class="p">,</span> <span class="n">tx_id_m_2</span><span class="p">,</span> <span class="mi">10602915</span><span class="p">,</span> <span class="mi">10602915</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="s1">'BE'</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">tx_id_h_2</span><span class="p">,</span> <span class="n">tx_id_m_2</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'KEAP1'</span><span class="p">,</span><span class="s1">'h'</span><span class="p">,</span><span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">3</span><span class="p">],</span> <span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'Keap1'</span><span class="p">,</span><span class="s1">'m'</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+</span><span id="line-2">    <span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h_2</span><span class="p">,</span> <span class="n">tx_id_m_2</span><span class="p">,</span> <span class="mi">10602915</span><span class="p">,</span> <span class="mi">10602915</span><span class="p">,</span> <span class="s1">'G'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="s1">'BE'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'HGVSc_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span><span class="s1">'HGVSc_m_ori'</span><span class="p">,</span><span class="s1">'HGVSp_m_ori'</span><span class="p">,</span><span class="s1">'statement'</span><span class="p">,</span><span class="s1">'HGVSc_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)[[</span><span class="s1">'HGVSc_h'</span><span class="p">,</span><span class="s1">'HGVSp_h'</span><span class="p">,</span><span class="s1">'HGVSc_m_ori'</span><span class="p">,</span><span class="s1">'HGVSp_m_ori'</span><span class="p">,</span><span class="s1">'statement'</span><span class="p">,</span><span class="s1">'HGVSc_m'</span><span class="p">,</span><span class="s1">'HGVSp_m'</span><span class="p">]]</span>
+</span></code></pre></div>
 </div>
 <table class="docutils align-default">
 <thead>
@@ -1037,9 +1037,9 @@ You can choose from the 20 transcripts below for further analysis:
 <section id="additional-function-4-modeling-by-amino-acid-change-input">
 <h3>Additional function 4: modeling by amino acid change input<a class="headerlink" href="#additional-function-4-modeling-by-amino-acid-change-input" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#additional-function-4-modeling-by-amino-acid-change-input'"><span>#</span></a></h3>
 <p>Set <strong>coor = ‘aa’</strong> and modeling variants by amino acid change input. Use TP53 R175H as an example.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="s1">'R'</span><span class="p">,</span> <span class="s1">'H'</span><span class="p">,</span> <span class="n">coor</span> <span class="o">=</span> <span class="s1">'aa'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)</span>
-</pre></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="mi">175</span><span class="p">,</span> <span class="s1">'R'</span><span class="p">,</span> <span class="s1">'H'</span><span class="p">,</span> <span class="n">coor</span> <span class="o">=</span> <span class="s1">'aa'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+</span><span id="line-2"><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model_result</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 <table class="docutils align-default">
 <thead>
@@ -1180,14 +1180,14 @@ You can choose from the 20 transcripts below for further analysis:
 </div><footer class="py-6 border-t border-border md:py-0">
 <div class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
 <div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
-<p class="text-sm leading-loose text-center text-muted-foreground md:text-left">© 2024, Kexin Dong Built with <a class="font-medium underline underline-offset-4" href="https://www.sphinx-doc.org" rel="noreferrer">Sphinx 7.3.7</a></p>
+<p class="text-sm leading-loose text-center text-muted-foreground md:text-left">© 2024, Kexin Dong Built with <a class="font-medium underline underline-offset-4" href="https://www.sphinx-doc.org" rel="noreferrer">Sphinx 8.2.1</a></p>
 </div>
 </div>
 </footer>
 </div>
 <script src="_static/documentation_options.js?v=8d563738"></script>
-<script src="_static/doctools.js?v=9a2dae69"></script>
+<script src="_static/doctools.js?v=9bcbadda"></script>
 <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-<script defer="defer" src="_static/theme.js?v=8dc3ddfe"></script>
+<script defer="defer" src="_static/theme.js?v=073f68d9"></script>
 </body>
 </html>

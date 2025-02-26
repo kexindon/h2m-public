@@ -8,6 +8,12 @@
 :width: 150px
 :align: left
 ```
+```{note}
+Feb 25, 2025   
+The manuscript of this work is now available on **bioRxiv**!  
+Read the preprint: [Computational modeling of human genetic variants in mice](https://www.biorxiv.org/content/10.1101/2025.02.23.639784v1)
+```
+
 H2M is a Python package for high-throughput precision modeling of human variants in the mouse genome and vice cersa.   
 
 H2M's main functions are:  

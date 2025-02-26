@@ -11,7 +11,7 @@
 <meta content="Complete Documentation | H2M 1.0.0 documentation" property="og:title"/>
 <meta content="Complete Documentation | H2M 1.0.0 documentation" name="twitter:title"/>
 <link href="_static/pygments.css?v=8d216cef" rel="stylesheet" type="text/css"/>
-<link href="_static/theme.css?v=8958d2b4" rel="stylesheet" type="text/css"/>
+<link href="_static/theme.css?v=42baaae4" rel="stylesheet" type="text/css"/>
 <link href="_static/css/custom.css" rel="stylesheet" type="text/css"/>
 <link href="search.html" rel="search" title="Search"/>
 <link href="genindex.html" rel="index" title="Index"/>
@@ -30,7 +30,7 @@
       if (!userPreference) {localStorage.setItem('darkMode', mode)}
     </script>
 </head>
-<body :class="{ 'overflow-hidden': showSidebar }" class="min-h-screen font-sans antialiased bg-background text-foreground" x-data="{ showSidebar: false }">
+<body :class="{ 'overflow-hidden': showSidebar }" class="min-h-screen font-sans antialiased bg-background text-foreground" x-data="{ showSidebar: false, showScrollTop: false }">
 <div @click.self="showSidebar = false" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden" x-cloak="" x-show="showSidebar"></div><div class="relative flex flex-col min-h-screen" id="page"><a class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100" href="#content">
       Skip to content
     </a><header class="sticky top-0 z-40 w-full border-b shadow-sm border-border supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur"><div class="container flex items-center h-14">
@@ -113,14 +113,14 @@
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
-    vertical-align: middle;
-}
-
-.dataframe thead th {
-    text-align: middle;
-}
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">.dataframe tbody tr th {
+</span><span id="line-2">    vertical-align: middle;
+</span><span id="line-3">}
+</span><span id="line-4">
+</span><span id="line-5">.dataframe thead th {
+</span><span id="line-6">    text-align: middle;
+</span><span id="line-7">}
+</span></code></pre></div>
 </div>
 </style>
 <table border="1" class="dataframe">
@@ -303,14 +303,14 @@
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.dataframe tbody tr th {
-    vertical-align: middle;
-}
-
-.dataframe thead th {
-    text-align: left;
-}
-</pre></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><code><span id="line-1">.dataframe tbody tr th {
+</span><span id="line-2">    vertical-align: middle;
+</span><span id="line-3">}
+</span><span id="line-4">
+</span><span id="line-5">.dataframe thead th {
+</span><span id="line-6">    text-align: left;
+</span><span id="line-7">}
+</span></code></pre></div>
 </div>
 </style>
 <table border="1" class="dataframe">
@@ -376,8 +376,8 @@
 <li><p>reference genome records and the index list of chromosomes.</p></li>
 </ul>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">genome_loader</span><span class="p">(</span><span class="n">path_h_ref</span><span class="p">)</span>
-</pre></div>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">genome_loader</span><span class="p">(</span><span class="n">path_h_ref</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -395,8 +395,8 @@
 <li><p>a FeatureDB</p></li>
 </ul>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db_h</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">anno_loader</span><span class="p">(</span><span class="n">path_h_anno</span><span class="p">)</span>
-</pre></div>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">db_h</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">anno_loader</span><span class="p">(</span><span class="n">path_h_anno</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -413,8 +413,8 @@
 </dd>
 <dt>Output: </dt><dd><p>An input dataframe for h2m modeling.</p>
 </dd>
-<dt>Example:   </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">cbio_reader</span><span class="p">(</span><span class="s1">'.../data_mutations.txt'</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
+<dt>Example:   </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">cbio_reader</span><span class="p">(</span><span class="s1">'.../data_mutations.txt'</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -432,10 +432,10 @@
 </dd>
 <dt>Output: </dt><dd><p>An input dataframe for h2m modeling.</p>
 </dd>
-<dt>Example:   </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filepath</span> <span class="o">=</span> <span class="s1">'.../GrCh37_clinvar_20230923.vcf.gz'</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">variation_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">925574</span><span class="p">,</span> <span class="mi">925434</span><span class="p">,</span> <span class="mi">926695</span><span class="p">,</span> <span class="mi">925707</span><span class="p">,</span> <span class="mi">325626</span><span class="p">,</span> <span class="mi">1191613</span><span class="p">,</span> <span class="mi">308061</span><span class="p">,</span> <span class="mi">361149</span><span class="p">,</span> <span class="mi">1205375</span><span class="p">,</span> <span class="mi">208043</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">clinvar_reader</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">variation_ids</span><span class="p">)</span>
-</pre></div>
+<dt>Example:   </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">filepath</span> <span class="o">=</span> <span class="s1">'.../GrCh37_clinvar_20230923.vcf.gz'</span>
+</span><span id="line-2"><span class="gp">&gt;&gt;&gt; </span><span class="n">variation_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">925574</span><span class="p">,</span> <span class="mi">925434</span><span class="p">,</span> <span class="mi">926695</span><span class="p">,</span> <span class="mi">925707</span><span class="p">,</span> <span class="mi">325626</span><span class="p">,</span> <span class="mi">1191613</span><span class="p">,</span> <span class="mi">308061</span><span class="p">,</span> <span class="mi">361149</span><span class="p">,</span> <span class="mi">1205375</span><span class="p">,</span> <span class="mi">208043</span><span class="p">]</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">clinvar_reader</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">variation_ids</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -457,9 +457,9 @@
 </dd>
 <dt>Output: </dt><dd><p>An input dataframe for h2m modeling.</p>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">filepath</span> <span class="o">=</span> <span class="s1">'.../gnomAD_v4.0.0_ENSG00000141510_2024_02_07_11_36_03.csv'</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">vcf_reader</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span><span class="s1">'TP53'</span><span class="p">)</span>
-</pre></div>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">filepath</span> <span class="o">=</span> <span class="s1">'.../gnomAD_v4.0.0_ENSG00000141510_2024_02_07_11_36_03.csv'</span>
+</span><span id="line-2"><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">vcf_reader</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span><span class="s1">'TP53'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -482,8 +482,8 @@
 </dd>
 <dt>Output: </dt><dd><p>The input dataframe but with a column of vairant type added.</p>
 </dd>
-<dt>Example:   </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">get_variant_type</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">'ref_seq_h'</span><span class="p">,</span><span class="s1">'alt_seq_h'</span><span class="p">)</span>
-</pre></div>
+<dt>Example:   </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">get_variant_type</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">'ref_seq_h'</span><span class="p">,</span><span class="s1">'alt_seq_h'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -505,8 +505,8 @@
 <li><p>A list [chromosome, start location(of gene), end location(of gene), canonical transcript id, list of all transcript id (the canonical one included and always at the first place), a list of additional information of each transcript]</p></li>
 </ul>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'TP53'</span><span class="p">,</span><span class="s1">'h'</span><span class="p">,</span><span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">)</span>
-</pre></div>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_id</span><span class="p">(</span><span class="s1">'TP53'</span><span class="p">,</span><span class="s1">'h'</span><span class="p">,</span><span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -526,8 +526,8 @@
 <li><p>Two dataframes. The first dataframe is the processed original dataframe with canonical transcirpt id attached in the column named ‘tx_id_h’/’tx_id_m’. The second dataframe contains all rows that are not successfully processed.</p></li>
 </ul>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">'h'</span><span class="p">,</span><span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">)</span>
-</pre></div>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">get_tx_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">'h'</span><span class="p">,</span><span class="n">ver</span><span class="o">=</span><span class="mi">37</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -548,8 +548,8 @@
 <li><p>a list of human gene name, mouse gene name, mapping type and sequence similarity.</p></li>
 </ul>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'TP53'</span><span class="p">)</span>
-</pre></div>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'TP53'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -568,8 +568,8 @@
 <li><p>Two dataframes. The first dataframe is the processed original dataframe with canonical transcirpt id attached in the column named ‘gene_name_m’. The second dataframe contains all rows that are not successfully processed.</p></li>
 </ul>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">query_batch</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">query_batch</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -606,8 +606,8 @@
 3. The alt_seq input should be in the positive strand and the start_h coordinate should be smaller than or equal the end_h coordinate.
 4. If the ref-seq or alt-see has no length, it could be input as ‘’ or ‘-‘.</p>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
-</pre></div>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span> <span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -641,8 +641,8 @@
 <li><p>Two dataframes. The first dataframe is the processed original dataframe. The second dataframe contains all rows that are not successfully processed.</p></li>
 </ul>
 </dd>
-<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">model_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="s1">'BE'</span><span class="p">)</span>
-</pre></div>
+<dt>Example:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">model_batch</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">records_h</span><span class="p">,</span> <span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">param</span> <span class="o">=</span> <span class="s1">'BE'</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -660,9 +660,9 @@
 </dd>
 <dt>Output: </dt><dd><p>A visualization plot.</p>
 </dd>
-<dt>Example:   </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">show_sequence</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">visualization</span><span class="p">(</span><span class="n">model_result</span><span class="p">,</span> <span class="n">flank_size</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">print_size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-</pre></div>
+<dt>Example:   </dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">model_result</span> <span class="o">=</span> <span class="n">h2m</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">records_h</span><span class="p">,</span><span class="n">index_list_h</span><span class="p">,</span> <span class="n">records_m</span><span class="p">,</span> <span class="n">index_list_m</span><span class="p">,</span> <span class="n">db_h</span><span class="p">,</span> <span class="n">db_m</span><span class="p">,</span> <span class="n">tx_id_h</span><span class="p">,</span> <span class="n">tx_id_m</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="mi">7577120</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">,</span><span class="s1">'T'</span><span class="p">,</span> <span class="n">ty_h</span> <span class="o">=</span> <span class="s1">'SNP'</span><span class="p">,</span> <span class="n">ver</span> <span class="o">=</span> <span class="mi">37</span><span class="p">,</span> <span class="n">show_sequence</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="line-2"><span class="gp">&gt;&gt;&gt; </span><span class="n">h2m</span><span class="o">.</span><span class="n">visualization</span><span class="p">(</span><span class="n">model_result</span><span class="p">,</span> <span class="n">flank_size</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">print_size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </dd>
 </dl>
@@ -700,14 +700,14 @@
 </div><footer class="py-6 border-t border-border md:py-0">
 <div class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
 <div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
-<p class="text-sm leading-loose text-center text-muted-foreground md:text-left">© 2024, Kexin Dong Built with <a class="font-medium underline underline-offset-4" href="https://www.sphinx-doc.org" rel="noreferrer">Sphinx 7.3.7</a></p>
+<p class="text-sm leading-loose text-center text-muted-foreground md:text-left">© 2024, Kexin Dong Built with <a class="font-medium underline underline-offset-4" href="https://www.sphinx-doc.org" rel="noreferrer">Sphinx 8.2.1</a></p>
 </div>
 </div>
 </footer>
 </div>
 <script src="_static/documentation_options.js?v=8d563738"></script>
-<script src="_static/doctools.js?v=9a2dae69"></script>
+<script src="_static/doctools.js?v=9bcbadda"></script>
 <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-<script defer="defer" src="_static/theme.js?v=8dc3ddfe"></script>
+<script defer="defer" src="_static/theme.js?v=073f68d9"></script>
 </body>
 </html>
