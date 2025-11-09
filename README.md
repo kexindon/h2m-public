@@ -24,8 +24,7 @@ H2M's main functions are:
 
 Documentation: https://h2m-public.readthedocs.io  
 
-H2M Database Online Portal:  Upcoming
-
+H2M Database Online Portal:  https://human2mouse.com/
 ## 🔧 Installation  
 
 ### 1. Via PyPI  
