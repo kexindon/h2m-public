@@ -1,3 +1,6 @@
+## How to cite H2M
+Dong, K., Gould, S.I., Li, M. et al. Computational prediction of human genetic variants in the mouse genome. Nat Biotechnol (2025). [https://doi.org/10.1038/s41587-025-02925-0](https://doi.org/10.1038/s41587-025-02925-0)
+
 ## Preprint Announcement! (Feb 25, 2025)    
 The manuscript of this work is now available on **bioRxiv**!  
 Read the preprint: [Computational modeling of human genetic variants in mice](https://www.biorxiv.org/content/10.1101/2025.02.23.639784v1)
