@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3)",
+      "Bash(grep -n \"screens = {\" *.ipynb)",
+      "Bash(grep -n \"ABE_BC.*samps_to_merge\\\\|ABE_EPO.*samps_to_merge\\\\|CBE_BC.*samps_to_merge\\\\|CBE_EPO.*samps_to_merge\" *.ipynb)",
+      "Bash(grep -n \"fp_editing\" *.ipynb)"
+    ]
+  }
+}
